@@ -6,7 +6,7 @@
   --color-secondary: #458832;
   /* Drop Green */
   --color-accent-blue: #001a4d;
-  /* Navy Dark (from airplane area) */
+  /* Navy Dark */
   --color-sky-blue: #00639d;
   /* Swoosh Blue */
   --color-accent-gold: #fdb913;
@@ -14,11 +14,13 @@
   --color-road-dark: #181311;
   /* Road Black */
 
-  /* Brand-Derived Tints for Section Backgrounds */
-  --color-brand-orange-bg: #fff5f0;
-  --color-brand-green-bg: #f5f9f2;
-  --color-brand-blue-bg: #f0f7ff;
-  --color-brand-gold-bg: #fffcf2;
+  /* Enhanced Brand Backgrounds - Green, Orange, Blue Theme */
+  --color-theme-green-bg: #effef0;
+  --color-theme-orange-bg: #fff9f5;
+  --color-theme-blue-bg: #f0f8ff;
+  --color-theme-green-dark: #0f2d11;
+  --color-theme-orange-dark: #2d1607;
+  --color-theme-blue-dark: #001a4d;
 
   --font-poppins: "Poppins", sans-serif;
 }
@@ -56,6 +58,47 @@ body {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hero-glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.4);
+}
+
+.bg-pattern-green {
+  background-color: var(--color-theme-green-bg);
+  background-image: radial-gradient(circle at 2px 2px, rgba(69, 136, 50, 0.08) 1.5px, transparent 0);
+  background-size: 32px 32px;
+}
+
+.bg-pattern-green-light {
+  background-color: #f7fff8;
+  background-image: radial-gradient(circle at 2px 2px, rgba(69, 136, 50, 0.04) 1px, transparent 0);
+  background-size: 64 px 64px;
+}
+
+.bg-pattern-orange {
+  background-color: var(--color-theme-orange-bg);
+  background-image: radial-gradient(circle at 2px 2px, rgba(240, 90, 34, 0.08) 1.5px, transparent 0);
+  background-size: 32px 32px;
+}
+
+.bg-pattern-blue {
+  background-color: var(--color-theme-blue-bg);
+  background-image: radial-gradient(circle at 2px 2px, rgba(0, 99, 157, 0.08) 1.5px, transparent 0);
+  background-size: 32px 32px;
+}
+
+.contact-gradient-orange {
+  background: radial-gradient(circle at 50% 50%, #3d1c0a 0%, #181311 100%);
+  position: relative;
+}
+
+.stylish-glow-orange {
+  text-shadow: 0 0 20px rgba(240, 90, 34, 0.4);
 }
 
 .glass-card.active {
