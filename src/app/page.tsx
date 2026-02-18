@@ -244,35 +244,125 @@ export default function Home() {
           <div className="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="text-center mb-20">
-              <div className="text-primary font-black text-xs uppercase tracking-[0.3em] mb-4">The Pick & Drop Edge</div>
-              <h2 className="text-5xl lg:text-7xl font-black text-road-dark mb-6 italic uppercase tracking-tighter stylish-glow-text">Why <span className="text-primary">Choose</span> Us?</h2>
-              <div className="w-24 h-2 bg-primary mx-auto rounded-full shadow-lg shadow-primary/20"></div>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-              {[
-                { icon: "verified_user", title: "Professional Drivers", desc: "Punctual and courteous drivers with years of experience on Sri Lankan roads.", color: "text-primary", bg: "bg-primary/20", iconColor: "text-primary" },
-                { icon: "airport_shuttle", title: "Modern Fleet", desc: "Wide range of well-maintained, air-conditioned vehicles to suit your group size.", color: "text-secondary", bg: "bg-secondary/20", iconColor: "text-secondary" },
-                { icon: "support_agent", title: "24/7 Support", desc: "Round-the-clock customer assistance for real-time tracking and help.", color: "text-sky-blue", bg: "bg-sky-blue/20", iconColor: "text-sky-blue" }
-              ].map((feature, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="text-center p-10 rounded-[3rem] bg-white border border-primary/5 hover:border-primary/20 hover:bg-white transition-all duration-500 group shadow-lg shadow-black/5"
-                >
-                  <div className={`w-24 h-24 ${feature.bg} rounded-4xl flex items-center justify-center mx-auto mb-10 transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg shadow-black/5 relative`}>
-                    <div className={`absolute inset-0 rounded-4xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity ${feature.bg}`}></div>
-                    <span className={`material-symbols-outlined text-5xl ${feature.iconColor} drop-shadow-sm relative z-10`}>{feature.icon}</span>
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+              {/* Left Column: Features & Payments */}
+              <div className="space-y-12">
+                <div>
+                  <div className="text-primary font-black text-sm uppercase tracking-[0.3em] mb-4">The Pick & Drop Edge</div>
+                  <h2 className="text-5xl lg:text-7xl font-black text-road-dark mb-8 italic uppercase tracking-tighter">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <div className="w-24 h-2 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
+                </div>
+
+                {/* Features List */}
+                <div className="space-y-6">
+                  {[
+                    { icon: "verified_user", title: "Professional Drivers", desc: "Punctual and courteous drivers with years of experience on Sri Lankan roads.", bg: "bg-primary/20", iconColor: "text-primary" },
+                    { icon: "airport_shuttle", title: "Modern Fleet", desc: "Wide range of well-maintained, air-conditioned vehicles to suit your group size.", bg: "bg-secondary/20", iconColor: "text-secondary" },
+                    { icon: "support_agent", title: "24/7 Support", desc: "Round-the-clock customer assistance for real-time tracking and help.", bg: "bg-sky-blue/20", iconColor: "text-sky-blue" }
+                  ].map((feature, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.1 }}
+                      className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white border border-primary/5 hover:border-primary/20 transition-all duration-300 group shadow-lg shadow-black/5"
+                    >
+                      <div className={`shrink-0 w-20 h-20 ${feature.bg} rounded-3xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg shadow-black/5`}>
+                        <span className={`material-symbols-outlined text-4xl ${feature.iconColor}`}>{feature.icon}</span>
+                      </div>
+                      <div className="text-left">
+                        <h4 className="text-xl font-black text-road-dark italic mb-2 uppercase tracking-tight">{feature.title}</h4>
+                        <p className="text-road-dark/60 font-bold text-sm leading-relaxed">{feature.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* Payment Section - Moved here */}
+                <div className="p-10 rounded-[3rem] bg-white/50 border border-black/5 backdrop-blur-sm space-y-8">
+                  <div className="flex items-center gap-4">
+                    <span className="text-road-dark/40 text-[10px] font-black uppercase tracking-[0.4em]">We Accept</span>
+                    <div className="h-px flex-1 bg-black/10"></div>
                   </div>
-                  <h4 className="text-2xl font-black mb-4 text-road-dark capitalize italic">{feature.title}</h4>
-                  <p className="text-road-dark/60 leading-relaxed font-bold text-sm lg:text-base">{feature.desc}</p>
+                  <div className="flex flex-wrap items-center gap-x-8 gap-y-6">
+                    <img src="/visa.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Visa" />
+                    <img src="/mastercard.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Mastercard" />
+                    <img src="/americanexpress.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Amex" />
+                    <img src="/dinersclub.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Diners Club" />
+                    <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-xl border border-primary/20">
+                      <span className="material-symbols-outlined text-primary text-xl">payments</span>
+                      <span className="text-road-dark font-black text-[10px] uppercase tracking-wider">Cash Accepted</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Fleet Manager & Quote */}
+              <div className="relative lg:sticky lg:top-32">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="relative"
+                >
+                  <div className="absolute -inset-4 bg-accent-gold/10 rounded-[4rem] blur-2xl rotate-3"></div>
+                  <div className="relative aspect-square md:aspect-auto md:h-[600px] w-full rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl shadow-black/10">
+                    <img
+                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                      alt="Fleet Manager"
+                    />
+                    <div className="absolute inset-0 bg-linear-to-t from-road-dark/80 via-transparent to-transparent"></div>
+
+                    <div className="absolute bottom-10 left-10 right-10">
+                      <div className="bg-white/90 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/20 shadow-2xl">
+                        <div className="flex items-start gap-4 mb-4">
+                          <span className="material-symbols-outlined text-accent-gold text-4xl leading-none">format_quote</span>
+                          <p className="text-road-dark font-bold text-lg italic leading-relaxed">
+                            "Our mission is to provide the most reliable and premium travel experience in Sri Lanka. Your safety and comfort are our highest priorities, every single mile."
+                          </p>
+                        </div>
+                        <div className="flex items-center justify-between border-t border-black/5 pt-6">
+                          <div>
+                            <div className="text-road-dark font-black text-xl uppercase tracking-tighter italic">Nimal Perera</div>
+                            <div className="text-primary font-black text-[10px] uppercase tracking-[0.2em]">Manager - Fleet Operations</div>
+                          </div>
+                          <div className="flex gap-2">
+                            {[1, 2, 3, 4, 5].map((s) => (
+                              <span key={s} className="material-symbols-outlined text-accent-gold text-xs">star</span>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </motion.div>
-              ))}
+
+                <div className="mt-12 space-y-6 px-4">
+                  <h3 className="text-3xl font-black text-road-dark italic uppercase tracking-tighter">Personalized Care for Your Journey</h3>
+                  <p className="text-road-dark/60 font-bold leading-relaxed">
+                    At Pick & Drop, we don't just provide a vehicle; we provide a promise of punctuality and excellence. Our fleet management team monitors every trip in real-time to ensure your journey is seamless and stress-free.
+                  </p>
+                  {/* <div className="flex flex-wrap gap-4">
+                    <div className="flex items-center gap-2 px-5 py-2.5 bg-accent-gold/10 rounded-full border border-accent-gold/20">
+                      <span className="material-symbols-outlined text-accent-gold text-sm">check_circle</span>
+                      <span className="text-[10px] font-black uppercase text-road-dark tracking-widest">Real-time Tracking</span>
+                    </div>
+                    <div className="flex items-center gap-2 px-5 py-2.5 bg-secondary/10 rounded-full border border-secondary/20">
+                      <span className="material-symbols-outlined text-secondary text-sm">shield</span>
+                      <span className="text-[10px] font-black uppercase text-road-dark tracking-widest">Insurance Covered</span>
+                    </div>
+                  </div> */}
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -616,19 +706,27 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section className="bg-pattern-green-light py-32 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[150px] -mr-96 -mt-96"></div>
+        <section className="bg-pattern-orange py-32 relative overflow-hidden">
+          {/* Animated Background Orbs */}
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-gold/10 rounded-full blur-[150px] -mr-96 -mt-96 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -ml-96 -mb-96 animate-pulse" style={{ animationDelay: '2s' }}></div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="flex flex-col items-center text-center mb-24">
-              <span className="text-primary font-black text-xs uppercase tracking-[0.4em] mb-4">Plan Your Journey</span>
-              <h2 className="text-5xl lg:text-7xl font-black text-road-dark mb-6 italic uppercase tracking-tighter">
-                Popular <span className="text-primary">Destinations</span>
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                className="text-primary font-black text-sm md:text-base uppercase tracking-[0.4em] mb-4"
+              >
+                Plan Your Journey
+              </motion.span>
+              <h2 className="text-6xl lg:text-8xl font-black text-road-dark mb-6 italic uppercase tracking-tighter">
+                Popular <span className="text-accent-gold">Desti</span><span className="text-secondary">nations</span>
               </h2>
-              <div className="w-24 h-2 bg-primary/20 rounded-full"></div>
+              <div className="w-40 h-2.5 bg-linear-to-r from-primary via-accent-gold to-secondary rounded-full shadow-lg shadow-accent-gold/20"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
               {[
                 {
                   name: "Galle",
@@ -636,7 +734,8 @@ export default function Home() {
                   type: "Beaches / Nature / History",
                   places: "Unawatuna, Jungle Beach, Galle Fort",
                   markerPos: { x: "48%", y: "88%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg"
+                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg",
+                  mapImg: "/galle.png"
                 },
                 {
                   name: "Sigiriya",
@@ -644,7 +743,8 @@ export default function Home() {
                   type: "History / Culture / Adventure",
                   places: "Sigiriya Rock, Pidurangala, Minneriya",
                   markerPos: { x: "55%", y: "45%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg"
+                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg",
+                  mapImg: "/Sigiriya.png"
                 },
                 {
                   name: "Ella",
@@ -652,7 +752,8 @@ export default function Home() {
                   type: "Nature / Mountains / Tea Estates",
                   places: "Nine Arch Bridge, Little Adam's Peak",
                   markerPos: { x: "65%", y: "68%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg"
+                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
+                  mapImg: "/Ella.png"
                 },
                 {
                   name: "Colombo",
@@ -660,73 +761,75 @@ export default function Home() {
                   type: "City / Shopping / Nightlife",
                   places: "Lotus Tower, Galle Face, Pettah",
                   markerPos: { x: "42%", y: "62%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp"
+                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp",
+                  mapImg: "/Colombo.png"
                 }
               ].map((dest, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ y: -10 }}
-                  className="bg-white rounded-[2.5rem] p-8 shadow-xl shadow-black/5 border border-black/5 group relative overflow-hidden"
+                  transition={{ delay: i * 0.15, duration: 0.6 }}
+                  whileHover={{ y: -15, scale: 1.02 }}
+                  className="bg-white rounded-[3rem] p-10 shadow-2xl shadow-black/5 border border-accent-gold/20 group relative overflow-hidden transition-all duration-500"
                 >
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-[5rem] -mr-8 -mt-8 transition-transform group-hover:scale-110"></div>
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-accent-gold/10 rounded-bl-[6rem] -mr-8 -mt-8 transition-all duration-700 group-hover:bg-primary/20 group-hover:scale-110"></div>
 
                   <div className="relative z-10">
-                    <h3 className="text-3xl font-black italic uppercase tracking-tighter text-road-dark mb-8">
+                    <h3 className="text-4xl font-black italic uppercase tracking-tighter text-road-dark mb-10 group-hover:text-accent-gold transition-colors">
                       {dest.name}
                     </h3>
 
                     {/* Map Visualization */}
-                    <div className="relative w-full aspect-3/4 mb-8 bg-brand-green-bg/30 rounded-3xl flex items-center justify-center p-6 border border-secondary/5">
-                      <svg className="w-full h-full text-secondary/10 drop-shadow-sm" viewBox="0 0 100 150" fill="currentColor">
-                        <path d="M50 5 C 60 10, 75 30, 80 50 C 85 70, 80 90, 75 110 C 70 130, 60 145, 50 145 C 40 145, 30 130, 25 110 C 20 90, 15 70, 20 50 C 25 30, 40 10, 50 5 Z" />
-                        {/* Airport Marker (Colombo area) */}
-                        <circle cx="42" cy="62" r="2" className="text-road-dark" />
-                        {/* Route Line */}
-                        <line x1="42" y1="62" x2={dest.markerPos.x.replace('%', '')} y2={dest.markerPos.y.replace('%', '')}
-                          stroke="var(--color-primary)" strokeWidth="1.5" strokeDasharray="4 2" className="opacity-40" />
-                        {/* Destination Marker */}
-                        <circle cx={dest.markerPos.x.replace('%', '')} cy={dest.markerPos.y.replace('%', '')} r="4" className="text-primary animate-pulse" />
-                      </svg>
+                    <div className="relative w-full aspect-4/5 mb-10 rounded-[2.5rem] overflow-hidden border-2 border-accent-gold/10 shadow-inner group-hover:border-accent-gold/30 transition-all duration-500">
+                      {dest.mapImg ? (
+                        <img src={dest.mapImg} alt={`Map of ${dest.name}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2" />
+                      ) : (
+                        <div className="w-full h-full bg-accent-gold/5 flex flex-col items-center justify-center p-8 text-center">
+                          <span className="material-symbols-outlined text-6xl text-primary/30 mb-4 animate-bounce">map</span>
+                          <span className="text-xs font-black uppercase tracking-widest text-primary/40">Real Map Pending</span>
+                        </div>
+                      )}
 
-                      <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-black/5">
-                        <span className="text-[10px] font-black italic text-primary">{dest.distance}</span>
-                      </div>
+
                     </div>
 
-                    <div className="space-y-6">
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Distance from Airport</label>
-                        <p className="text-lg font-black text-road-dark italic">-{dest.distance}</p>
+                    <div className="space-y-8">
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-black/30 uppercase tracking-[0.2em]">Distance from BIA</label>
+                        <p className="text-2xl font-black text-road-dark italic flex items-center gap-2">
+                          <span className="material-symbols-outlined text-primary text-xl">near_me</span>
+                          {dest.distance}
+                        </p>
                       </div>
 
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Destination type / for</label>
-                        <p className="text-sm font-bold text-secondary italic leading-tight">{dest.type}</p>
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-black/30 uppercase tracking-[0.2em]">Travel Type</label>
+                        <p className="text-base font-bold text-secondary italic leading-tight group-hover:text-primary transition-colors">
+                          {dest.type}
+                        </p>
                       </div>
 
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Places</label>
-                        <p className="text-sm font-bold text-road-dark/60 italic leading-snug">
+                      <div className="space-y-2">
+                        <label className="text-xs font-black text-black/30 uppercase tracking-[0.2em]">Top Attractions</label>
+                        <p className="text-base font-bold text-road-dark/60 italic leading-snug">
                           {dest.places}
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-8 pt-6 border-t border-black/5">
-                      <button className="w-full h-12 rounded-2xl bg-road-dark text-white font-black text-xs uppercase tracking-widest hover:bg-primary transition-all flex items-center justify-center gap-2 group/btn">
-                        <span>Book Transfer</span>
-                        <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                    <div className="mt-10 pt-8 border-t border-accent-gold/10">
+                      <button className="w-full h-16 rounded-2xl bg-road-dark text-white font-black text-sm uppercase tracking-widest hover:bg-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-3 group/btn cursor-pointer">
+                        <span>Book  Now</span>
+                        <span className="material-symbols-outlined text-lg group-hover/btn:translate-x-2 transition-transform">flight_takeoff</span>
                       </button>
                     </div>
                   </div>
 
-                  {/* Hover Image Overlay */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-5 transition-opacity pointer-events-none">
-                    <img src={dest.img} className="w-full h-full object-cover grayscale" alt="" />
+                  {/* Hover Image Overlay - Subtle */}
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
+                    <img src={dest.img} className="w-full h-full object-cover grayscale scale-110 group-hover:scale-100 transition-transform duration-1000" alt="" />
                   </div>
                 </motion.div>
               ))}
