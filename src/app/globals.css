@@ -1,25 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #f05a22;
-  /* Pick Orange */
-  --color-secondary: #458832;
-  /* Drop Green */
+  /* New Green & Yellow Theme */
+  --color-primary: #2e7d32;
+  /* Premium Green */
+  --color-secondary: #fdb913;
+  /* Vibrant Yellow */
   --color-accent-blue: #001a4d;
   /* Navy Dark */
   --color-sky-blue: #00639d;
   /* Swoosh Blue */
-  --color-accent-gold: #fdb913;
-  /* Stupa Gold */
+  --color-accent-gold: #ffcc33;
+  /* Bright Gold */
   --color-road-dark: #181311;
   /* Road Black */
 
-  /* Enhanced Brand Backgrounds - Green, Orange, Blue Theme */
-  --color-theme-green-bg: #effef0;
+  /* Enhanced Brand Backgrounds - Green & Yellow priority */
+  --color-theme-green-bg: #f1f8e9;
+  --color-theme-yellow-bg: #fffde7;
   --color-theme-orange-bg: #fff9f5;
-  --color-theme-blue-bg: #f0f8ff;
-  --color-theme-green-dark: #0f2d11;
-  --color-theme-orange-dark: #2d1607;
+  --color-theme-green-dark: #1b5e20;
+  --color-theme-yellow-dark: #fbc02d;
   --color-theme-blue-dark: #001a4d;
 
   --font-poppins: "Poppins", sans-serif;
@@ -41,7 +42,7 @@ body {
 /* --- Stylish & Visible Effects --- */
 
 .stylish-glow-text {
-  text-shadow: 0 4px 12px rgba(240, 90, 34, 0.2);
+  text-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
   letter-spacing: -0.02em;
 }
 
@@ -80,9 +81,9 @@ body {
   background-size: 64 px 64px;
 }
 
-.bg-pattern-orange {
-  background-color: var(--color-theme-orange-bg);
-  background-image: radial-gradient(circle at 2px 2px, rgba(240, 90, 34, 0.08) 1.5px, transparent 0);
+.bg-pattern-yellow {
+  background-color: var(--color-theme-yellow-bg);
+  background-image: radial-gradient(circle at 2px 2px, rgba(253, 185, 19, 0.08) 1.5px, transparent 0);
   background-size: 32px 32px;
 }
 
@@ -92,13 +93,13 @@ body {
   background-size: 32px 32px;
 }
 
-.contact-gradient-orange {
-  background: radial-gradient(circle at 50% 50%, #3d1c0a 0%, #181311 100%);
+.contact-gradient-green {
+  background: radial-gradient(circle at 50% 50%, #1b5e20 0%, #181311 100%);
   position: relative;
 }
 
-.stylish-glow-orange {
-  text-shadow: 0 0 20px rgba(240, 90, 34, 0.4);
+.stylish-glow-green {
+  text-shadow: 0 0 20px rgba(46, 125, 50, 0.4);
 }
 
 .glass-card.active {

@@ -5,38 +5,111 @@ import { motion, AnimatePresence } from "framer-motion";
 
 // --- Hero Carousel Data ---
 // --- Hero Slider Data ---
-const sliderItems = [
+// --- Destination Data with Multiple Images ---
+const destinations = [
   {
-    image: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg",
-    title: "SIGIRIYA",
-    description: "Ancient palace located in the central Matale District.",
+    name: "Galle",
+    distance: "150KM",
+    type: "Beaches / Nature / History",
+    places: "Unawatuna, Jungle Beach, Galle Fort",
+    markerPos: { x: "48%", y: "88%" },
+    images: [
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731678/Galle_lpl2lm.png",
 
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg",
+
+    ],
+    mapImg: "/galle.png"
   },
   {
-    image: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252809/don-kaveen-93IYznJPkOA-unsplash_tzttke.jpg",
-    title: "GALLE",
-    description: "Historic fortification on the southwest coast of Sri Lanka.",
+    name: "Sigiriya",
+    distance: "160KM",
+    type: "History / Culture / Adventure",
+    places: "Sigiriya Rock, Pidurangala, Minneriya",
+    markerPos: { x: "55%", y: "45%" },
+    images: [
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731686/Sigiriya_zoen7c.png",
 
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg",
+      "https://images.unsplash.com/photo-1620619767323-b91a84f5fa6a?q=80&w=2070&auto=format&fit=crop"
+    ],
+    mapImg: "/Sigiriya.png"
   },
   {
-    image: "https://images.unsplash.com/photo-1540611025311-01df3cef54b5?q=80&w=2070&auto=format&fit=crop",
-    title: "ELLA",
-    description: "Cloud-kissed mountains and the iconic Nine Arch Bridge.",
+    name: "Ella",
+    distance: "210KM",
+    type: "Nature / Mountains / Tea Estates",
+    places: "Nine Arch Bridge, Little Adam's Peak",
+    markerPos: { x: "65%", y: "68%" },
+    images: [
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
+      "https://images.unsplash.com/photo-1540611025311-01df3cef54b5?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1622359570114-11880e729a8f?q=80&w=2070&auto=format&fit=crop"
+    ],
+    mapImg: "/Ella.png"
+  },
+  {
+    name: "Colombo",
+    distance: "35KM",
+    type: "City / Shopping / Nightlife",
+    places: "Lotus Tower, Galle Face, Pettah",
+    markerPos: { x: "42%", y: "62%" },
+    images: [
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731663/Colombo_sqqeku.png",
 
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp",
+
+    ],
+    mapImg: "/Colombo.png"
   }
 ];
 
-export default function Home() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [activeSection, setActiveSection] = useState("home");
+// --- Hero Images ---
+const heroDesktop = "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp";
+const heroMobile = "https://res.cloudinary.com/dnfbik3if/image/upload/v1771732069/mobileview_dngzok.jpg";
+
+// --- Mini Component for Destination Image Animation ---
+const DestinationGallery = ({ images }: { images: string[] }) => {
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % sliderItems.length);
-    }, 6000);
-
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
     return () => clearInterval(timer);
-  }, [currentSlide]);
+  }, [images.length]);
+
+  return (
+    <div className="absolute inset-0 w-full h-full">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={index}
+          src={images[index]}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+          alt="Destination View"
+        />
+      </AnimatePresence>
+      {/* Small Indicator Dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
+        {images.map((_, i) => (
+          <div
+            key={i}
+            className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === index ? "bg-white w-4" : "bg-white/40"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default function Home() {
+  const [activeSection, setActiveSection] = useState("home");
+
 
   useEffect(() => {
     const observerOptions = {
@@ -100,12 +173,20 @@ export default function Home() {
       <main>
         {/* New Immersive Slider Section */}
         <section id="home" className="relative h-screen w-full flex items-center justify-center px-0 overflow-hidden">
-          {/* Background Image */}
+          {/* Desktop Background Image */}
           <div
-            className="absolute inset-0 z-0 bg-cover bg-center scale-105 animate-ken-burns"
-            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg')` }}
+            className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${heroDesktop}')` }}
           >
-            <div className="absolute inset-0 bg-black/70"></div>
+            <div className="absolute inset-0 bg-black/40"></div>
+          </div>
+
+          {/* Mobile Background Image */}
+          <div
+            className="block md:hidden absolute inset-0 z-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${heroMobile}')` }}
+          >
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
           <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-24">
@@ -118,12 +199,12 @@ export default function Home() {
                 className="w-full text-center space-y-8 md:space-y-12"
               >
                 <div className="space-y-4 md:space-y-6">
-                  <span className="inline-block px-5 py-1.5 bg-primary/20 rounded-full text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] border border-primary/30">
-                    Hassle-free Airport Transfers in Sri Lanka
+                  <span className="inline-block px-8 py-2.5 bg-black/75 backdrop-blur-xl rounded-full text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                    Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
                   </span>
-                  <h1 className="text-white text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                  <h1 className="text-white text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                     Pick and Drop <br />
-                    <span className="text-primary italic">Shuttle Service</span>
+                    <span className="text-secondary italic">Shuttle Service</span>
                   </h1>
                 </div>
 
@@ -144,10 +225,10 @@ export default function Home() {
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.5 + i * 0.1 }}
-                        className="flex items-center gap-2 px-4 py-2.5 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-white/20 transition-all cursor-default"
+                        className="flex items-center gap-2 px-5 py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg"
                       >
-                        <span className="material-symbols-outlined text-primary text-lg md:text-xl">{value.icon}</span>
-                        <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-widest leading-none">{value.text}</span>
+                        <span className="material-symbols-outlined text-secondary text-lg md:text-xl drop-shadow-[0_0_8px_rgba(253,185,19,0.4)]">{value.icon}</span>
+                        <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
                       </motion.div>
                     ))}
                   </div>
@@ -156,7 +237,7 @@ export default function Home() {
                 <div className="pt-2 flex flex-col items-center mb-4">
                   <a href="#contact" className="group relative w-full sm:w-auto">
                     <div className="absolute inset-0 bg-primary blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
-                    <button className="relative w-full sm:w-auto h-16 md:h-20 px-10 md:px-14 bg-primary text-white font-black text-lg md:text-xl rounded-full shadow-[0_20px_50px_rgba(240,90,34,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
+                    <button className="relative w-full sm:w-auto h-16 md:h-20 px-10 md:px-14 bg-primary text-white font-black text-lg md:text-xl rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
                       BOOK NOW
                       <span className="material-symbols-outlined animate-bounce">south</span>
                     </button>
@@ -175,7 +256,7 @@ export default function Home() {
               <div className="relative flex flex-col items-center gap-10 py-10 border-t border-white/10">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
-                  <span className="text-white/40 text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
+                  <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
                   <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
                 </div>
 
@@ -184,7 +265,7 @@ export default function Home() {
                   <div className="group/icon cursor-help transition-all duration-300   rounded-lg hover:scale-110">
                     <img
                       src="/visa.png"
-                      className="h-12 md:h-12 w-auto opacity-100 transition-opacity  "
+                      className="h-8 md:h-12 w-auto opacity-100 transition-opacity  "
                       alt="Visa"
                     />
                   </div>
@@ -240,7 +321,7 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-        <section className="bg-pattern-orange py-32 relative overflow-hidden border-t border-black/5">
+        <section className="bg-pattern-yellow py-20 md:py-32 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
@@ -252,7 +333,7 @@ export default function Home() {
               <div className="space-y-12">
                 <div>
                   <div className="text-primary font-black text-sm uppercase tracking-[0.3em] mb-4">The Pick & Drop Edge</div>
-                  <h2 className="text-5xl lg:text-7xl font-black text-road-dark mb-8 italic uppercase tracking-tighter">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <h2 className="text-4xl lg:text-7xl font-black text-road-dark mb-8 italic uppercase tracking-tighter">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-24 h-2 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </div>
 
@@ -312,33 +393,13 @@ export default function Home() {
                   <div className="absolute -inset-4 bg-accent-gold/10 rounded-[4rem] blur-2xl rotate-3"></div>
                   <div className="relative aspect-square md:aspect-auto md:h-[600px] w-full rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl shadow-black/10">
                     <img
-                      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                      src="/fleetM.jpeg"
+                      className="w-full h-full object-cover transition-all duration-700"
                       alt="Fleet Manager"
                     />
-                    <div className="absolute inset-0 bg-linear-to-t from-road-dark/80 via-transparent to-transparent"></div>
+                    <div className="hidden md:block absolute inset-0 bg-linear-to-t from-road-dark/80 via-transparent to-transparent"></div>
 
-                    <div className="absolute bottom-10 left-10 right-10">
-                      <div className="bg-white/90 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/20 shadow-2xl">
-                        <div className="flex items-start gap-4 mb-4">
-                          <span className="material-symbols-outlined text-accent-gold text-4xl leading-none">format_quote</span>
-                          <p className="text-road-dark font-bold text-lg italic leading-relaxed">
-                            "Our mission is to provide the most reliable and premium travel experience in Sri Lanka. Your safety and comfort are our highest priorities, every single mile."
-                          </p>
-                        </div>
-                        <div className="flex items-center justify-between border-t border-black/5 pt-6">
-                          <div>
-                            <div className="text-road-dark font-black text-xl uppercase tracking-tighter italic">Nimal Perera</div>
-                            <div className="text-primary font-black text-[10px] uppercase tracking-[0.2em]">Manager - Fleet Operations</div>
-                          </div>
-                          <div className="flex gap-2">
-                            {[1, 2, 3, 4, 5].map((s) => (
-                              <span key={s} className="material-symbols-outlined text-accent-gold text-xs">star</span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
                   </div>
 
                   {/* Decorative Elements */}
@@ -346,12 +407,24 @@ export default function Home() {
                   <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </motion.div>
 
-                <div className="mt-12 space-y-6 px-4">
-                  <h3 className="text-3xl font-black text-road-dark italic uppercase tracking-tighter">Personalized Care for Your Journey</h3>
+                <div className="mt-8 md:mt-12 space-y-6 px-4 text-center md:text-left">
+                  {/* Mobile Only Name & Title */}
+                  <div className="md:hidden space-y-2 mb-8">
+                    <h3 className="text-3xl font-black text-road-dark italic uppercase tracking-tighter">Mr Shehan Perera</h3>
+                    <div className="text-primary font-black text-sm uppercase tracking-[0.2em]">Fleet Manager</div>
+                    <div className="flex justify-center gap-1 mt-2">
+                      {[1, 2, 3, 4, 5].map((s) => (
+                        <span key={s} className="material-symbols-outlined text-accent-gold text-sm">star</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <h3 className="hidden md:block text-3xl font-black text-road-dark italic uppercase tracking-tighter">Experience & Leadership</h3>
                   <p className="text-road-dark/60 font-bold leading-relaxed">
-                    At Pick & Drop, we don't just provide a vehicle; we provide a promise of punctuality and excellence. Our fleet management team monitors every trip in real-time to ensure your journey is seamless and stress-free.
+                    Shehan Perera is an accomplished Fleet Manager with 11 years of extensive experience in the tourism sector. He specializes in travel support with long trip management, vehicle maintenance, and service excellence. His strong leadership and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                   </p>
-                  {/* <div className="flex flex-wrap gap-4">
+                </div>
+                {/* <div className="flex flex-wrap gap-4">
                     <div className="flex items-center gap-2 px-5 py-2.5 bg-accent-gold/10 rounded-full border border-accent-gold/20">
                       <span className="material-symbols-outlined text-accent-gold text-sm">check_circle</span>
                       <span className="text-[10px] font-black uppercase text-road-dark tracking-widest">Real-time Tracking</span>
@@ -361,13 +434,12 @@ export default function Home() {
                       <span className="text-[10px] font-black uppercase text-road-dark tracking-widest">Insurance Covered</span>
                     </div>
                   </div> */}
-                </div>
               </div>
             </div>
           </div>
         </section>
         {/* Service Category Cards */}
-        <section id="services" className="bg-pattern-green max-w-full px-6 py-32 relative z-20 overflow-hidden">
+        <section id="services" className="bg-pattern-green max-w-full px-6 py-20 md:py-32 relative z-20 overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
@@ -393,12 +465,12 @@ export default function Home() {
                     Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.
                   </p>
                 </div>
-                <button className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Service</span>
+                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
+                  <span className="text-primary font-bold">Select Now</span>
                   <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
                     <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
                   </div>
-                </button>
+                </a>
               </div>
             </motion.div>
 
@@ -424,12 +496,12 @@ export default function Home() {
                     Reliable door-to-door shuttle service connecting you from your hotel to any destination in the island.
                   </p>
                 </div>
-                <button className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Service</span>
+                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
+                  <span className="text-primary font-bold">Select Now</span>
                   <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
                     <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
                   </div>
-                </button>
+                </a>
               </div>
             </motion.div>
 
@@ -455,12 +527,12 @@ export default function Home() {
                     Comfortable city-to-city transfers or custom tours with experienced multilingual drivers.
                   </p>
                 </div>
-                <button className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Service</span>
+                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
+                  <span className="text-primary font-bold">Select Now</span>
                   <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
                     <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
                   </div>
-                </button>
+                </a>
               </div>
             </motion.div>
 
@@ -486,17 +558,17 @@ export default function Home() {
                     Customized multi-day transport plans and travel arrangements for your ultimate tour experience.
                   </p>
                 </div>
-                <button className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Service</span>
+                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
+                  <span className="text-primary font-bold">Select Now</span>
                   <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
                     <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
                   </div>
-                </button>
+                </a>
               </div>
             </motion.div>
           </div>
         </section>
-        <section id="fleet" className="bg-pattern-blue py-32 relative overflow-hidden border-y border-black/5">
+        <section id="fleet" className="bg-pattern-blue py-20 md:py-32 relative overflow-hidden border-y border-black/5">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,99,157,0.03)_0%,transparent_70%)]"></div>
           <div className="absolute -top-24 -left-24 w-96 h-96 bg-sky-blue/5 rounded-full blur-[100px]"></div>
           <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-sky-blue/5 rounded-full blur-[100px]"></div>
@@ -507,7 +579,7 @@ export default function Home() {
                   <span className="w-12 h-1.5 bg-secondary rounded-full"></span>
                   Professional Fleet
                 </div>
-                <h2 className="text-5xl lg:text-6xl font-black text-road-dark mb-6 italic uppercase tracking-tighter stylish-glow-text">Our Premium <span className="text-primary">Selection</span></h2>
+                <h2 className="text-4xl lg:text-6xl font-black text-road-dark mb-6 italic uppercase tracking-tighter stylish-glow-text">Our Premium <span className="text-primary">Selection</span></h2>
                 <p className="text-road-dark/70 text-lg font-bold leading-relaxed">Choose between our highly maintained hybrid vehicles for maximum comfort and fuel efficiency.</p>
               </div>
               <button className="flex items-center gap-2 text-primary font-black uppercase tracking-wider group cursor-pointer hover:translate-x-1 transition-transform">
@@ -583,14 +655,14 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="contact" className="contact-gradient-orange min-h-screen flex items-center py-24 md:py-10 overflow-hidden relative">
+        <section id="contact" className="contact-gradient-green min-h-screen flex items-center py-24 md:py-10 overflow-hidden relative">
           <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center">
             <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full font-black text-[10px] uppercase tracking-widest mb-4 shadow-xl shadow-primary/40">
                 <span className="material-symbols-outlined text-sm">schedule</span>
                 1 hr Response
               </div>
-              <h2 className="text-5xl lg:text-7xl font-black text-white mb-2 italic uppercase tracking-tighter stylish-glow-orange">Book <span className="text-primary">Now</span></h2>
+              <h2 className="text-5xl lg:text-7xl font-black text-white mb-2 italic uppercase tracking-tighter stylish-glow-green">Book <span className="text-secondary">Now</span></h2>
               <p className="text-white/40 font-black max-w-lg mx-auto leading-tight text-xs lg:text-sm uppercase tracking-[0.2em] mb-4">Island-wide Premium Transit Service</p>
             </div>
 
@@ -706,10 +778,10 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section className="bg-pattern-orange py-32 relative overflow-hidden">
+        <section className="bg-pattern-yellow py-20 md:py-32 relative overflow-hidden">
           {/* Animated Background Orbs */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent-gold/10 rounded-full blur-[150px] -mr-96 -mt-96 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -ml-96 -mb-96 animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96 animate-pulse"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96 animate-pulse" style={{ animationDelay: '2s' }}></div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="flex flex-col items-center text-center mb-24">
@@ -720,51 +792,14 @@ export default function Home() {
               >
                 Plan Your Journey
               </motion.span>
-              <h2 className="text-6xl lg:text-8xl font-black text-road-dark mb-6 italic uppercase tracking-tighter">
-                Popular <span className="text-accent-gold">Desti</span><span className="text-secondary">nations</span>
+              <h2 className="text-4xl lg:text-8xl font-black text-road-dark mb-6 italic uppercase tracking-tighter">
+                Popular <span className="text-primary">Desti</span><span className="text-secondary">nations</span>
               </h2>
-              <div className="w-40 h-2.5 bg-linear-to-r from-primary via-accent-gold to-secondary rounded-full shadow-lg shadow-accent-gold/20"></div>
+              <div className="w-24 md:w-40 h-2 bg-linear-to-r from-primary via-secondary to-accent-gold rounded-full shadow-lg shadow-primary/20"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-              {[
-                {
-                  name: "Galle",
-                  distance: "150KM",
-                  type: "Beaches / Nature / History",
-                  places: "Unawatuna, Jungle Beach, Galle Fort",
-                  markerPos: { x: "48%", y: "88%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg",
-                  mapImg: "/galle.png"
-                },
-                {
-                  name: "Sigiriya",
-                  distance: "160KM",
-                  type: "History / Culture / Adventure",
-                  places: "Sigiriya Rock, Pidurangala, Minneriya",
-                  markerPos: { x: "55%", y: "45%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg",
-                  mapImg: "/Sigiriya.png"
-                },
-                {
-                  name: "Ella",
-                  distance: "210KM",
-                  type: "Nature / Mountains / Tea Estates",
-                  places: "Nine Arch Bridge, Little Adam's Peak",
-                  markerPos: { x: "65%", y: "68%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
-                  mapImg: "/Ella.png"
-                },
-                {
-                  name: "Colombo",
-                  distance: "35KM",
-                  type: "City / Shopping / Nightlife",
-                  places: "Lotus Tower, Galle Face, Pettah",
-                  markerPos: { x: "42%", y: "62%" },
-                  img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp",
-                  mapImg: "/Colombo.png"
-                }
-              ].map((dest, i) => (
+              {destinations.map((dest, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
@@ -772,64 +807,57 @@ export default function Home() {
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
                   whileHover={{ y: -15, scale: 1.02 }}
-                  className="bg-white rounded-[3rem] p-10 shadow-2xl shadow-black/5 border border-accent-gold/20 group relative overflow-hidden transition-all duration-500"
+                  className="bg-white rounded-[3rem] p-8 shadow-2xl shadow-black/5 border border-primary/10 group relative overflow-hidden transition-all duration-500"
                 >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-accent-gold/10 rounded-bl-[6rem] -mr-8 -mt-8 transition-all duration-700 group-hover:bg-primary/20 group-hover:scale-110"></div>
+                  <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-bl-[6rem] -mr-8 -mt-8 transition-all duration-700 group-hover:bg-primary/10 group-hover:scale-110"></div>
 
                   <div className="relative z-10">
-                    <h3 className="text-4xl font-black italic uppercase tracking-tighter text-road-dark mb-10 group-hover:text-accent-gold transition-colors">
+                    <h3 className="text-3xl font-black italic uppercase tracking-tighter text-road-dark mb-8 group-hover:text-primary transition-colors">
                       {dest.name}
                     </h3>
 
-                    {/* Map Visualization */}
-                    <div className="relative w-full aspect-4/5 mb-10 rounded-[2.5rem] overflow-hidden border-2 border-accent-gold/10 shadow-inner group-hover:border-accent-gold/30 transition-all duration-500">
-                      {dest.mapImg ? (
-                        <img src={dest.mapImg} alt={`Map of ${dest.name}`} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:rotate-2" />
-                      ) : (
-                        <div className="w-full h-full bg-accent-gold/5 flex flex-col items-center justify-center p-8 text-center">
-                          <span className="material-symbols-outlined text-6xl text-primary/30 mb-4 animate-bounce">map</span>
-                          <span className="text-xs font-black uppercase tracking-widest text-primary/40">Real Map Pending</span>
+                    {/* Image Visualization with Animation */}
+                    <div className="relative w-full aspect-4/5 mb-8 rounded-[2.5rem] overflow-hidden border-2 border-black/5 shadow-inner group-hover:border-primary/20 transition-all duration-500">
+                      <DestinationGallery images={dest.images} />
+
+                      {/* Map Toggle Snippet (Optional if map is wanted on hover) */}
+                      <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <div className="bg-white/90 backdrop-blur-md p-2 rounded-xl shadow-lg">
+                          <span className="material-symbols-outlined text-primary text-xl">map</span>
                         </div>
-                      )}
-
-
+                      </div>
                     </div>
 
-                    <div className="space-y-8">
-                      <div className="space-y-2">
-                        <label className="text-xs font-black text-black/30 uppercase tracking-[0.2em]">Distance from BIA</label>
-                        <p className="text-2xl font-black text-road-dark italic flex items-center gap-2">
-                          <span className="material-symbols-outlined text-primary text-xl">near_me</span>
+                    <div className="space-y-6">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Distance from BIA</label>
+                        <p className="text-xl font-black text-road-dark italic flex items-center gap-2">
+                          <span className="material-symbols-outlined text-primary text-base">near_me</span>
                           {dest.distance}
                         </p>
                       </div>
 
-                      <div className="space-y-2">
-                        <label className="text-xs font-black text-black/30 uppercase tracking-[0.2em]">Travel Type</label>
-                        <p className="text-base font-bold text-secondary italic leading-tight group-hover:text-primary transition-colors">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Travel Type</label>
+                        <p className="text-sm font-bold text-secondary italic leading-tight group-hover:text-primary transition-colors">
                           {dest.type}
                         </p>
                       </div>
 
-                      <div className="space-y-2">
-                        <label className="text-xs font-black text-black/30 uppercase tracking-[0.2em]">Top Attractions</label>
-                        <p className="text-base font-bold text-road-dark/60 italic leading-snug">
+                      <div className="space-y-1">
+                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Top Attractions</label>
+                        <p className="text-sm font-bold text-road-dark/60 italic leading-snug">
                           {dest.places}
                         </p>
                       </div>
                     </div>
 
-                    <div className="mt-10 pt-8 border-t border-accent-gold/10">
-                      <button className="w-full h-16 rounded-2xl bg-road-dark text-white font-black text-sm uppercase tracking-widest hover:bg-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-3 group/btn cursor-pointer">
-                        <span>Book  Now</span>
-                        <span className="material-symbols-outlined text-lg group-hover/btn:translate-x-2 transition-transform">flight_takeoff</span>
-                      </button>
+                    <div className="mt-8 pt-6 border-t border-black/5">
+                      <a href="#contact" className="w-full h-14 rounded-2xl bg-road-dark text-white font-black text-xs uppercase tracking-widest hover:bg-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-3 group/btn cursor-pointer">
+                        <span>Book Now</span>
+                        <span className="material-symbols-outlined text-base group-hover/btn:translate-x-2 transition-transform">flight_takeoff</span>
+                      </a>
                     </div>
-                  </div>
-
-                  {/* Hover Image Overlay - Subtle */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 pointer-events-none">
-                    <img src={dest.img} className="w-full h-full object-cover grayscale scale-110 group-hover:scale-100 transition-transform duration-1000" alt="" />
                   </div>
                 </motion.div>
               ))}
