@@ -108,7 +108,7 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
-
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -134,6 +134,18 @@ export default function Home() {
     };
   }, []);
 
+  // Close mobile menu when body scrolls
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const navLinks = ["home", "why-us", "services", "fleet", "destinations", "contact"];
+
   return (
     <div className="bg-white text-road-dark h-screen overflow-y-auto snap-y snap-proximity lg:snap-mandatory font-poppins scroll-smooth">
       {/* Top Navigation Bar */}
@@ -141,28 +153,24 @@ export default function Home() {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center">
             <div className="relative group cursor-pointer z-20">
-              {/* Large Popping Logo - Overflows without stretching navbar */}
               <img
                 src="/logo.png"
                 alt="Pick & Drop Logo"
-                className="absolute top-1/2 -translate-y-1/2 left-0 h-16 lg:h-24  w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] max-w-none"
+                className="absolute top-1/2 -translate-y-1/2 left-0 h-16 lg:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] max-w-none"
               />
-              {/* Spacer ensures the nav content doesn't crash into the absolute logo */}
               <div className="h-10 lg:h-12 w-28 lg:w-40" />
             </div>
           </div>
 
           <nav className="hidden md:flex items-center gap-10">
-            {["home", "why-us", "services", "fleet", "destinations", "contact"].map((item) => (
+            {navLinks.map((item) => (
               <a
                 key={item}
-                className={`text-xs font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-primary" : "text-road-dark hover:text-primary"
-                  }`}
+                className={`text-xs font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-primary" : "text-road-dark hover:text-primary"}`}
                 href={`#${item}`}
               >
                 {item.replace("-", " ")}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item ? "w-full" : "w-0 group-hover:w-full"
-                  }`} />
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item ? "w-full" : "w-0 group-hover:w-full"}`} />
               </a>
             ))}
           </nav>
@@ -171,12 +179,80 @@ export default function Home() {
             <a href="#contact" className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
               <span>Book Now</span>
             </a>
-            <button suppressHydrationWarning className="md:hidden text-road-dark flex items-center justify-center p-2 rounded-lg glass-pill">
-              <span className="material-symbols-outlined">menu</span>
+            <button
+              suppressHydrationWarning
+              onClick={() => setMenuOpen((o) => !o)}
+              className="md:hidden text-road-dark flex items-center justify-center p-2 rounded-lg border border-black/10 hover:bg-gray-100 transition-all"
+              aria-label="Toggle menu"
+            >
+              <span className="material-symbols-outlined">{menuOpen ? "close" : "menu"}</span>
             </button>
           </div>
         </div>
       </header>
+
+      {/* Mobile Slide-Down Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+            />
+            <motion.div
+              key="drawer"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl flex flex-col md:hidden overflow-y-auto"
+            >
+              {/* Drawer header */}
+              <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
+                <img src="/logo.png" alt="Pick & Drop Logo" className="h-12 w-auto object-contain" />
+                <button onClick={() => setMenuOpen(false)} className="p-2 rounded-lg hover:bg-gray-100 transition-all">
+                  <span className="material-symbols-outlined text-road-dark">close</span>
+                </button>
+              </div>
+              {/* Nav links */}
+              <nav className="flex flex-col gap-1 px-4 py-6 flex-1">
+                {navLinks.map((item, i) => (
+                  <motion.a
+                    key={item}
+                    href={`#${item}`}
+                    initial={{ opacity: 0, x: 30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 }}
+                    onClick={() => setMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${activeSection === item
+                        ? "bg-primary/10 text-primary"
+                        : "text-road-dark hover:bg-gray-100"
+                      }`}
+                  >
+                    <span className={`w-1.5 h-1.5 rounded-full ${activeSection === item ? "bg-primary" : "bg-black/20"}`} />
+                    {item.replace("-", " ")}
+                  </motion.a>
+                ))}
+              </nav>
+              {/* CTA */}
+              <div className="px-6 pb-8">
+                <a
+                  href="#contact"
+                  onClick={() => setMenuOpen(false)}
+                  className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all"
+                >
+                  <span className="material-symbols-outlined text-base">directions_car</span>
+                  Book Now
+                </a>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
 
       <main>
         {/* New Immersive Slider Section */}
@@ -329,22 +405,26 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-        <section id="why-us" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-10 relative overflow-hidden border-t border-black/5">
+        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-              {/* Left Column: Features & Payments */}
-              <div className="space-y-10 lg:space-y-12">
-                <div>
-                  <div className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick & Drop Edge</div>
+              {/* Left Column: Features */}
+              <div className="space-y-8 lg:space-y-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  <div className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick &amp; Drop Edge</div>
                   <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-6 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-20 h-2 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
-                </div>
+                </motion.div>
 
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {[
                     { icon: "verified_user", title: "Professional Drivers", desc: "Punctual and courteous drivers with years of experience on Sri Lankan roads.", bg: "bg-primary/20", iconColor: "text-primary" },
                     { icon: "airport_shuttle", title: "Modern Fleet", desc: "Wide range of well-maintained, air-conditioned vehicles to suit your group size.", bg: "bg-secondary/20", iconColor: "text-secondary" },
@@ -355,14 +435,14 @@ export default function Home() {
                       initial={{ opacity: 0, x: -30 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-5 p-5 lg:p-6 rounded-[2.8rem] bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
+                      transition={{ delay: i * 0.12 }}
+                      className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
                     >
-                      <div className={`shrink-0 w-14 lg:w-16 h-14 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
-                        <span className={`material-symbols-outlined text-2xl lg:text-3xl ${feature.iconColor} drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]`}>{feature.icon}</span>
+                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
+                        <span className={`material-symbols-outlined text-xl lg:text-3xl ${feature.iconColor}`}>{feature.icon}</span>
                       </div>
                       <div className="text-left">
-                        <h4 className="text-base lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
+                        <h4 className="text-sm lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
                         <p className="text-road-dark/70 font-bold text-[10px] lg:text-xs leading-relaxed">{feature.desc}</p>
                       </div>
                     </motion.div>
@@ -370,8 +450,8 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right Column: Fleet Manager & Quote */}
-              <div className="relative">
+              {/* Right Column: Fleet Manager — hidden on mobile to save space */}
+              <div className="hidden lg:block relative">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -379,20 +459,19 @@ export default function Home() {
                   className="relative"
                 >
                   <div className="absolute -inset-4 bg-accent-gold/10 rounded-[4rem] blur-2xl rotate-3"></div>
-                  <div className="relative aspect-square lg:aspect-auto lg:h-[500px] w-full rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl">
+                  <div className="relative h-[460px] w-full rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl">
                     <img
-                      src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png "
-                      className=" object-cover transition-all duration-700"
+                      src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
+                      className="w-full h-full object-cover transition-all duration-700"
                       alt="Fleet Manager"
                     />
-                    <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-road-dark/80 via-transparent to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-road-dark/80 via-transparent to-transparent"></div>
                   </div>
                 </motion.div>
-
-                <div className="mt-8 space-y-4 px-4 text-center lg:text-left">
-                  <h3 className="text-2xl font-black text-road-dark italic uppercase tracking-tighter">Experience & Leadership</h3>
-                  <p className="text-road-dark/60 font-bold text-[11px] lg:text-xs leading-relaxed max-w-md">
-                    Shehan Perera is an accomplished Fleet Manager with 11 years of extensive experience in the tourism sector. He specializes in travel support, vehicle maintenance, and service excellence.
+                <div className="mt-6 space-y-3 px-4">
+                  <h3 className="text-2xl font-black text-road-dark italic uppercase tracking-tighter">Experience &amp; Leadership</h3>
+                  <p className="text-road-dark/60 font-bold text-xs leading-relaxed max-w-md">
+                    Shehan Perera is an accomplished Fleet Manager with 11 years of extensive experience in the tourism sector.
                   </p>
                 </div>
               </div>
@@ -401,7 +480,7 @@ export default function Home() {
         </section>
 
         {/* Service Category Cards */}
-        <section id="services" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-10 relative z-20 overflow-hidden">
+        <section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-20 relative z-20 overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
 
@@ -410,138 +489,53 @@ export default function Home() {
               <h2 className="text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter">Our Core <span className="text-primary">Services</span></h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-4 lg:gap-5">
-              {/* Airport Transfer Card */}
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
-              >
-                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
-                  <div
-                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
-                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252809/don-kaveen-93IYznJPkOA-unsplash_tzttke.jpg')" }}
-                  />
-                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
-                </div>
-                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
-                  <div>
-                    <div className="flex items-center gap-2 text-secondary mb-2">
-                      <span className="material-symbols-outlined text-base">flight_takeoff</span>
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Premium Service</span>
-                    </div>
-                    <h2 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Airport <br />Transfers</h2>
-                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
-                      Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.
-                    </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+              {[
+                { icon: "flight_takeoff", badge: "Premium Service", title: "Airport Transfers", desc: "Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252809/don-kaveen-93IYznJPkOA-unsplash_tzttke.jpg" },
+                { icon: "hotel", badge: "Convenient Pickups", title: "Hotel Pickups", desc: "Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252811/daniel-klein-Qx8_d5dGhrs-unsplash_ioju8u.jpg" },
+                { icon: "distance", badge: "Island Wide", title: "Long Distance", desc: "Comfortable city-to-city transfers or custom tours with experienced professional drivers.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg" },
+                { icon: "calendar_month", badge: "Tour Experts", title: "Tours & Plans", desc: "Customized multi-day transport plans and travel arrangements for your tour experience.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg" },
+              ].map((svc, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
+                  whileHover={{ y: -6 }}
+                  className="rounded-3xl overflow-hidden flex flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
+                >
+                  {/* Image — fixed width on mobile so it always shows */}
+                  <div className="w-[38%] shrink-0 overflow-hidden relative">
+                    <div
+                      className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 min-h-[140px]"
+                      style={{ backgroundImage: `url('${svc.img}')` }}
+                    />
+                    <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
                   </div>
-                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
-                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
-                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
-                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                  {/* Content */}
+                  <div className="p-4 flex-1 flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
+                    <div>
+                      <div className="flex items-center gap-2 text-secondary mb-2">
+                        <span className="material-symbols-outlined text-base">{svc.icon}</span>
+                        <span className="text-[9px] font-black uppercase tracking-[0.2em]">{svc.badge}</span>
+                      </div>
+                      <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
+                      <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Hotel Pickup Card */}
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
-              >
-                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
-                  <div
-                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
-                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252811/daniel-klein-Qx8_d5dGhrs-unsplash_ioju8u.jpg')" }}
-                  />
-                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
-                </div>
-                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
-                  <div>
-                    <div className="flex items-center gap-2 text-secondary mb-2">
-                      <span className="material-symbols-outlined text-base">hotel</span>
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Convenient Pickups</span>
-                    </div>
-                    <h3 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Hotel <br />Pickups</h3>
-                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
-                      Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
-                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
-                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
-                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                    <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
+                      <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                      <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
+                        <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-
-              {/* Long Distance Card */}
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
-              >
-                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
-                  <div
-                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
-                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg')" }}
-                  />
-                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
-                </div>
-                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
-                  <div>
-                    <div className="flex items-center gap-2 text-secondary mb-2">
-                      <span className="material-symbols-outlined text-base">distance</span>
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Island Wide</span>
-                    </div>
-                    <h3 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Long <br />Distance</h3>
-                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
-                      Comfortable city-to-city transfers or custom tours with experienced professional drivers.
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
-                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
-                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
-                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Multi-day Arrangements Card */}
-              <motion.div
-                whileHover={{ y: -6 }}
-                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
-              >
-                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
-                  <div
-                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
-                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg')" }}
-                  />
-                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
-                </div>
-                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
-                  <div>
-                    <div className="flex items-center gap-2 text-secondary mb-2">
-                      <span className="material-symbols-outlined text-base">calendar_month</span>
-                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Tour Experts</span>
-                    </div>
-                    <h3 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Tours & <br />Plans</h3>
-                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
-                      Customized multi-day transport plans and travel arrangements for your tour experience.
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
-                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
-                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
-                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </section>
-        <section id="fleet" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-10 relative overflow-hidden">
+        <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-20 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
@@ -562,9 +556,13 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Vehicle 1: Honda Shuttle */}
               <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55 }}
                 whileHover={{ y: -8 }}
                 className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
@@ -605,6 +603,10 @@ export default function Home() {
 
               {/* Vehicle 2: Honda Fit */}
               <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.55, delay: 0.15 }}
                 whileHover={{ y: -8 }}
                 className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
@@ -645,7 +647,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="contact" className="h-screen flex items-center snap-start scroll-mt-0 py-10 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 py-20 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
@@ -783,7 +785,7 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-10 relative overflow-hidden">
+        <section id="destinations" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
@@ -799,34 +801,30 @@ export default function Home() {
               <div className="hidden md:block w-32 h-1 bg-linear-to-r from-primary via-secondary to-primary rounded-full opacity-50"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+            {/* Mobile: horizontal scroll strip. Desktop: 4-col grid */}
+            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none">
               {destinations.map((dest, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.15, duration: 0.6 }}
-                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ delay: i * 0.12, duration: 0.55, ease: "easeOut" }}
+                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col shrink-0 w-[78vw] sm:w-[55vw] md:w-auto snap-center"
                 >
-                  {/* Glow spot */}
-                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0"></div>
+                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
-                  {/* Image section — taller */}
                   <div className="relative w-full aspect-[3/4] overflow-hidden">
                     <DestinationGallery images={dest.images} />
-                    {/* Glass overlay pill on image */}
                     <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
                       <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
                       <span className="material-symbols-outlined text-secondary text-sm">near_me</span>
                     </div>
-                    {/* Top badge */}
                     <div className="absolute top-3 left-3 z-30 bg-white/20 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
                       <span className="text-white font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
                     </div>
                   </div>
 
-                  {/* Card body */}
                   <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
                     <h3 className="text-base lg:text-lg font-black italic uppercase tracking-tighter text-road-dark mb-1 group-hover:text-primary transition-colors leading-none">
                       {dest.name}
@@ -845,6 +843,8 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
+            {/* Scroll hint on mobile */}
+            <p className="md:hidden text-center text-[9px] font-black uppercase tracking-widest text-road-dark/30 mt-3">← Swipe to explore →</p>
           </div>
         </section>
 
