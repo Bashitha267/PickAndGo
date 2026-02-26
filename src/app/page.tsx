@@ -42,7 +42,7 @@ const destinations = [
     places: "Nine Arch Bridge, Little Adam's Peak",
     markerPos: { x: "65%", y: "68%" },
     images: [
-      "https://images.unsplash.com/photo-1540611025311-01df3cef54b5?q=80&w=2070&auto=format&fit=crop",
+      "https://res.cloudinary.com/dxoa3ashm/image/upload/v1772120024/Screenshot_2026-02-26_210247_kiqedv.png",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg"
     ],
@@ -64,8 +64,8 @@ const destinations = [
 ];
 
 // --- Hero Images ---
-const heroDesktop = "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp";
-const heroMobile = "https://res.cloudinary.com/dnfbik3if/image/upload/v1771732069/mobileview_dngzok.jpg";
+const heroDesktop = "https://res.cloudinary.com/dnfbik3if/image/upload/v1772122284/89ef5768ada38b95bdd077e38b74af0f_xeankj.jpg";
+const heroMobile = "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078920/WhatsApp_Image_2026-02-23_at_20.51.47_aec4xd.jpg";
 
 // --- Mini Component for Destination Image Animation ---
 const DestinationGallery = ({ images }: { images: string[] }) => {
@@ -147,7 +147,7 @@ export default function Home() {
   const navLinks = ["home", "why-us", "services", "fleet", "destinations", "contact"];
 
   return (
-    <div className="bg-white text-road-dark h-screen overflow-y-auto snap-y snap-proximity lg:snap-mandatory font-poppins scroll-smooth">
+    <div className="bg-white text-road-dark h-screen overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins scroll-smooth">
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -166,17 +166,17 @@ export default function Home() {
             {navLinks.map((item) => (
               <a
                 key={item}
-                className={`text-xs font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-primary" : "text-road-dark hover:text-primary"}`}
+                className={`text-xs font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-orange-500" : "text-road-dark hover:text-orange-500"}`}
                 href={`#${item}`}
               >
                 {item.replace("-", " ")}
-                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item ? "w-full" : "w-0 group-hover:w-full"}`} />
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-orange-500 transition-all duration-300 ${activeSection === item ? "w-full" : "w-0 group-hover:w-full"}`} />
               </a>
             ))}
           </nav>
 
           <div className="flex items-center gap-4">
-            <a href="#contact" className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+            <a href="#contact" className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-orange-500 text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-orange-700 transition-all">
               <span>Book Now</span>
             </a>
             <button
@@ -229,8 +229,8 @@ export default function Home() {
                     transition={{ delay: i * 0.06 }}
                     onClick={() => setMenuOpen(false)}
                     className={`flex items-center gap-3 px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${activeSection === item
-                        ? "bg-primary/10 text-primary"
-                        : "text-road-dark hover:bg-gray-100"
+                      ? "bg-primary/10 text-primary"
+                      : "text-road-dark hover:bg-gray-100"
                       }`}
                   >
                     <span className={`w-1.5 h-1.5 rounded-full ${activeSection === item ? "bg-primary" : "bg-black/20"}`} />
@@ -294,7 +294,7 @@ export default function Home() {
 
                 {/* Our Values Section */}
                 <div className="space-y-6 md:space-y-8">
-                  <div className="text-white/30 text-[10px] font-black uppercase tracking-[0.4em]">Our Core Values</div>
+                  <div className="text-white text-[10px] font-black uppercase tracking-[0.4em]">Our Core Values</div>
                   <div className="flex flex-wrap justify-center gap-2.5 md:gap-4">
                     {[
                       { text: "Reliability", icon: "verified" },
@@ -393,7 +393,7 @@ export default function Home() {
                   {/* Cash */}
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <div className="flex items-center gap-3 py-2 px-5 bg-primary/10 rounded-2xl border border-primary/20 group-hover/icon:bg-primary/20 transition-all">
-                      <span className="material-symbols-outlined text-primary text-2xl">payments</span>
+                      <span className="material-symbols-outlined text-primary text-2xl">local_atm</span>
                       <div className="flex flex-col text-left">
                         <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-wider leading-none">Cash</span>
                         <span className="text-white/40 text-[7px] md:text-[8px] font-bold uppercase tracking-widest leading-none mt-1">Accepted</span>
@@ -419,9 +419,10 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                 >
-                  <div className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick &amp; Drop Edge</div>
-                  <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-6 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
-                  <div className="w-20 h-2 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
+                  {/* Consistent section title design */}
+                  <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick &amp; Drop Edge</p>
+                  <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </motion.div>
 
                 <div className="space-y-4">
@@ -450,43 +451,65 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right Column: Fleet Manager — hidden on mobile to save space */}
-              <div className="hidden lg:block relative">
+              {/* Right Column: Fleet Manager */}
+              <div className="relative">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="relative"
+                  className="flex flex-col items-center gap-5"
                 >
-                  <div className="absolute -inset-4 bg-accent-gold/10 rounded-[4rem] blur-2xl rotate-3"></div>
-                  <div className="relative h-[460px] w-full rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl">
-                    <img
-                      src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
-                      className="w-full h-full object-cover transition-all duration-700"
-                      alt="Fleet Manager"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-road-dark/80 via-transparent to-transparent"></div>
+                  {/* Portrait photo — narrow and tall */}
+                  <div className="relative w-full max-w-[280px] mx-auto">
+                    <div className="absolute -inset-3 bg-accent-gold/10 rounded-[3rem] blur-2xl rotate-2"></div>
+                    <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
+                      <img
+                        src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
+                        className="w-full h-full object-cover object-top transition-all duration-700"
+                        alt="Fleet Manager Shehan Perera"
+                      />
+                      {/* Subtle bottom fade only */}
+                      <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* Description — always below the photo */}
+                  <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left">
+                    <p className="text-primary font-black text-[11px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
+                    <h3 className="text-2xl lg:text-3xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
+                      Shehan Perera
+                    </h3>
+                    <p className="text-road-dark/70 font-bold text-xs leading-relaxed mb-2">
+                      An accomplished Fleet Manager with <span className="text-primary font-black">11 years</span> of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
+                    </p>
+                    <p className="text-road-dark/50 font-bold text-[11px] leading-relaxed mb-4">
+                      His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {["Leadership", "Safety", "Trip Management"].map((tag) => (
+                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[8px] uppercase tracking-widest" >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
-                <div className="mt-6 space-y-3 px-4">
-                  <h3 className="text-2xl font-black text-road-dark italic uppercase tracking-tighter">Experience &amp; Leadership</h3>
-                  <p className="text-road-dark/60 font-bold text-xs leading-relaxed max-w-md">
-                    Shehan Perera is an accomplished Fleet Manager with 11 years of extensive experience in the tourism sector.
-                  </p>
-                </div>
               </div>
             </div>
           </div>
-        </section>
+        </section >
 
         {/* Service Category Cards */}
-        <section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-20 relative z-20 overflow-hidden">
+        < section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-20 relative z-20 overflow-hidden" >
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
 
           <div className="max-w-7xl mx-auto w-full">
-            <div className="text-center mb-6">
-              <h2 className="text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter">Our Core <span className="text-primary">Services</span></h2>
+            <div className="text-left mb-8">
+              {/* Consistent section title design */}
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What We Offer</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">Our Core <span className="text-primary">Services</span></h2>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
@@ -503,18 +526,29 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
                   whileHover={{ y: -6 }}
-                  className="rounded-3xl overflow-hidden flex flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
+                  className="rounded-3xl overflow-hidden flex flex-row group relative border border-white/70 hover:border-primary/50 transition-all duration-500 shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_20px_50px_rgba(46,125,50,0.18)]"
+                  style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)" }}
                 >
-                  {/* Image — fixed width on mobile so it always shows */}
+                  {/* Top shine edge */}
+                  <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/90 to-transparent z-20 pointer-events-none" />
+                  {/* Hover glow spot */}
+                  <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-20 h-20 bg-primary/15 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+
+                  {/* Image panel */}
                   <div className="w-[38%] shrink-0 overflow-hidden relative">
                     <div
-                      className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 min-h-[140px]"
+                      className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 min-h-[160px]"
                       style={{ backgroundImage: `url('${svc.img}')` }}
                     />
-                    <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
+                    <div className="absolute inset-0 bg-linear-to-r from-primary/25 to-primary/5 mix-blend-multiply" />
+                    <div className="absolute inset-y-0 right-0 w-8 bg-linear-to-l from-white/20 to-transparent" />
                   </div>
-                  {/* Content */}
-                  <div className="p-4 flex-1 flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
+
+                  {/* Content panel — frosted glass */}
+                  <div
+                    className="p-4 flex-1 flex flex-col justify-between italic border-l border-white/50 relative z-10"
+                    style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+                  >
                     <div>
                       <div className="flex items-center gap-2 text-secondary mb-2">
                         <span className="material-symbols-outlined text-base">{svc.icon}</span>
@@ -523,9 +557,9 @@ export default function Home() {
                       <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
                       <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
-                    <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
+                    <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2">
                       <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
-                      <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
+                      <div className="bg-white/50 backdrop-blur-md border border-white/70 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-sm group-hover/btn:shadow-primary/30">
                         <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
                       </div>
                     </div>
@@ -534,25 +568,26 @@ export default function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </section >
         <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-20 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
 
           <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <div className="flex flex-col md:flex-row justify-between items-center mb-8 lg:mb-12 gap-6 w-full border-b border-primary/20 pb-6 lg:pb-8">
-              <div className="flex items-center gap-6 lg:gap-10">
-
-                <h2 className="text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter whitespace-nowrap">
-                  Our Premium <span className="text-primary">Selection</span>
-                </h2>
-              </div>
-              <div className="flex items-center gap-8">
+            <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8">
+              {/* Consistent section title design */}
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
+                <div>
+                  <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+                    Our Premium <span className="text-primary">Selection</span>
+                  </h2>
+                  <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
+                </div>
                 <p className="hidden md:block text-road-dark/60 text-[10px] lg:text-xs font-bold leading-tight max-w-[240px]">
                   Highly maintained hybrid vehicles for maximum comfort and efficiency.
                 </p>
-
               </div>
             </div>
 
@@ -650,24 +685,26 @@ export default function Home() {
         <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 py-20 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
-            className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop')` }}
+            className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078909/WhatsApp_Image_2026-02-23_at_20.52.06_cbpy9t.jpg')` }}
           >
             <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
           </div>
 
           {/* Contact Mobile Background */}
           <div
-            className="block md:hidden absolute inset-0 z-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2042&auto=format&fit=crop')` }}
+            className="block md:hidden absolute inset-0 z-0 bg-cover bg-no-repeat  "
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078913/WhatsApp_Image_2026-02-23_at_20.51.42_1_afsy36.jpg')` }}
           >
-            <div className="absolute inset-0 bg-black/70 backdrop-blur-[6px]"></div>
+            <div className="absolute inset-0 bg-black/45 backdrop-blur-[6px]"></div>
           </div>
 
           <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center">
-            <div className="text-center mb-6 lg:mb-10 w-full">
-              <div className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Island-wide Premium Transit Service</div>
-              <h2 className="text-5xl lg:text-9xl font-black text-white italic uppercase tracking-tighter leading-none">Book <span className="text-secondary">Now</span></h2>
+            <div className="text-center mt-2 mb-6 lg:mb-10 w-full">
+              {/* Consistent section title design */}
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Island-wide Premium Transit Service</p>
+              <h2 className="text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">Book <span className="text-primary">Now</span></h2>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
             <motion.div
@@ -680,21 +717,21 @@ export default function Home() {
                 {/* Name & WhatsApp & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Name</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Name</label>
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">person</span>
                       <input suppressHydrationWarning type="text" placeholder="John Doe" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">WhatsApp</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">WhatsApp Number</label>
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">chat</span>
                       <input suppressHydrationWarning type="text" placeholder="+1..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Email</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Email</label>
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">mail</span>
                       <input suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
@@ -705,21 +742,21 @@ export default function Home() {
                 {/* Pickup & Drop & Date */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Pickup</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Pickup Location</label>
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">location_on</span>
                       <input suppressHydrationWarning type="text" placeholder="From..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Drop</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Drop Location</label>
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">near_me</span>
                       <input suppressHydrationWarning type="text" placeholder="To..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Date / Time</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Date / Time</label>
                     <div className="relative group">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">today</span>
                       <input suppressHydrationWarning type="datetime-local" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm [color-scheme:dark]" />
@@ -729,7 +766,7 @@ export default function Home() {
 
                 <div className="flex flex-col md:flex-row gap-8 items-end">
                   <div className="flex-1 w-full space-y-4">
-                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Communication</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Communication</label>
                     <div className="flex gap-10">
                       <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" className="peer sr-only" />
@@ -789,39 +826,38 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            {/* Compact one-line header */}
-            <div className="flex items-end justify-between mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
-              <div>
-                <p className="text-secondary font-black text-[10px] uppercase tracking-[0.4em] mb-1">Plan Your Journey</p>
-                <h2 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter">
-                  Popular <span className="text-primary">Destinations</span>
-                </h2>
-              </div>
-              <div className="hidden md:block w-32 h-1 bg-linear-to-r from-primary via-secondary to-primary rounded-full opacity-50"></div>
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-4">
+            {/* Consistent section title design */}
+            <div className="mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+                Popular <span className="text-primary">Destinations</span>
+              </h2>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
 
-            {/* Mobile: horizontal scroll strip. Desktop: 4-col grid */}
-            <div className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 overflow-x-auto md:overflow-visible pb-4 md:pb-0 -mx-2 px-2 md:mx-0 md:px-0 snap-x snap-mandatory md:snap-none">
+            {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
               {destinations.map((dest, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15 }}
-                  transition={{ delay: i * 0.12, duration: 0.55, ease: "easeOut" }}
-                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col shrink-0 w-[78vw] sm:w-[55vw] md:w-auto snap-center"
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
+                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
                 >
-                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
+                  <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
-                  <div className="relative w-full aspect-[3/4] overflow-hidden">
+                  {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
+                  <div className="relative w-full h-72 sm:h-80 md:h-auto md:aspect-3/4 overflow-hidden">
                     <DestinationGallery images={dest.images} />
                     <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
                       <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
                       <span className="material-symbols-outlined text-secondary text-sm">near_me</span>
                     </div>
-                    <div className="absolute top-3 left-3 z-30 bg-white/20 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
-                      <span className="text-white font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
+                    <div className="absolute top-3 left-3 z-30 bg-white/45 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
+                      <span className="text-black font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
                     </div>
                   </div>
 
@@ -843,18 +879,16 @@ export default function Home() {
                 </motion.div>
               ))}
             </div>
-            {/* Scroll hint on mobile */}
-            <p className="md:hidden text-center text-[9px] font-black uppercase tracking-widest text-road-dark/30 mt-3">← Swipe to explore →</p>
           </div>
         </section>
 
         {/* Payment Form Section */}
 
 
-      </main>
+      </main >
 
       {/* Footer */}
-      <footer className="bg-road-dark text-white/50 py-10 px-6 relative overflow-hidden snap-start border-t border-white/5">
+      < footer className="bg-road-dark text-white/50 py-10 px-6 relative overflow-hidden snap-start border-t border-white/5" >
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
           <div className="space-y-4 max-w-sm">
@@ -903,7 +937,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </footer>
-    </div>
+      </footer >
+    </div >
   );
 }

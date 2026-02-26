@@ -98,6 +98,60 @@ body {
   position: relative;
 }
 
+/* Multi-colour contact section background */
+.bg-contact-vivid {
+  background: linear-gradient(135deg,
+      #0a0f1e 0%,
+      #0d2640 18%,
+      #1b5e20 38%,
+      #4a1a6b 58%,
+      #7b1a1a 78%,
+      #0a0f1e 100%);
+  background-size: 300% 300%;
+  animation: contactGradientShift 12s ease infinite;
+}
+
+@keyframes contactGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Visible glass form card */
+.glass-form {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Visible input fields */
+.glass-input {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.glass-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #fdb913;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(253, 185, 19, 0.15);
+}
+
 .stylish-glow-green {
   text-shadow: 0 0 20px rgba(46, 125, 50, 0.4);
 }
