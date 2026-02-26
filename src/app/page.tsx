@@ -15,6 +15,7 @@ const destinations = [
     markerPos: { x: "48%", y: "88%" },
     images: [
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731678/Galle_lpl2lm.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078184/WhatsApp_Image_2026-02-23_at_20.51.57_abvvi5.jpg",
 
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg",
 
@@ -29,9 +30,8 @@ const destinations = [
     markerPos: { x: "55%", y: "45%" },
     images: [
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731686/Sigiriya_zoen7c.png",
-
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg",
-      "https://images.unsplash.com/photo-1620619767323-b91a84f5fa6a?q=80&w=2070&auto=format&fit=crop"
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078183/WhatsApp_Image_2026-02-23_at_20.51.43_mvard9.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078902/WhatsApp_Image_2026-02-23_at_20.52.02_daiqcj.jpg"
     ],
     mapImg: "/Sigiriya.png"
   },
@@ -42,9 +42,9 @@ const destinations = [
     places: "Nine Arch Bridge, Little Adam's Peak",
     markerPos: { x: "65%", y: "68%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
       "https://images.unsplash.com/photo-1540611025311-01df3cef54b5?q=80&w=2070&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1622359570114-11880e729a8f?q=80&w=2070&auto=format&fit=crop"
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg"
     ],
     mapImg: "/Ella.png"
   },
@@ -56,9 +56,8 @@ const destinations = [
     markerPos: { x: "42%", y: "62%" },
     images: [
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731663/Colombo_sqqeku.png",
-
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254848/colombo-sri-lanka-drone-view-1.jpg_hgfcrz.webp",
-
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_1_addldw.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_f3jbeg.jpg"
     ],
     mapImg: "/Colombo.png"
   }
@@ -80,16 +79,16 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
   }, [images.length]);
 
   return (
-    <div className="absolute inset-0 w-full h-full">
-      <AnimatePresence mode="wait">
+    <div className="absolute inset-0 w-full h-full overflow-hidden">
+      <AnimatePresence initial={false} mode="popLayout">
         <motion.img
           key={index}
           src={images[index]}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+          initial={{ x: "100%" }}
+          animate={{ x: 0 }}
+          exit={{ x: "-100%" }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover"
           alt="Destination View"
         />
       </AnimatePresence>
@@ -136,23 +135,32 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-white text-road-dark min-h-screen font-poppins">
+    <div className="bg-white text-road-dark h-screen overflow-y-auto snap-y snap-proximity lg:snap-mandatory font-poppins scroll-smooth">
       {/* Top Navigation Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 glass-nav px-6 lg:px-20 py-2">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center group cursor-pointer">
-            <img src="/logo.png" alt="Pick & Drop Logo" className="h-12 lg:h-14 w-auto object-contain transition-all duration-300 group-hover:scale-105" />
+          <div className="flex items-center">
+            <div className="relative group cursor-pointer z-20">
+              {/* Large Popping Logo - Overflows without stretching navbar */}
+              <img
+                src="/logo.png"
+                alt="Pick & Drop Logo"
+                className="absolute top-1/2 -translate-y-1/2 left-0 h-16 lg:h-24  w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] max-w-none"
+              />
+              {/* Spacer ensures the nav content doesn't crash into the absolute logo */}
+              <div className="h-10 lg:h-12 w-28 lg:w-40" />
+            </div>
           </div>
 
           <nav className="hidden md:flex items-center gap-10">
-            {["home", "fleet", "services", "contact"].map((item) => (
+            {["home", "why-us", "services", "fleet", "destinations", "contact"].map((item) => (
               <a
                 key={item}
-                className={`text-sm font-bold transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-primary" : "text-road-dark hover:text-primary"
+                className={`text-xs font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-primary" : "text-road-dark hover:text-primary"
                   }`}
                 href={`#${item}`}
               >
-                {item}
+                {item.replace("-", " ")}
                 <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${activeSection === item ? "w-full" : "w-0 group-hover:w-full"
                   }`} />
               </a>
@@ -160,10 +168,10 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <a href="#contact" className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-11 px-6 bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
+            <a href="#contact" className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-primary text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all">
               <span>Book Now</span>
             </a>
-            <button className="md:hidden text-road-dark">
+            <button suppressHydrationWarning className="md:hidden text-road-dark flex items-center justify-center p-2 rounded-lg glass-pill">
               <span className="material-symbols-outlined">menu</span>
             </button>
           </div>
@@ -172,7 +180,7 @@ export default function Home() {
 
       <main>
         {/* New Immersive Slider Section */}
-        <section id="home" className="relative h-screen w-full flex items-center justify-center px-0 overflow-hidden">
+        <section id="home" className="relative h-screen w-full flex items-center justify-center px-0 overflow-hidden snap-start scroll-mt-0">
           {/* Desktop Background Image */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
@@ -289,7 +297,7 @@ export default function Home() {
                   </div>
 
                   {/* Diners Club */}
-                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
+                  {/* <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <img
                       src="/dinersclub.png"
                       className="h-8 md:h-12 w-auto opacity-100 transition-opacity"
@@ -298,13 +306,13 @@ export default function Home() {
                   </div>
 
                   {/* Discover */}
-                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
+                  {/* <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <img
                       src="/discover.png"
                       className="h-8 md:h-12 w-auto opacity-100 transition-opacity"
                       alt="Discover"
                     />
-                  </div>
+                  </div> */}
 
                   {/* Cash */}
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
@@ -321,23 +329,21 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-        <section className="bg-pattern-yellow py-20 md:py-32 relative overflow-hidden border-t border-black/5">
-          <div className="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary/30 to-transparent"></div>
+        <section id="why-us" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-10 relative overflow-hidden border-t border-black/5">
+          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               {/* Left Column: Features & Payments */}
-              <div className="space-y-12">
+              <div className="space-y-10 lg:space-y-12">
                 <div>
-                  <div className="text-primary font-black text-sm uppercase tracking-[0.3em] mb-4">The Pick & Drop Edge</div>
-                  <h2 className="text-4xl lg:text-7xl font-black text-road-dark mb-8 italic uppercase tracking-tighter">Why <span className="text-primary">Choose</span> Us?</h2>
-                  <div className="w-24 h-2 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
+                  <div className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick & Drop Edge</div>
+                  <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-6 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <div className="w-20 h-2 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </div>
 
-                {/* Features List */}
                 <div className="space-y-6">
                   {[
                     { icon: "verified_user", title: "Professional Drivers", desc: "Punctual and courteous drivers with years of experience on Sri Lankan roads.", bg: "bg-primary/20", iconColor: "text-primary" },
@@ -350,40 +356,22 @@ export default function Home() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="flex items-center gap-6 p-8 rounded-[2.5rem] bg-white border border-primary/5 hover:border-primary/20 transition-all duration-300 group shadow-lg shadow-black/5"
+                      className="flex items-center gap-5 p-5 lg:p-6 rounded-[2.8rem] bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
                     >
-                      <div className={`shrink-0 w-20 h-20 ${feature.bg} rounded-3xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg shadow-black/5`}>
-                        <span className={`material-symbols-outlined text-4xl ${feature.iconColor}`}>{feature.icon}</span>
+                      <div className={`shrink-0 w-14 lg:w-16 h-14 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
+                        <span className={`material-symbols-outlined text-2xl lg:text-3xl ${feature.iconColor} drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]`}>{feature.icon}</span>
                       </div>
                       <div className="text-left">
-                        <h4 className="text-xl font-black text-road-dark italic mb-2 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/60 font-bold text-sm leading-relaxed">{feature.desc}</p>
+                        <h4 className="text-base lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
+                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-xs leading-relaxed">{feature.desc}</p>
                       </div>
                     </motion.div>
                   ))}
                 </div>
-
-                {/* Payment Section - Moved here */}
-                <div className="p-10 rounded-[3rem] bg-white/50 border border-black/5 backdrop-blur-sm space-y-8">
-                  <div className="flex items-center gap-4">
-                    <span className="text-road-dark/40 text-[10px] font-black uppercase tracking-[0.4em]">We Accept</span>
-                    <div className="h-px flex-1 bg-black/10"></div>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-x-8 gap-y-6">
-                    <img src="/visa.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Visa" />
-                    <img src="/mastercard.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Mastercard" />
-                    <img src="/americanexpress.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Amex" />
-                    <img src="/dinersclub.png" className="h-10 w-auto transition-all cursor-crosshair" alt="Diners Club" />
-                    <div className="flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-xl border border-primary/20">
-                      <span className="material-symbols-outlined text-primary text-xl">payments</span>
-                      <span className="text-road-dark font-black text-[10px] uppercase tracking-wider">Cash Accepted</span>
-                    </div>
-                  </div>
-                </div>
               </div>
 
               {/* Right Column: Fleet Manager & Quote */}
-              <div className="relative lg:sticky lg:top-32">
+              <div className="relative">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -391,377 +379,394 @@ export default function Home() {
                   className="relative"
                 >
                   <div className="absolute -inset-4 bg-accent-gold/10 rounded-[4rem] blur-2xl rotate-3"></div>
-                  <div className="relative aspect-square md:aspect-auto md:h-[600px] w-full rounded-[4rem] overflow-hidden border-8 border-white shadow-2xl shadow-black/10">
+                  <div className="relative aspect-square lg:aspect-auto lg:h-[500px] w-full rounded-[3rem] overflow-hidden border-8 border-white shadow-2xl">
                     <img
-                      src="/fleetM.jpeg"
-                      className="w-full h-full object-cover transition-all duration-700"
+                      src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png "
+                      className=" object-cover transition-all duration-700"
                       alt="Fleet Manager"
                     />
-                    <div className="hidden md:block absolute inset-0 bg-linear-to-t from-road-dark/80 via-transparent to-transparent"></div>
-
-
+                    <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-road-dark/80 via-transparent to-transparent"></div>
                   </div>
-
-                  {/* Decorative Elements */}
-                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-secondary/10 rounded-full blur-3xl animate-pulse"></div>
-                  <div className="absolute -bottom-10 -left-10 w-48 h-48 bg-primary/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </motion.div>
 
-                <div className="mt-8 md:mt-12 space-y-6 px-4 text-center md:text-left">
-                  {/* Mobile Only Name & Title */}
-                  <div className="md:hidden space-y-2 mb-8">
-                    <h3 className="text-3xl font-black text-road-dark italic uppercase tracking-tighter">Mr Shehan Perera</h3>
-                    <div className="text-primary font-black text-sm uppercase tracking-[0.2em]">Fleet Manager</div>
-                    <div className="flex justify-center gap-1 mt-2">
-                      {[1, 2, 3, 4, 5].map((s) => (
-                        <span key={s} className="material-symbols-outlined text-accent-gold text-sm">star</span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <h3 className="hidden md:block text-3xl font-black text-road-dark italic uppercase tracking-tighter">Experience & Leadership</h3>
-                  <p className="text-road-dark/60 font-bold leading-relaxed">
-                    Shehan Perera is an accomplished Fleet Manager with 11 years of extensive experience in the tourism sector. He specializes in travel support with long trip management, vehicle maintenance, and service excellence. His strong leadership and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
+                <div className="mt-8 space-y-4 px-4 text-center lg:text-left">
+                  <h3 className="text-2xl font-black text-road-dark italic uppercase tracking-tighter">Experience & Leadership</h3>
+                  <p className="text-road-dark/60 font-bold text-[11px] lg:text-xs leading-relaxed max-w-md">
+                    Shehan Perera is an accomplished Fleet Manager with 11 years of extensive experience in the tourism sector. He specializes in travel support, vehicle maintenance, and service excellence.
                   </p>
                 </div>
-                {/* <div className="flex flex-wrap gap-4">
-                    <div className="flex items-center gap-2 px-5 py-2.5 bg-accent-gold/10 rounded-full border border-accent-gold/20">
-                      <span className="material-symbols-outlined text-accent-gold text-sm">check_circle</span>
-                      <span className="text-[10px] font-black uppercase text-road-dark tracking-widest">Real-time Tracking</span>
-                    </div>
-                    <div className="flex items-center gap-2 px-5 py-2.5 bg-secondary/10 rounded-full border border-secondary/20">
-                      <span className="material-symbols-outlined text-secondary text-sm">shield</span>
-                      <span className="text-[10px] font-black uppercase text-road-dark tracking-widest">Insurance Covered</span>
-                    </div>
-                  </div> */}
               </div>
             </div>
           </div>
         </section>
+
         {/* Service Category Cards */}
-        <section id="services" className="bg-pattern-green max-w-full px-6 py-20 md:py-32 relative z-20 overflow-hidden">
+        <section id="services" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-10 relative z-20 overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
-          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10">
-            {/* Airport Transfer Card */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              className="bg-white dark:bg-white/5 rounded-3xl shadow-xl overflow-hidden flex flex-col sm:flex-row group border border-black/5 dark:border-white/10"
-            >
-              <div className="sm:w-2/5 h-52 sm:h-auto overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                  style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252809/don-kaveen-93IYznJPkOA-unsplash_tzttke.jpg')" }}
-                />
-              </div>
-              <div className="p-8 sm:w-3/5 flex flex-col justify-between italic">
-                <div>
-                  <div className="flex items-center gap-2 text-accent-blue mb-3">
-                    <span className="material-symbols-outlined">flight_takeoff</span>
-                    <span className="text-xs font-black uppercase tracking-widest">Premium Service</span>
-                  </div>
-                  <h2 className="text-3xl font-black mb-3 text-road-dark italic uppercase tracking-tighter">Airport Transfers</h2>
-                  <p className="text-road-dark/70 text-sm leading-relaxed mb-6 font-semibold">
-                    Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.
-                  </p>
-                </div>
-                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Now</span>
-                  <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
-                    <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
 
-            {/* Hotel Pickup Card */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col sm:flex-row group border border-black/5"
-            >
-              <div className="sm:w-2/5 h-52 sm:h-auto overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                  style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252811/daniel-klein-Qx8_d5dGhrs-unsplash_ioju8u.jpg')" }}
-                />
-              </div>
-              <div className="p-8 sm:w-3/5 flex flex-col justify-between italic">
-                <div>
-                  <div className="flex items-center gap-2 text-accent-gold mb-3">
-                    <span className="material-symbols-outlined">hotel</span>
-                    <span className="text-xs font-extrabold uppercase tracking-widest">Convenient Pickups</span>
-                  </div>
-                  <h3 className="text-3xl font-black mb-3 text-road-dark italic uppercase tracking-tighter">Hotel Pickup & Drop</h3>
-                  <p className="text-road-dark/70 text-sm leading-relaxed mb-6 font-semibold">
-                    Reliable door-to-door shuttle service connecting you from your hotel to any destination in the island.
-                  </p>
-                </div>
-                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Now</span>
-                  <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
-                    <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Long Distance Card */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col sm:flex-row group border border-black/5"
-            >
-              <div className="sm:w-2/5 h-52 sm:h-auto overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                  style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252810/anton-lecock-TPtaNsBOW9Q-unsplash_xjst26.jpg')" }}
-                />
-              </div>
-              <div className="p-8 sm:w-3/5 flex flex-col justify-between italic">
-                <div>
-                  <div className="flex items-center gap-2 text-secondary mb-3">
-                    <span className="material-symbols-outlined">distance</span>
-                    <span className="text-xs font-extrabold uppercase tracking-widest">Island Wide</span>
-                  </div>
-                  <h3 className="text-2xl font-black mb-3 text-text-dark">Long Distance Travel</h3>
-                  <p className="text-road-grey text-sm leading-relaxed mb-6 font-medium">
-                    Comfortable city-to-city transfers or custom tours with experienced multilingual drivers.
-                  </p>
-                </div>
-                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Now</span>
-                  <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
-                    <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
-
-            {/* Multi-day Arrangements Card */}
-            <motion.div
-              whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col sm:flex-row group border border-black/5"
-            >
-              <div className="sm:w-2/5 h-52 sm:h-auto overflow-hidden">
-                <div
-                  className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-500"
-                  style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg')" }}
-                />
-              </div>
-              <div className="p-8 sm:w-3/5 flex flex-col justify-between italic">
-                <div>
-                  <div className="flex items-center gap-2 text-primary mb-3">
-                    <span className="material-symbols-outlined">calendar_month</span>
-                    <span className="text-xs font-extrabold uppercase tracking-widest">Tour Experts</span>
-                  </div>
-                  <h3 className="text-2xl font-black mb-3 text-text-dark">Tour & Arrangements</h3>
-                  <p className="text-road-grey text-sm leading-relaxed mb-6 font-medium">
-                    Customized multi-day transport plans and travel arrangements for your ultimate tour experience.
-                  </p>
-                </div>
-                <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer">
-                  <span className="text-primary font-bold">Select Now</span>
-                  <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all">
-                    <span className="material-symbols-outlined text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
-                  </div>
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-        <section id="fleet" className="bg-pattern-blue py-20 md:py-32 relative overflow-hidden border-y border-black/5">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,99,157,0.03)_0%,transparent_70%)]"></div>
-          <div className="absolute -top-24 -left-24 w-96 h-96 bg-sky-blue/5 rounded-full blur-[100px]"></div>
-          <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-sky-blue/5 rounded-full blur-[100px]"></div>
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-              <div className="max-w-xl">
-                <div className="text-secondary font-black text-sm uppercase tracking-[0.2em] mb-4 flex items-center gap-3">
-                  <span className="w-12 h-1.5 bg-secondary rounded-full"></span>
-                  Professional Fleet
-                </div>
-                <h2 className="text-4xl lg:text-6xl font-black text-road-dark mb-6 italic uppercase tracking-tighter stylish-glow-text">Our Premium <span className="text-primary">Selection</span></h2>
-                <p className="text-road-dark/70 text-lg font-bold leading-relaxed">Choose between our highly maintained hybrid vehicles for maximum comfort and fuel efficiency.</p>
-              </div>
-              <button className="flex items-center gap-2 text-primary font-black uppercase tracking-wider group cursor-pointer hover:translate-x-1 transition-transform">
-                View All Vehicles
-                <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform">arrow_right_alt</span>
-              </button>
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="text-center mb-6">
+              <h2 className="text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter">Our Core <span className="text-primary">Services</span></h2>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-10">
+            <div className="grid md:grid-cols-2 gap-4 lg:gap-5">
+              {/* Airport Transfer Card */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
+              >
+                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
+                  <div
+                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252809/don-kaveen-93IYznJPkOA-unsplash_tzttke.jpg')" }}
+                  />
+                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+                </div>
+                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
+                  <div>
+                    <div className="flex items-center gap-2 text-secondary mb-2">
+                      <span className="material-symbols-outlined text-base">flight_takeoff</span>
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Premium Service</span>
+                    </div>
+                    <h2 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Airport <br />Transfers</h2>
+                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
+                      Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
+                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
+                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Hotel Pickup Card */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
+              >
+                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
+                  <div
+                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252811/daniel-klein-Qx8_d5dGhrs-unsplash_ioju8u.jpg')" }}
+                  />
+                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+                </div>
+                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
+                  <div>
+                    <div className="flex items-center gap-2 text-secondary mb-2">
+                      <span className="material-symbols-outlined text-base">hotel</span>
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Convenient Pickups</span>
+                    </div>
+                    <h3 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Hotel <br />Pickups</h3>
+                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
+                      Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
+                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
+                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Long Distance Card */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
+              >
+                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
+                  <div
+                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg')" }}
+                  />
+                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+                </div>
+                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
+                  <div>
+                    <div className="flex items-center gap-2 text-secondary mb-2">
+                      <span className="material-symbols-outlined text-base">distance</span>
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Island Wide</span>
+                    </div>
+                    <h3 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Long <br />Distance</h3>
+                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
+                      Comfortable city-to-city transfers or custom tours with experienced professional drivers.
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
+                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
+                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Multi-day Arrangements Card */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                className="rounded-4xl overflow-hidden flex flex-col sm:flex-row group border border-white/50 hover:border-primary/40 transition-all duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.08)] backdrop-blur-2xl bg-white/30"
+              >
+                <div className="sm:w-[40%] h-32 sm:h-auto overflow-hidden relative">
+                  <div
+                    className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                    style={{ backgroundImage: "url('https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg')" }}
+                  />
+                  <div className="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+                </div>
+                <div className="p-4 md:p-5 sm:w-[60%] flex flex-col justify-between italic bg-white/20 backdrop-blur-xl border-l border-white/40">
+                  <div>
+                    <div className="flex items-center gap-2 text-secondary mb-2">
+                      <span className="material-symbols-outlined text-base">calendar_month</span>
+                      <span className="text-[9px] font-black uppercase tracking-[0.2em]">Tour Experts</span>
+                    </div>
+                    <h3 className="text-lg lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-none group-hover:text-primary transition-colors">Tours & <br />Plans</h3>
+                    <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">
+                      Customized multi-day transport plans and travel arrangements for your tour experience.
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-primary/10 pt-2">
+                    <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                    <div className="bg-primary/10 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-lg group-hover/btn:shadow-primary/30">
+                      <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+        <section id="fleet" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-10 relative overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
+
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+            <div className="flex flex-col md:flex-row justify-between items-center mb-8 lg:mb-12 gap-6 w-full border-b border-primary/20 pb-6 lg:pb-8">
+              <div className="flex items-center gap-6 lg:gap-10">
+
+                <h2 className="text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter whitespace-nowrap">
+                  Our Premium <span className="text-primary">Selection</span>
+                </h2>
+              </div>
+              <div className="flex items-center gap-8">
+                <p className="hidden md:block text-road-dark/60 text-[10px] lg:text-xs font-bold leading-tight max-w-[240px]">
+                  Highly maintained hybrid vehicles for maximum comfort and efficiency.
+                </p>
+
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
               {/* Vehicle 1: Honda Shuttle */}
               <motion.div
-                whileHover={{ y: -15 }}
-                className="group relative bg-white rounded-[3.5rem] p-10 transition-all hover:shadow-2xl hover:shadow-primary/10 border border-accent-gold/20 shadow-xl shadow-black/5"
+                whileHover={{ y: -8 }}
+                className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
-                <div className="absolute top-10 right-10">
-                  <span className="bg-primary text-white px-4 py-2 rounded-2xl font-black text-xs shadow-lg shadow-primary/20 uppercase tracking-tighter border border-white/20">Hybrid Luxury</span>
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+
+                <div className="flex justify-between items-start mb-4 relative z-10">
+                  <div className="glass-pill bg-white/40 border border-white/60 px-3 py-1.5 rounded-xl font-black text-[9px] text-primary uppercase tracking-tighter shadow-sm backdrop-blur-md">
+                    Hybrid Luxury
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
+                      <span className="material-symbols-outlined text-sm text-primary">person</span> 4
+                    </div>
+                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
+                      <span className="material-symbols-outlined text-sm text-primary">luggage</span> 3
+                    </div>
+                  </div>
                 </div>
 
-                <div className="relative h-64 mb-8">
+                <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771253529/fit-lx-32-white_bxh03s.png"
-                    className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-700 group-hover:scale-110"
+                    className="w-[90%] h-full object-contain transition-all duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Shuttle"
                   />
                 </div>
 
-                <div className="flex justify-between items-start italic">
+                <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-4xl font-black text-road-dark mb-3 uppercase tracking-tighter italic">Honda Shuttle</h3>
-                    <div className="flex gap-6">
-                      <div className="flex items-center gap-2 text-road-dark/80 font-black text-sm uppercase tracking-wider">
-                        <span className="material-symbols-outlined text-lg text-primary">person</span> 4 Seater
-                      </div>
-                      <div className="flex items-center gap-2 text-road-dark/80 font-black text-sm uppercase tracking-wider">
-                        <span className="material-symbols-outlined text-lg text-primary">luggage</span> 3 Luggage
-                      </div>
-                    </div>
+                    <h3 className="text-xl lg:text-3xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
+                    <p className="text-primary text-[9px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
+                  </div>
+                  <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
+                    <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
                   </div>
                 </div>
               </motion.div>
 
               {/* Vehicle 2: Honda Fit */}
               <motion.div
-                whileHover={{ y: -15 }}
-                className="group relative bg-white rounded-[3.5rem] p-10 transition-all hover:shadow-2xl hover:shadow-primary/10 border border-accent-gold/20 shadow-xl shadow-black/5"
+                whileHover={{ y: -8 }}
+                className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
-                <div className="absolute top-10 right-10">
-                  <span className="bg-secondary text-white px-4 py-2 rounded-2xl font-black text-xs shadow-lg shadow-secondary/20 uppercase tracking-tighter border border-white/20">Eco Comfort</span>
+                <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+
+                <div className="flex justify-between items-start mb-4 relative z-10">
+                  <div className="glass-pill bg-white/40 border border-white/60 px-3 py-1.5 rounded-xl font-black text-[9px] text-primary uppercase tracking-tighter shadow-sm backdrop-blur-md">
+                    Eco Comfort
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
+                      <span className="material-symbols-outlined text-sm text-primary">person</span> 4
+                    </div>
+                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
+                      <span className="material-symbols-outlined text-sm text-primary">luggage</span> 2
+                    </div>
+                  </div>
                 </div>
 
-                <div className="relative h-64 mb-8">
+                <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771257731/download_-_Edited_zwzuxb.png"
-                    className="w-full h-full object-contain mix-blend-multiply dark:mix-blend-normal transition-transform duration-700 group-hover:scale-110"
+                    className="w-[90%] h-full object-contain transition-all duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Fit"
                   />
                 </div>
 
-                <div className="flex justify-between items-start italic">
+                <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-4xl font-black text-road-dark mb-3 uppercase tracking-tighter italic">Honda Fit</h3>
-                    <div className="flex gap-6">
-                      <div className="flex items-center gap-2 text-road-dark/80 font-black text-sm uppercase tracking-wider">
-                        <span className="material-symbols-outlined text-lg text-primary">person</span> 4 Seater
-                      </div>
-                      <div className="flex items-center gap-2 text-road-dark/80 font-black text-sm uppercase tracking-wider">
-                        <span className="material-symbols-outlined text-lg text-primary">luggage</span> 2 Luggage
-                      </div>
-                    </div>
+                    <h3 className="text-xl lg:text-3xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
+                    <p className="text-primary text-[9px] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
+                  </div>
+                  <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
+                    <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
                   </div>
                 </div>
               </motion.div>
             </div>
           </div>
         </section>
-        <section id="contact" className="contact-gradient-green min-h-screen flex items-center py-24 md:py-10 overflow-hidden relative">
-          <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-full font-black text-[10px] uppercase tracking-widest mb-4 shadow-xl shadow-primary/40">
-                <span className="material-symbols-outlined text-sm">schedule</span>
-                1 hr Response
-              </div>
-              <h2 className="text-5xl lg:text-7xl font-black text-white mb-2 italic uppercase tracking-tighter stylish-glow-green">Book <span className="text-secondary">Now</span></h2>
-              <p className="text-white/40 font-black max-w-lg mx-auto leading-tight text-xs lg:text-sm uppercase tracking-[0.2em] mb-4">Island-wide Premium Transit Service</p>
+        <section id="contact" className="h-screen flex items-center snap-start scroll-mt-0 py-10 bg-road-dark relative overflow-hidden">
+          {/* Contact Desktop Background */}
+          <div
+            className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?q=80&w=2070&auto=format&fit=crop')` }}
+          >
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+          </div>
+
+          {/* Contact Mobile Background */}
+          <div
+            className="block md:hidden absolute inset-0 z-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=2042&auto=format&fit=crop')` }}
+          >
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[6px]"></div>
+          </div>
+
+          <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center">
+            <div className="text-center mb-6 lg:mb-10 w-full">
+              <div className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Island-wide Premium Transit Service</div>
+              <h2 className="text-5xl lg:text-9xl font-black text-white italic uppercase tracking-tighter leading-none">Book <span className="text-secondary">Now</span></h2>
             </div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 relative overflow-hidden w-full shadow-2xl shadow-primary/10"
+              className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-12 relative overflow-hidden w-full shadow-2xl"
             >
-              <form className="space-y-4 md:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6 md:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
                 {/* Name & WhatsApp & Email */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Name</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Name</label>
                     <div className="relative group">
-                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-base">person</span>
-                      <input type="text" placeholder="John Doe" className="w-full h-12 bg-white/20 border border-white/30 focus:bg-white/40 rounded-xl pl-10 pr-4 text-white outline-none transition-all font-bold text-sm" />
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">person</span>
+                      <input suppressHydrationWarning type="text" placeholder="John Doe" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">WhatsApp</label>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">WhatsApp</label>
                     <div className="relative group">
-                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-base">chat</span>
-                      <input type="text" placeholder="+1..." className="w-full h-12 bg-white/20 border border-white/30 focus:bg-white/40 rounded-xl pl-10 pr-4 text-white outline-none transition-all font-bold text-sm" />
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">chat</span>
+                      <input suppressHydrationWarning type="text" placeholder="+1..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Email</label>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Email</label>
                     <div className="relative group">
-                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-base">mail</span>
-                      <input type="email" placeholder="john@email.com" className="w-full h-12 bg-white/20 border border-white/30 focus:bg-white/40 rounded-xl pl-10 pr-4 text-white outline-none transition-all font-bold text-sm" />
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">mail</span>
+                      <input suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                 </div>
 
                 {/* Pickup & Drop & Date */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Pickup</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Pickup</label>
                     <div className="relative group">
-                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-base">location_on</span>
-                      <input type="text" placeholder="From..." className="w-full h-12 bg-white/20 border border-white/30 focus:bg-white/40 rounded-xl pl-10 pr-4 text-white outline-none transition-all font-bold text-sm" />
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">location_on</span>
+                      <input suppressHydrationWarning type="text" placeholder="From..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Drop</label>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Drop</label>
                     <div className="relative group">
-                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-base">near_me</span>
-                      <input type="text" placeholder="To..." className="w-full h-12 bg-white/20 border border-white/30 focus:bg-white/40 rounded-xl pl-10 pr-4 text-white outline-none transition-all font-bold text-sm" />
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">near_me</span>
+                      <input suppressHydrationWarning type="text" placeholder="To..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
-                  <div className="space-y-1">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Date / Time</label>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Date / Time</label>
                     <div className="relative group">
-                      <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-white/30 text-base">today</span>
-                      <input type="datetime-local" className="w-full h-12 bg-white/20 border border-white/30 rounded-xl pl-10 pr-4 text-white outline-none transition-all font-bold text-sm" />
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">today</span>
+                      <input suppressHydrationWarning type="datetime-local" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm [color-scheme:dark]" />
                     </div>
                   </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-6 items-end">
-                  <div className="flex-1 w-full space-y-3">
-                    <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-1">Communication</label>
-                    <div className="flex gap-6">
-                      <label className="flex items-center gap-2 cursor-pointer group">
+                <div className="flex flex-col md:flex-row gap-8 items-end">
+                  <div className="flex-1 w-full space-y-4">
+                    <label className="text-[10px] font-black text-white/50 uppercase tracking-widest ml-2">Communication</label>
+                    <div className="flex gap-10">
+                      <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" className="peer sr-only" />
-                        <div className="w-5 h-5 border-2 border-white/20 rounded-full peer-checked:border-primary transition-all flex items-center justify-center">
-                          <div className="w-2.5 h-2.5 bg-primary rounded-full opacity-0 peer-checked:opacity-100 transition-all"></div>
+                        <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
+                          <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
                         </div>
-                        <span className="font-bold text-white/60 text-[10px] uppercase tracking-widest group-hover:text-primary transition-colors">WhatsApp</span>
+                        <span className="font-bold text-white/60 text-xs uppercase tracking-widest group-hover:text-secondary transition-colors">WhatsApp</span>
                       </label>
-                      <label className="flex items-center gap-2 cursor-pointer group">
+                      <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" className="peer sr-only" />
-                        <div className="w-5 h-5 border-2 border-white/20 rounded-full peer-checked:border-primary transition-all flex items-center justify-center">
-                          <div className="w-2.5 h-2.5 bg-primary rounded-full opacity-0 peer-checked:opacity-100 transition-all"></div>
+                        <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
+                          <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
                         </div>
-                        <span className="font-bold text-white/60 text-[10px] uppercase tracking-widest group-hover:text-primary transition-colors">Email</span>
+                        <span className="font-bold text-white/60 text-xs uppercase tracking-widest group-hover:text-secondary transition-colors">Email</span>
                       </label>
                     </div>
                   </div>
 
-                  <button className="w-full md:w-auto flex-1 h-14 bg-primary hover:bg-primary/90 text-white font-black text-sm rounded-xl shadow-xl shadow-primary/40 transition-all flex items-center justify-center gap-3 py-2">
+                  <button
+                    suppressHydrationWarning
+                    className="w-full md:w-auto h-16 px-12 bg-primary hover:bg-primary/90 text-white font-black text-sm rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest"
+                  >
                     <span>SEND REQUEST</span>
-                    <span className="material-symbols-outlined text-sm">send</span>
+                    <span className="material-symbols-outlined">send</span>
                   </button>
                 </div>
               </form>
 
               {/* Direct Contact Options */}
-              <div className="mt-8 pt-6 border-t border-white/10 relative z-10 w-full">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <a href="#" className="flex items-center justify-center gap-2 h-12 bg-[#25D366] text-white rounded-xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-lg shadow-[#25D366]/20">
-                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <div className="mt-12 pt-8 border-t border-white/10 relative z-10 w-full">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <a href="#" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
+                    <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                     </svg>
                     <span>WhatsApp Now</span>
                   </a>
-                  <a href="#" className="flex items-center justify-center gap-2 h-12 bg-linear-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] text-white rounded-xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-lg">
-                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <a href="#" className="flex items-center justify-center gap-3 h-14 bg-linear-to-tr from-[#f9ce34]/90 via-[#ee2a7b]/90 to-[#6228d7]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl border border-white/10">
+                    <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.690.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.668-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                     </svg>
                     <span>Instagram</span>
@@ -778,27 +783,23 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section className="bg-pattern-yellow py-20 md:py-32 relative overflow-hidden">
-          {/* Animated Background Orbs */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <section id="destinations" className="h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-10 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10">
-            <div className="flex flex-col items-center text-center mb-24">
-              <motion.span
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                className="text-primary font-black text-sm md:text-base uppercase tracking-[0.4em] mb-4"
-              >
-                Plan Your Journey
-              </motion.span>
-              <h2 className="text-4xl lg:text-8xl font-black text-road-dark mb-6 italic uppercase tracking-tighter">
-                Popular <span className="text-primary">Desti</span><span className="text-secondary">nations</span>
-              </h2>
-              <div className="w-24 md:w-40 h-2 bg-linear-to-r from-primary via-secondary to-accent-gold rounded-full shadow-lg shadow-primary/20"></div>
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            {/* Compact one-line header */}
+            <div className="flex items-end justify-between mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
+              <div>
+                <p className="text-secondary font-black text-[10px] uppercase tracking-[0.4em] mb-1">Plan Your Journey</p>
+                <h2 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter">
+                  Popular <span className="text-primary">Destinations</span>
+                </h2>
+              </div>
+              <div className="hidden md:block w-32 h-1 bg-linear-to-r from-primary via-secondary to-primary rounded-full opacity-50"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
               {destinations.map((dest, i) => (
                 <motion.div
                   key={i}
@@ -806,58 +807,40 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.15, duration: 0.6 }}
-                  whileHover={{ y: -15, scale: 1.02 }}
-                  className="bg-white rounded-[3rem] p-8 shadow-2xl shadow-black/5 border border-primary/10 group relative overflow-hidden transition-all duration-500"
+                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
                 >
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-bl-[6rem] -mr-8 -mt-8 transition-all duration-700 group-hover:bg-primary/10 group-hover:scale-110"></div>
+                  {/* Glow spot */}
+                  <div className="absolute -right-10 -top-10 w-40 h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0"></div>
 
-                  <div className="relative z-10">
-                    <h3 className="text-3xl font-black italic uppercase tracking-tighter text-road-dark mb-8 group-hover:text-primary transition-colors">
+                  {/* Image section — taller */}
+                  <div className="relative w-full aspect-[3/4] overflow-hidden">
+                    <DestinationGallery images={dest.images} />
+                    {/* Glass overlay pill on image */}
+                    <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
+                      <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
+                      <span className="material-symbols-outlined text-secondary text-sm">near_me</span>
+                    </div>
+                    {/* Top badge */}
+                    <div className="absolute top-3 left-3 z-30 bg-white/20 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
+                      <span className="text-white font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
+                    </div>
+                  </div>
+
+                  {/* Card body */}
+                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
+                    <h3 className="text-base lg:text-lg font-black italic uppercase tracking-tighter text-road-dark mb-1 group-hover:text-primary transition-colors leading-none">
                       {dest.name}
                     </h3>
-
-                    {/* Image Visualization with Animation */}
-                    <div className="relative w-full aspect-4/5 mb-8 rounded-[2.5rem] overflow-hidden border-2 border-black/5 shadow-inner group-hover:border-primary/20 transition-all duration-500">
-                      <DestinationGallery images={dest.images} />
-
-                      {/* Map Toggle Snippet (Optional if map is wanted on hover) */}
-                      <div className="absolute top-4 right-4 z-30 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <div className="bg-white/90 backdrop-blur-md p-2 rounded-xl shadow-lg">
-                          <span className="material-symbols-outlined text-primary text-xl">map</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="space-y-6">
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Distance from BIA</label>
-                        <p className="text-xl font-black text-road-dark italic flex items-center gap-2">
-                          <span className="material-symbols-outlined text-primary text-base">near_me</span>
-                          {dest.distance}
-                        </p>
-                      </div>
-
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Travel Type</label>
-                        <p className="text-sm font-bold text-secondary italic leading-tight group-hover:text-primary transition-colors">
-                          {dest.type}
-                        </p>
-                      </div>
-
-                      <div className="space-y-1">
-                        <label className="text-[10px] font-black text-black/30 uppercase tracking-[0.2em]">Top Attractions</label>
-                        <p className="text-sm font-bold text-road-dark/60 italic leading-snug">
-                          {dest.places}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="mt-8 pt-6 border-t border-black/5">
-                      <a href="#contact" className="w-full h-14 rounded-2xl bg-road-dark text-white font-black text-xs uppercase tracking-widest hover:bg-primary hover:shadow-2xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-3 group/btn cursor-pointer">
-                        <span>Book Now</span>
-                        <span className="material-symbols-outlined text-base group-hover/btn:translate-x-2 transition-transform">flight_takeoff</span>
-                      </a>
-                    </div>
+                    <p className="text-road-dark/50 text-[9px] font-bold leading-snug line-clamp-2 mb-3 flex-1">
+                      {dest.places}
+                    </p>
+                    <a
+                      href="#contact"
+                      className="w-full h-9 rounded-xl bg-road-dark/90 backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
+                    >
+                      <span>Book Now</span>
+                      <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">directions_car</span>
+                    </a>
                   </div>
                 </motion.div>
               ))}
@@ -871,31 +854,33 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-road-dark text-white/50 py-24 px-6 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1.5 bg-linear-to-r from-transparent via-primary to-transparent"></div>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-16">
-          <div className="space-y-8 max-w-sm">
+      <footer className="bg-road-dark text-white/50 py-10 px-6 relative overflow-hidden snap-start border-t border-white/5">
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+          <div className="space-y-4 max-w-sm">
             <div className="flex items-center group cursor-pointer">
-              <img src="/logo.png" alt="Pick & Drop Logo" className="h-28 w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
+              <img src="/logo.png" alt="Pick & Drop Logo" className="h-20 w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
             </div>
-            <p className="text-white/40 text-sm font-bold leading-relaxed uppercase tracking-wider">
+            <p className="text-white/40 text-[11px] font-bold leading-relaxed uppercase tracking-wider">
               Premium island-wide shuttle and travel service in Sri Lanka. Punctual, Reliable, and Professional.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-16">
-            <div className="space-y-6">
-              <h4 className="text-white text-xs font-black uppercase tracking-[0.3em]">Navigate</h4>
-              <div className="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest text-white/40">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 md:gap-16">
+            <div className="space-y-4">
+              <h4 className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Navigate</h4>
+              <div className="flex flex-col gap-2.5 text-[10px] font-bold uppercase tracking-widest text-white/40">
                 <a className="hover:text-primary transition-all" href="#home">Home</a>
-                <a className="hover:text-primary transition-all" href="#fleet">Fleet</a>
+                <a className="hover:text-primary transition-all" href="#why-us">Why Us</a>
                 <a className="hover:text-primary transition-all" href="#services">Services</a>
+                <a className="hover:text-primary transition-all" href="#fleet">Fleet</a>
+                <a className="hover:text-primary transition-all" href="#destinations">Destinations</a>
                 <a className="hover:text-primary transition-all" href="#contact">Contact</a>
               </div>
             </div>
-            <div className="space-y-6">
-              <h4 className="text-white text-xs font-black uppercase tracking-[0.3em]">Legal</h4>
-              <div className="flex flex-col gap-4 text-xs font-bold uppercase tracking-widest text-white/40">
+            <div className="space-y-4">
+              <h4 className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Legal</h4>
+              <div className="flex flex-col gap-2.5 text-[10px] font-bold uppercase tracking-widest text-white/40">
                 <a className="hover:text-primary transition-all" href="#">Privacy</a>
                 <a className="hover:text-primary transition-all" href="#">Terms</a>
               </div>
@@ -903,15 +888,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-white/20">© 2024 Pick & Drop Sri Lanka.</p>
+        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">© 2024 Pick & Drop Sri Lanka.</p>
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-[#1877F2] hover:text-white transition-all cursor-pointer group">
+            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-[#25D366] hover:text-white transition-all cursor-pointer group">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.469h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
               </svg>
             </div>
-            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-linear-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white transition-all cursor-pointer group">
+            <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white transition-all cursor-pointer group">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.690.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.058-1.28.072-1.689.072-4.948 0-3.259-.014-3.668-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
               </svg>
@@ -919,6 +904,6 @@ export default function Home() {
           </div>
         </div>
       </footer>
-    </div >
+    </div>
   );
 }
