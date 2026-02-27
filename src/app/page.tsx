@@ -283,13 +283,13 @@ export default function Home() {
                 className="w-full text-center space-y-8 md:space-y-12"
               >
                 <div className="space-y-4 md:space-y-6">
-                  <span className="inline-block px-8 py-2.5 bg-black/75 backdrop-blur-xl rounded-full text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-                    Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
-                  </span>
                   <h1 className="text-white text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                     Pick and Drop <br />
                     <span className="text-secondary italic">Shuttle Service</span>
                   </h1>
+                  <span className="inline-block px-8 py-2.5 bg-black/75 backdrop-blur-xl rounded-full text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                    Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
+                  </span>
                 </div>
 
                 {/* Our Values Section */}
@@ -297,12 +297,14 @@ export default function Home() {
                   <div className="text-white text-[10px] font-black uppercase tracking-[0.4em]">Our Core Values</div>
                   <div className="flex flex-wrap justify-center gap-2.5 md:gap-4">
                     {[
-                      { text: "Reliability", icon: "verified" },
-                      { text: "Convenience", icon: "task_alt" },
-                      { text: "Clean", icon: "clean_hands" },
-                      { text: "Spacious", icon: "straighten" },
+                      { text: "Reliable Drivers", icon: "badge" },
+                      { text: "Reliability", icon: "gpp_good" },
+                      { text: "Clean", icon: "cleaning_services" },
+
+
+                      { text: "Convenience", icon: "thumb_up" },
                       { text: "On-time delivery", icon: "schedule" },
-                      { text: "Reliable Drivers", icon: "person_check" }
+
                     ].map((value, i) => (
                       <motion.div
                         key={i}
@@ -335,9 +337,9 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="w-full max-w-4xl pb-10 mx-auto"
+              className="w-full max-w-4xl pb-24 mx-auto"
             >
-              <div className="relative flex flex-col items-center gap-10 py-10 border-t border-white/10">
+              <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
                   <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
@@ -604,15 +606,14 @@ export default function Home() {
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
 
                 <div className="flex justify-between items-start mb-4 relative z-10">
-                  <div className="glass-pill bg-white/40 border border-white/60 px-3 py-1.5 rounded-xl font-black text-[9px] text-primary uppercase tracking-tighter shadow-sm backdrop-blur-md">
-                    Hybrid Luxury
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
-                      <span className="material-symbols-outlined text-sm text-primary">person</span> 4
+                  <div className="flex flex-wrap gap-2">
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
+                      <span className="material-symbols-outlined text-sm text-primary">person</span>
+                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">4 Passengers</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
-                      <span className="material-symbols-outlined text-sm text-primary">luggage</span> 3
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
+                      <span className="material-symbols-outlined text-sm text-primary">luggage</span>
+                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">3 Luggage</span>
                     </div>
                   </div>
                 </div>
@@ -648,15 +649,14 @@ export default function Home() {
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
 
                 <div className="flex justify-between items-start mb-4 relative z-10">
-                  <div className="glass-pill bg-white/40 border border-white/60 px-3 py-1.5 rounded-xl font-black text-[9px] text-primary uppercase tracking-tighter shadow-sm backdrop-blur-md">
-                    Eco Comfort
-                  </div>
-                  <div className="flex gap-4">
-                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
-                      <span className="material-symbols-outlined text-sm text-primary">person</span> 4
+                  <div className="flex flex-wrap gap-2">
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
+                      <span className="material-symbols-outlined text-sm text-primary">person</span>
+                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">4 Passengers</span>
                     </div>
-                    <div className="flex items-center gap-1.5 text-road-dark/70 font-black text-[9px] uppercase">
-                      <span className="material-symbols-outlined text-sm text-primary">luggage</span> 2
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
+                      <span className="material-symbols-outlined text-sm text-primary">luggage</span>
+                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">2 Luggage</span>
                     </div>
                   </div>
                 </div>
