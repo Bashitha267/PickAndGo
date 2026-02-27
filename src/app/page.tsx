@@ -273,17 +273,17 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-24">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-24">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <motion.div
                 initial={{ y: 50, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
-                className="w-full text-center space-y-8 md:space-y-12"
+                className="w-full text-center space-y-8 md:space-y-10"
               >
                 <div className="space-y-4 md:space-y-6">
-                  <h1 className="text-white text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                  <h1 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                     Pick and Drop <br />
                     <span className="text-secondary italic">Shuttle Service</span>
                   </h1>
@@ -311,7 +311,7 @@ export default function Home() {
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ delay: 0.5 + i * 0.1 }}
-                        className="flex items-center gap-2 px-5 py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg"
+                        className="flex items-center justify-center gap-2 px-5 py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg w-[160px] md:w-[210px]"
                       >
                         <span className="material-symbols-outlined text-secondary text-lg md:text-xl drop-shadow-[0_0_8px_rgba(253,185,19,0.4)]">{value.icon}</span>
                         <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
@@ -320,10 +320,10 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="pt-2 flex flex-col items-center mb-4">
+                <div className="pt-4 flex flex-col items-center mb-8">
                   <a href="#contact" className="group relative w-full sm:w-auto">
                     <div className="absolute inset-0 bg-primary blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
-                    <button className="relative w-full sm:w-auto h-16 md:h-20 px-10 md:px-14 bg-primary text-white font-black text-lg md:text-xl rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
+                    <button className="relative w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 bg-primary text-white font-black text-lg md:text-lg rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
                       BOOK NOW
                       <span className="material-symbols-outlined animate-bounce">south</span>
                     </button>
@@ -337,7 +337,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="w-full max-w-4xl pb-24 mx-auto"
+              className="w-full max-w-4xl pb-40 md:pb-56 mx-auto"
             >
               <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10">
                 <div className="flex items-center gap-4 md:gap-6">
@@ -552,17 +552,17 @@ export default function Home() {
                     style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
                   >
                     <div>
-                      <div className="flex items-center gap-2 text-secondary mb-2">
+                      <div className="flex items-center gap-2 text-accent-blue mb-2">
                         <span className="material-symbols-outlined text-base">{svc.icon}</span>
-                        <span className="text-[9px] font-black uppercase tracking-[0.2em]">{svc.badge}</span>
+                        <span className="text-[9px] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
                       </div>
                       <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
                       <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
                     <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2">
-                      <span className="text-primary font-black uppercase tracking-widest text-[8px]">Select Now</span>
-                      <div className="bg-white/50 backdrop-blur-md border border-white/70 group-hover/btn:bg-primary p-2 rounded-xl transition-all shadow-sm group-hover/btn:shadow-primary/30">
-                        <span className="material-symbols-outlined text-xs text-primary group-hover/btn:text-white transition-colors">arrow_forward</span>
+                      <span className="text-orange-500 font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                      <div className="bg-white/50 backdrop-blur-md border border-white/70 group-hover/btn:bg-orange-500 p-2 rounded-xl transition-all shadow-sm group-hover/btn:shadow-primary/30">
+                        <span className="material-symbols-outlined text-xs text-orange-500 group-hover/btn:text-white transition-colors">arrow_forward</span>
                       </div>
                     </div>
                   </div>
@@ -854,7 +854,7 @@ export default function Home() {
                     <DestinationGallery images={dest.images} />
                     <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
                       <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
-                      <span className="material-symbols-outlined text-secondary text-sm">near_me</span>
+                      <span className="material-symbols-outlined text-orange-500 text-sm">near_me</span>
                     </div>
                     <div className="absolute top-3 left-3 z-30 bg-white/45 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
                       <span className="text-black font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
@@ -870,7 +870,7 @@ export default function Home() {
                     </p>
                     <a
                       href="#contact"
-                      className="w-full h-9 rounded-xl bg-road-dark/90 backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
+                      className="w-full h-9 rounded-xl bg-road-dark backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
                     >
                       <span>Book Now</span>
                       <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">directions_car</span>
