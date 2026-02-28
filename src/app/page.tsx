@@ -141,12 +141,12 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2.5rem] p-6 sm:p-10 md:p-12 border border-white/50 bg-white/20 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2.5rem] py-6 px-6 sm:p-10 md:p-12 border border-white/50 bg-white/20 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[280px]">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[300px] md:min-h-[280px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -154,25 +154,25 @@ const TestimonialsSlider = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -40 }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="flex flex-col items-center w-full"
+            className="flex flex-col items-center w-full justify-between h-full py-4 pb-8 md:pb-4"
           >
-            <div className="relative mb-6">
+            <div className="relative mb-5 md:mb-6">
               <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-40"></div>
               <img
                 src={testimonialsData[index].image}
                 alt={testimonialsData[index].name}
-                className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-white shadow-lg relative z-10"
+                className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-2 border-white shadow-lg relative z-10"
               />
-              <div className="absolute -bottom-3 -right-3 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-md z-20">
-                <span className="material-symbols-outlined text-[14px]">format_quote</span>
+              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-md z-20">
+                <span className="material-symbols-outlined text-[14px] md:text-base">format_quote</span>
               </div>
             </div>
 
-            <p className="text-road-dark/80 text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6">
+            <p className="text-road-dark/80 text-[13px] sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2">
               "{testimonialsData[index].text}"
             </p>
 
-            <h4 className="text-lg md:text-xl font-black text-road-dark uppercase tracking-widest">
+            <h4 className="text-base sm:text-lg md:text-xl font-black text-road-dark uppercase tracking-widest">
               {testimonialsData[index].name}
             </h4>
           </motion.div>
@@ -585,7 +585,25 @@ export default function Home() {
           </div>
         </section >
 
-        <section></section>
+        {/* Testimonials Section */}
+        <section id="testimonials" className="min-h-screen flex flex-col snap-start scroll-mt-0 bg-pattern-yellow pt-24 pb-16 lg:pt-32 lg:pb-20 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -mr-64 -mt-64 z-0"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] -ml-64 -mb-64 z-0"></div>
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div className="mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What They Say</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+                Client <span className="text-primary">Testimonials</span>
+              </h2>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
+            </div>
+
+            <div className="mt-1 md:mt-12">
+              <TestimonialsSlider />
+            </div>
+          </div>
+        </section>
         <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-20 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
