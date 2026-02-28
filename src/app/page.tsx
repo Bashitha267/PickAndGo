@@ -144,7 +144,7 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const navLinks = ["home", "why-us", "services", "fleet", "destinations", "contact"];
+  const navLinks = ["home", "services", "fleet", "destinations", "why-us", "contact"];
 
   return (
     <div className="bg-white text-road-dark h-screen overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins scroll-smooth">
@@ -407,99 +407,6 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden border-t border-black/5">
-          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-          <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
-          <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
-
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-              {/* Left Column: Features */}
-              <div className="space-y-8 lg:space-y-12">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
-                  {/* Consistent section title design */}
-                  <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick &amp; Drop Edge</p>
-                  <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
-                  <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
-                </motion.div>
-
-                <div className="space-y-4">
-                  {[
-                    { icon: "verified_user", title: "Professional Drivers", desc: "Punctual and courteous drivers with years of experience on Sri Lankan roads.", bg: "bg-primary/20", iconColor: "text-primary" },
-                    { icon: "airport_shuttle", title: "Modern Fleet", desc: "Wide range of well-maintained, air-conditioned vehicles to suit your group size.", bg: "bg-secondary/20", iconColor: "text-secondary" },
-                    { icon: "support_agent", title: "24/7 Support", desc: "Round-the-clock customer assistance for real-time tracking and help.", bg: "bg-sky-blue/20", iconColor: "text-sky-blue" }
-                  ].map((feature, i) => (
-                    <motion.div
-                      key={i}
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.12 }}
-                      className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
-                    >
-                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
-                        <span className={`material-symbols-outlined text-xl lg:text-3xl ${feature.iconColor}`}>{feature.icon}</span>
-                      </div>
-                      <div className="text-left">
-                        <h4 className="text-sm lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-xs leading-relaxed">{feature.desc}</p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column: Fleet Manager */}
-              <div className="relative">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  className="flex flex-col items-center gap-5"
-                >
-                  {/* Portrait photo — narrow and tall */}
-                  <div className="relative w-full max-w-[280px] mx-auto">
-                    <div className="absolute -inset-3 bg-accent-gold/10 rounded-[3rem] blur-2xl rotate-2"></div>
-                    <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
-                      <img
-                        src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
-                        className="w-full h-full object-cover object-top transition-all duration-700"
-                        alt="Fleet Manager Shehan Perera"
-                      />
-                      {/* Subtle bottom fade only */}
-                      <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent"></div>
-                    </div>
-                  </div>
-
-                  {/* Description — always below the photo */}
-                  <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left">
-                    <p className="text-primary font-black text-[11px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
-                    <h3 className="text-2xl lg:text-3xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
-                      Shehan Perera
-                    </h3>
-                    <p className="text-road-dark/70 font-bold text-xs leading-relaxed mb-2">
-                      An accomplished Fleet Manager with <span className="text-primary font-black">11 years</span> of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
-                    </p>
-                    <p className="text-road-dark/50 font-bold text-[11px] leading-relaxed mb-4">
-                      His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {["Leadership", "Safety", "Trip Management"].map((tag) => (
-                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[8px] uppercase tracking-widest" >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </section >
 
         {/* Service Category Cards */}
         < section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-20 relative z-20 overflow-hidden" >
@@ -749,6 +656,99 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden border-t border-black/5">
+          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+          <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
+          <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+              {/* Left Column: Features */}
+              <div className="space-y-8 lg:space-y-12">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                >
+                  {/* Consistent section title design */}
+                  <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick &amp; Drop Edge</p>
+                  <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
+                </motion.div>
+
+                <div className="space-y-4">
+                  {[
+                    { icon: "verified_user", title: "Professional Drivers", desc: "Punctual and courteous drivers with years of experience on Sri Lankan roads.", bg: "bg-primary/20", iconColor: "text-primary" },
+                    { icon: "airport_shuttle", title: "Modern Fleet", desc: "Wide range of well-maintained, air-conditioned vehicles to suit your group size.", bg: "bg-secondary/20", iconColor: "text-secondary" },
+                    { icon: "support_agent", title: "24/7 Support", desc: "Round-the-clock customer assistance for real-time tracking and help.", bg: "bg-sky-blue/20", iconColor: "text-sky-blue" }
+                  ].map((feature, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: -30 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.12 }}
+                      className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
+                    >
+                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
+                        <span className={`material-symbols-outlined text-xl lg:text-3xl ${feature.iconColor}`}>{feature.icon}</span>
+                      </div>
+                      <div className="text-left">
+                        <h4 className="text-sm lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
+                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-xs leading-relaxed">{feature.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Right Column: Fleet Manager */}
+              <div className="relative">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="flex flex-col items-center gap-5"
+                >
+                  {/* Portrait photo — narrow and tall */}
+                  <div className="relative w-full max-w-[280px] mx-auto">
+                    <div className="absolute -inset-3 bg-accent-gold/10 rounded-[3rem] blur-2xl rotate-2"></div>
+                    <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
+                      <img
+                        src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
+                        className="w-full h-full object-cover object-top transition-all duration-700"
+                        alt="Fleet Manager Shehan Perera"
+                      />
+                      {/* Subtle bottom fade only */}
+                      <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent"></div>
+                    </div>
+                  </div>
+
+                  {/* Description — always below the photo */}
+                  <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left">
+                    <p className="text-primary font-black text-[11px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
+                    <h3 className="text-2xl lg:text-3xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
+                      Shehan Perera
+                    </h3>
+                    <p className="text-road-dark/70 font-bold text-xs leading-relaxed mb-2">
+                      An accomplished Fleet Manager with <span className="text-primary font-black">11 years</span> of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
+                    </p>
+                    <p className="text-road-dark/50 font-bold text-[11px] leading-relaxed mb-4">
+                      His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {["Leadership", "Safety", "Trip Management"].map((tag) => (
+                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[8px] uppercase tracking-widest" >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </div>
+        </section >
 
         {/* Payment Form Section */}
         <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 py-20 bg-road-dark relative overflow-hidden">
