@@ -106,6 +106,112 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
   );
 };
 
+const testimonialsData = [
+  {
+    id: 1,
+    name: "Kasun Silva",
+    text: "Outstanding service! The driver was professional, and the vehicle was very comfortable for our family trip from BIA to Ella.",
+    image: "https://i.pravatar.cc/150?img=11"
+  },
+  {
+    id: 2,
+    name: "Sarah M.",
+    text: "Highly recommended for airport transfers. The booking process was seamless, and the driver arrived right on time.",
+    image: "https://i.pravatar.cc/150?img=47"
+  },
+  {
+    id: 3,
+    name: "James Fernando",
+    text: "The best travel experience we had in Sri Lanka. The multi-day tour plan was perfectly organized. Thank you Pick & Drop!",
+    image: "https://i.pravatar.cc/150?img=12"
+  }
+];
+
+const TestimonialsSlider = () => {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % testimonialsData.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleNext = () => setIndex((prev) => (prev + 1) % testimonialsData.length);
+  const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
+
+  return (
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2.5rem] p-6 sm:p-10 md:p-12 border border-white/50 bg-white/20 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+      {/* Decorative glow */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[280px]">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -40 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="flex flex-col items-center w-full"
+          >
+            <div className="relative mb-6">
+              <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-40"></div>
+              <img
+                src={testimonialsData[index].image}
+                alt={testimonialsData[index].name}
+                className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-white shadow-lg relative z-10"
+              />
+              <div className="absolute -bottom-3 -right-3 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center border-2 border-white shadow-md z-20">
+                <span className="material-symbols-outlined text-[14px]">format_quote</span>
+              </div>
+            </div>
+
+            <p className="text-road-dark/80 text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6">
+              "{testimonialsData[index].text}"
+            </p>
+
+            <h4 className="text-lg md:text-xl font-black text-road-dark uppercase tracking-widest">
+              {testimonialsData[index].name}
+            </h4>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation Controls */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-2 md:left-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <button
+          onClick={handlePrev}
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 backdrop-blur-md border border-white/60 text-road-dark hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
+        >
+          <span className="material-symbols-outlined">chevron_left</span>
+        </button>
+      </div>
+      <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <button
+          onClick={handleNext}
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 backdrop-blur-md border border-white/60 text-road-dark hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
+        >
+          <span className="material-symbols-outlined">chevron_right</span>
+        </button>
+      </div>
+
+      {/* Dots */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {testimonialsData.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setIndex(i)}
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-primary" : "w-1.5 bg-road-dark/20 hover:bg-primary/50"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
@@ -478,6 +584,8 @@ export default function Home() {
             </div>
           </div>
         </section >
+
+        <section></section>
         <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-20 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
@@ -494,9 +602,7 @@ export default function Home() {
                   </h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
                 </div>
-                <p className="hidden md:block text-road-dark/60 text-[10px] lg:text-xs font-bold leading-tight max-w-[240px]">
-                  Highly maintained hybrid vehicles for maximum comfort and efficiency.
-                </p>
+
               </div>
             </div>
 
@@ -730,11 +836,9 @@ export default function Home() {
                     <h3 className="text-2xl lg:text-3xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold text-xs leading-relaxed mb-2">
-                      An accomplished Fleet Manager with <span className="text-primary font-black">11 years</span> of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
-                    </p>
-                    <p className="text-road-dark/50 font-bold text-[11px] leading-relaxed mb-4">
+                    <p className="text-road-dark/70 font-bold text-xs leading-relaxed mb-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
+                      An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {["Leadership", "Safety", "Trip Management"].map((tag) => (
