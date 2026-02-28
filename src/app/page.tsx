@@ -516,10 +516,10 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
               {[
-                { icon: "flight_takeoff", badge: "Premium Service", title: "Airport Transfers", desc: "Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252809/don-kaveen-93IYznJPkOA-unsplash_tzttke.jpg" },
-                { icon: "hotel", badge: "Convenient Pickups", title: "Hotel Pickups", desc: "Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252811/daniel-klein-Qx8_d5dGhrs-unsplash_ioju8u.jpg" },
-                { icon: "distance", badge: "Island Wide", title: "Long Distance", desc: "Comfortable city-to-city transfers or custom tours with experienced professional drivers.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg" },
-                { icon: "calendar_month", badge: "Tour Experts", title: "Tours & Plans", desc: "Customized multi-day transport plans and travel arrangements for your tour experience.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1771252866/mike-swigunski-zDDQZgZjFtM-unsplash_epaz1s.jpg" },
+                { icon: "flight_takeoff", badge: "Premium Service", title: "Airport Transfers", desc: "Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1772250518/WhatsApp_Image_2026-02-26_at_23.00.20_bb6ygg.jpg" },
+                { icon: "hotel", badge: "Convenient Pickups", title: "Hotel Pickups", desc: "Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.", img: "/images/hotel_pickups.png" },
+                { icon: "distance", badge: "Island Wide", title: "Long Distance", desc: "Comfortable city-to-city transfers or custom tours with experienced professional drivers.", img: "/images/long_distance.png" },
+                { icon: "calendar_month", badge: "Tour Experts", title: "Tours & Plans", desc: "Customized multi-day transport plans and travel arrangements for your tour experience.", img: "/images/tours_and_plans.png" },
               ].map((svc, i) => (
                 <motion.div
                   key={i}
@@ -682,6 +682,75 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+
+        {/* Popular Destinations Section */}
+
+        {/* Our Fleet Section */}
+
+
+        {/* Popular Destinations Section */}
+        <section id="destinations" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
+          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-4">
+            {/* Consistent section title design */}
+            <div className="mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+                Popular <span className="text-primary">Destinations</span>
+              </h2>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
+            </div>
+
+            {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+              {destinations.map((dest, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
+                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
+                >
+                  <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
+
+                  {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
+                  <div className="relative w-full h-72 sm:h-80 md:h-auto md:aspect-3/4 overflow-hidden">
+                    <DestinationGallery images={dest.images} />
+                    <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
+                      <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
+                      <span className="material-symbols-outlined text-orange-500 text-sm">near_me</span>
+                    </div>
+                    <div className="absolute top-3 left-3 z-30 bg-white/45 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
+                      <span className="text-black font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
+                    <h3 className="text-base lg:text-lg font-black italic uppercase tracking-tighter text-road-dark mb-1 group-hover:text-primary transition-colors leading-none">
+                      {dest.name}
+                    </h3>
+                    <p className="text-road-dark/50 text-[9px] font-bold leading-snug line-clamp-2 mb-3 flex-1">
+                      {dest.places}
+                    </p>
+                    <a
+                      href="#contact"
+                      className="w-full h-9 rounded-xl bg-road-dark backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
+                    >
+                      <span>Book Now</span>
+                      <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">directions_car</span>
+                    </a>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Payment Form Section */}
         <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 py-20 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
@@ -702,8 +771,9 @@ export default function Home() {
           <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center">
             <div className="text-center mt-2 mb-6 lg:mb-10 w-full">
               {/* Consistent section title design */}
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Island-wide Premium Transit Service</p>
-              <h2 className="text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none">Book <span className="text-primary">Now</span></h2>
+
+              <h2 className=" mt-4 text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none mb-3">Book <span className="text-primary">Now</span></h2>
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
@@ -815,75 +885,6 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-
-        {/* Popular Destinations Section */}
-
-        {/* Our Fleet Section */}
-
-
-        {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
-
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-4">
-            {/* Consistent section title design */}
-            <div className="mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
-                Popular <span className="text-primary">Destinations</span>
-              </h2>
-              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
-            </div>
-
-            {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
-            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-              {destinations.map((dest, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
-                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
-                >
-                  <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
-
-                  {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
-                  <div className="relative w-full h-72 sm:h-80 md:h-auto md:aspect-3/4 overflow-hidden">
-                    <DestinationGallery images={dest.images} />
-                    <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
-                      <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
-                      <span className="material-symbols-outlined text-orange-500 text-sm">near_me</span>
-                    </div>
-                    <div className="absolute top-3 left-3 z-30 bg-white/45 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
-                      <span className="text-black font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
-                    <h3 className="text-base lg:text-lg font-black italic uppercase tracking-tighter text-road-dark mb-1 group-hover:text-primary transition-colors leading-none">
-                      {dest.name}
-                    </h3>
-                    <p className="text-road-dark/50 text-[9px] font-bold leading-snug line-clamp-2 mb-3 flex-1">
-                      {dest.places}
-                    </p>
-                    <a
-                      href="#contact"
-                      className="w-full h-9 rounded-xl bg-road-dark backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
-                    >
-                      <span>Book Now</span>
-                      <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">directions_car</span>
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Payment Form Section */}
-
 
       </main >
 
