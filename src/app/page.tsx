@@ -141,10 +141,10 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2.5rem] py-6 px-6 sm:p-10 md:p-12 border border-white/50 bg-white/20 backdrop-blur-3xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2.5rem] py-8 px-6 sm:p-10 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-[0_30px_60px_rgba(0,0,0,0.5)] group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
       {/* Decorative glow */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-[80px] -mr-32 -mt-32"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/10 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
 
       <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[300px] md:min-h-[280px]">
         <AnimatePresence mode="wait">
@@ -157,22 +157,22 @@ const TestimonialsSlider = () => {
             className="flex flex-col items-center w-full justify-between h-full py-4 pb-8 md:pb-4"
           >
             <div className="relative mb-5 md:mb-6">
-              <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-40"></div>
+              <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-60"></div>
               <img
                 src={testimonialsData[index].image}
                 alt={testimonialsData[index].name}
-                className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-2 border-white shadow-lg relative z-10"
+                className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
               />
-              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-md z-20">
+              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
                 <span className="material-symbols-outlined text-[14px] md:text-base">format_quote</span>
               </div>
             </div>
 
-            <p className="text-road-dark/80 text-[13px] sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2">
+            <p className="text-white/90 text-[13px] sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
               "{testimonialsData[index].text}"
             </p>
 
-            <h4 className="text-base sm:text-lg md:text-xl font-black text-road-dark uppercase tracking-widest">
+            <h4 className="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-widest drop-shadow-lg">
               {testimonialsData[index].name}
             </h4>
           </motion.div>
@@ -183,7 +183,7 @@ const TestimonialsSlider = () => {
       <div className="absolute top-1/2 -translate-y-1/2 left-2 md:left-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <button
           onClick={handlePrev}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 backdrop-blur-md border border-white/60 text-road-dark hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
         >
           <span className="material-symbols-outlined">chevron_left</span>
         </button>
@@ -191,7 +191,7 @@ const TestimonialsSlider = () => {
       <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <button
           onClick={handleNext}
-          className="w-10 h-10 flex items-center justify-center rounded-full bg-white/50 backdrop-blur-md border border-white/60 text-road-dark hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
+          className="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
         >
           <span className="material-symbols-outlined">chevron_right</span>
         </button>
@@ -203,7 +203,7 @@ const TestimonialsSlider = () => {
           <button
             key={i}
             onClick={() => setIndex(i)}
-            className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-primary" : "w-1.5 bg-road-dark/20 hover:bg-primary/50"
+            className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-primary" : "w-1.5 bg-white/30 hover:bg-primary/50"
               }`}
           />
         ))}
@@ -586,17 +586,21 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="min-h-screen flex flex-col snap-start scroll-mt-0 bg-pattern-yellow pt-24 pb-16 lg:pt-32 lg:pb-20 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] -mr-64 -mt-64 z-0"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] -ml-64 -mb-64 z-0"></div>
+        <section id="testimonials" className="flex flex-col snap-start scroll-mt-0 relative overflow-hidden py-24 lg:py-32">
+          {/* Background Image and Overlay */}
+          <div
+            className="absolute inset-0 z-0 bg-cover bg-center bg-fixed"
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078183/WhatsApp_Image_2026-02-23_at_20.51.43_mvard9.jpg')` }}
+          ></div>
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
-            <div className="mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What They Say</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-8">
+            <div className="mb-6 lg:mb-8 border-b border-white/10 pb-5">
+              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-lg">
                 Client <span className="text-primary">Testimonials</span>
               </h2>
-              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-[0_0_15px_rgba(253,185,19,0.5)]"></div>
             </div>
 
             <div className="mt-1 md:mt-12">
