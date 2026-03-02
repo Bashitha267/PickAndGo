@@ -142,7 +142,7 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] py-5 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] pt-10 pb-14 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
