@@ -162,7 +162,7 @@ const TestimonialsSlider = () => {
               <img
                 src={testimonialsData[index].image}
                 alt={testimonialsData[index].name}
-                className="w-24 h-24 md:w-28 md:h-28 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
+                className="w-24 h-24 md:w-auto md:h-28 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
               />
               <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
                 <span className="material-symbols-outlined text-[14px] md:text-base">format_quote</span>
