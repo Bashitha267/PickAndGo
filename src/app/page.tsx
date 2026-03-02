@@ -384,9 +384,9 @@ export default function Home() {
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <motion.div
-                initial={{ y: 50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, ease: "easeOut" }}
                 className="w-full text-center space-y-8 md:space-y-10"
               >
                 <div className="space-y-4 md:space-y-6">
@@ -423,9 +423,9 @@ export default function Home() {
                     ].map((value, i) => (
                       <motion.div
                         key={i}
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ delay: 0.5 + i * 0.1 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.8 + (i * 0.15), duration: 0.6 }}
                         className="flex items-center justify-center gap-2 px-5 py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg w-[160px] md:w-[210px]"
                       >
                         <span className="material-symbols-outlined text-secondary text-lg md:text-xl drop-shadow-[0_0_8px_rgba(253,185,19,0.4)]">{value.icon}</span>
@@ -449,9 +449,9 @@ export default function Home() {
 
             {/* Bottom Aligned Payment Bar */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2, duration: 0.8 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.6, duration: 1 }}
               className="w-full max-w-4xl pb-16 md:pb-[10vh] lg:pb-[12vh] mx-auto"
             >
               <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10">
@@ -543,8 +543,8 @@ export default function Home() {
               ].map((svc, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
                   whileHover={{ y: -6 }}
@@ -638,8 +638,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Vehicle 1: Honda Shuttle */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55 }}
                 whileHover={{ y: -8 }}
@@ -678,8 +678,8 @@ export default function Home() {
 
               {/* Vehicle 2: Honda Fit */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.55, delay: 0.15 }}
                 whileHover={{ y: -8 }}
@@ -745,8 +745,8 @@ export default function Home() {
               {destinations.map((dest, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true, amount: 0.1 }}
                   transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
                   className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
@@ -834,8 +834,8 @@ export default function Home() {
               {/* Left Column: Features */}
               <div className="space-y-8 lg:space-y-12">
                 <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                 >
                   {/* Consistent section title design */}
@@ -852,8 +852,8 @@ export default function Home() {
                   ].map((feature, i) => (
                     <motion.div
                       key={i}
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.12 }}
                       className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
@@ -873,8 +873,8 @@ export default function Home() {
               {/* Right Column: Fleet Manager */}
               <div className="relative">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
                   className="flex flex-col items-center gap-5"
                 >
@@ -944,8 +944,8 @@ export default function Home() {
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-12 relative overflow-hidden w-full shadow-2xl"
             >
