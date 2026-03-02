@@ -570,10 +570,10 @@ export default function Home() {
                         <span className="text-[9px] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
                       </div>
                       <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
-                      <p className="text-road-dark/60 text-[9px] lg:text-[11px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
+                      <p className="text-road-dark/60 text-[10px] lg:text-[14px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
                     <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2">
-                      <span className="text-orange-500 font-black uppercase tracking-widest text-[8px]">Select Now</span>
+                      <span className="text-orange-500 font-black uppercase tracking-widest text-[11px]">Select Now</span>
                       <div className="bg-white/50 backdrop-blur-md border border-white/70 group-hover/btn:bg-orange-500 p-2 rounded-xl transition-all shadow-sm group-hover/btn:shadow-primary/30">
                         <span className="material-symbols-outlined text-xs text-orange-500 group-hover/btn:text-white transition-colors">arrow_forward</span>
                       </div>
@@ -644,19 +644,16 @@ export default function Home() {
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
                       <span className="material-symbols-outlined text-sm text-primary">person</span>
-                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">4 Passengers</span>
+                      <span className="text-road-dark/80 font-black text-[11px] uppercase tracking-wider">3 Passengers</span>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
-                      <span className="material-symbols-outlined text-sm text-primary">luggage</span>
-                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">3 Luggage</span>
-                    </div>
+
                   </div>
                 </div>
 
                 <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771253529/fit-lx-32-white_bxh03s.png"
-                    className="w-[90%] h-full object-contain transition-all duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
+                    className="w-full md:scale-110 lg:scale-150 h-full object-contain transition-all duration-700 group-hover:scale-150 group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Shuttle"
                   />
                 </div>
@@ -687,27 +684,24 @@ export default function Home() {
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
                       <span className="material-symbols-outlined text-sm text-primary">person</span>
-                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">4 Passengers</span>
+                      <span className="text-road-dark/80 font-black text-[11px] uppercase tracking-wider">3 Passengers</span>
                     </div>
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
-                      <span className="material-symbols-outlined text-sm text-primary">luggage</span>
-                      <span className="text-road-dark/80 font-black text-[9px] uppercase tracking-wider">2 Luggage</span>
-                    </div>
+
                   </div>
                 </div>
 
                 <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771257731/download_-_Edited_zwzuxb.png"
-                    className="w-[90%] h-full object-contain transition-all duration-700 group-hover:scale-110 group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
+                    className="w-fill h-full  scale-110 lg:scale-150 object-contain    group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Fit"
                   />
                 </div>
 
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-xl lg:text-3xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
-                    <p className="text-primary text-[9px] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
+                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
+                    <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
                   </div>
                   <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
                     <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
