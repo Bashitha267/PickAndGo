@@ -81,14 +81,14 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
-      <AnimatePresence initial={false} mode="popLayout">
+      <AnimatePresence mode="wait">
         <motion.img
           key={index}
           src={images[index]}
-          initial={{ x: "100%" }}
-          animate={{ x: 0 }}
-          exit={{ x: "-100%" }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.2, ease: "easeInOut" }}
           className="absolute inset-0 w-full h-full object-cover"
           alt="Destination View"
         />
