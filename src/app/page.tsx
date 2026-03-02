@@ -836,7 +836,8 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                   {/* Consistent section title design */}
                   <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
@@ -854,9 +855,9 @@ export default function Home() {
                       key={i}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: i * 0.12 }}
-                      className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
+                      viewport={{ once: true, amount: 0.3 }}
+                      transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
+                      className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
                     >
                       <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
                         <span className={`material-symbols-outlined text-xl lg:text-4xl ${feature.iconColor}`}>{feature.icon}</span>
@@ -875,7 +876,8 @@ export default function Home() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                   className="flex flex-col items-center gap-5"
                 >
                   {/* Portrait photo — narrow and tall */}
@@ -884,7 +886,7 @@ export default function Home() {
                     <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
                       <img
                         src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
-                        className="w-full h-full object-cover object-top transition-all duration-700"
+                        className="w-full h-full object-cover object-top"
                         alt="Fleet Manager Shehan Perera"
                       />
                       {/* Subtle bottom fade only */}
