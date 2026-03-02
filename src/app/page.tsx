@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Map } from "lucide-react";
 
 // --- Hero Carousel Data ---
 // --- Hero Slider Data ---
@@ -10,7 +11,7 @@ const destinations = [
   {
     name: "Galle",
     distance: "150KM",
-    type: "Beaches / Nature / History",
+    type: "Beaches / Nature / History/Nightlife",
     places: "Unawatuna, Jungle Beach, Galle Fort",
     markerPos: { x: "48%", y: "88%" },
     images: [
@@ -38,7 +39,7 @@ const destinations = [
   {
     name: "Ella",
     distance: "210KM",
-    type: "Nature / Mountains / Tea Estates",
+    type: "Nature / Mountains / Tea Estates/Nightlife",
     places: "Nine Arch Bridge, Little Adam's Peak",
     markerPos: { x: "65%", y: "68%" },
     images: [
@@ -51,8 +52,8 @@ const destinations = [
   {
     name: "Colombo",
     distance: "35KM",
-    type: "City / Shopping / Nightlife",
-    places: "Lotus Tower, Galle Face, Pettah",
+    type: "City / Shopping / Nightlife/port city",
+    places: "Lotus Tower, Galle Face, Port City",
     markerPos: { x: "42%", y: "62%" },
     images: [
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731663/Colombo_sqqeku.png",
@@ -400,7 +401,15 @@ export default function Home() {
 
                 {/* Our Values Section */}
                 <div className="space-y-6 md:space-y-8">
-                  <div className="text-white text-[10px] font-black uppercase tracking-[0.4em]">Our Core Values</div>
+
+                  <div className="flex items-center gap-4 md:gap-6 justify-center">
+                    <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
+                    <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">Our Core Values</span>
+                    <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
+                  </div>
+
+
+
                   <div className="flex flex-wrap justify-center gap-2.5 md:gap-4">
                     {[
                       { text: "Reliable Drivers", icon: "badge" },
@@ -457,7 +466,7 @@ export default function Home() {
                   <div className="group/icon cursor-help transition-all duration-300   rounded-lg hover:scale-110">
                     <img
                       src="/visa.png"
-                      className="h-8 md:h-12 w-auto opacity-100 transition-opacity  "
+                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity  "
                       alt="Visa"
                     />
                   </div>
@@ -465,8 +474,8 @@ export default function Home() {
                   {/* Mastercard */}
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <img
-                      src="/mastercard.png"
-                      className="h-8 md:h-12 w-auto opacity-100 transition-opacity"
+                      src="/master.png"
+                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity"
                       alt="Mastercard"
                     />
                   </div>
@@ -474,8 +483,8 @@ export default function Home() {
                   {/* Amex */}
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <img
-                      src="/americanexpress.png"
-                      className="h-8 md:h-12 w-auto opacity-100 transition-opacity"
+                      src="/amex.png"
+                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity"
                       alt="Amex"
                     />
                   </div>
@@ -500,13 +509,11 @@ export default function Home() {
 
                   {/* Cash */}
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
-                    <div className="flex items-center gap-3 py-2 px-5 bg-primary/10 rounded-2xl border border-primary/20 group-hover/icon:bg-primary/20 transition-all">
-                      <span className="material-symbols-outlined text-primary text-2xl">local_atm</span>
-                      <div className="flex flex-col text-left">
-                        <span className="text-white font-black text-[10px] md:text-xs uppercase tracking-wider leading-none">Cash</span>
-                        <span className="text-white/40 text-[7px] md:text-[8px] font-bold uppercase tracking-widest leading-none mt-1">Accepted</span>
-                      </div>
-                    </div>
+                    <img
+                      src="/cash.png"
+                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity"
+                      alt="Cash"
+                    />
                   </div>
                 </div>
               </div>
@@ -644,7 +651,7 @@ export default function Home() {
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
                       <span className="material-symbols-outlined text-sm text-primary">person</span>
-                      <span className="text-road-dark/80 font-black text-[11px] uppercase tracking-wider">3 Passengers</span>
+                      <span className="text-road-dark/80 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
                     </div>
 
                   </div>
@@ -660,7 +667,7 @@ export default function Home() {
 
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-xl lg:text-3xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
+                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
                     <p className="text-primary text-[9px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
                   </div>
                   <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
@@ -684,7 +691,7 @@ export default function Home() {
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
                       <span className="material-symbols-outlined text-sm text-primary">person</span>
-                      <span className="text-road-dark/80 font-black text-[11px] uppercase tracking-wider">3 Passengers</span>
+                      <span className="text-road-dark/80 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
                     </div>
 
                   </div>
@@ -723,14 +730,14 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-4">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-5">
             {/* Consistent section title design */}
-            <div className="mb-6 lg:mb-8 border-b border-road-dark/10 pb-5">
+            <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
                 Popular <span className="text-primary">Destinations</span>
               </h2>
-              <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
+              <div className="w-16 h-1.5 bg-primary rounded-full mt-1 shadow-lg shadow-primary/20"></div>
             </div>
 
             {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
@@ -747,30 +754,69 @@ export default function Home() {
                   <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
                   {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
-                  <div className="relative w-full h-72 sm:h-80 md:h-auto md:aspect-3/4 overflow-hidden">
+                  <div className="relative w-full h-72 sm:h-80 md:h-80 md:aspect-3/4 overflow-hidden">
                     <DestinationGallery images={dest.images} />
-                    <div className="absolute bottom-3 left-3 right-3 z-30 bg-black/30 backdrop-blur-md rounded-xl px-3 py-1.5 flex items-center justify-between">
-                      <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
-                      <span className="material-symbols-outlined text-orange-500 text-sm">near_me</span>
-                    </div>
+
 
                   </div>
 
-                  <div className="flex flex-col gap-3 flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
-                    <h3 className="text-base lg:text-lg font-black italic uppercase tracking-tighter text-road-dark mb-1 group-hover:text-primary transition-colors leading-none">
-                      {dest.name}
-                    </h3>
-                    <p className="text-black font-black text-[12px] uppercase tracking-widest">
-                      Places to Visit: <br></br><span className="text-orange-500 text-[11px]">{dest.places}</span>
-                    </p>
-                    <p className="text-black font-black text-[12px] uppercase tracking-widest">Destination Values:<br></br><span className="font-black text-[8px] uppercase tracking-widest text-accent-blue text-[11px]">{dest.type}</span></p>
+                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/40 backdrop-blur-3xl border-t border-white/50 group-hover:bg-white/50 transition-colors duration-500">
+                    <div className="mb-2">
+                      <div className="flex justify-between items-start mb-1.5">
+                        <h3 className="text-2xl lg:text-3xl font-black italic uppercase tracking-tighter text-road-dark group-hover:text-primary transition-colors leading-none">
+                          {dest.name}
+                        </h3>
+                        <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
+                          <span className="material-symbols-outlined text-[10px] text-primary">distance</span>
+                          <span className="text-[10px] font-black text-primary uppercase tracking-wider">{dest.distance}</span>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    <div className="flex-1 space-y-6 mb-8">
+                      {/* Iconic Places Section */}
+                      <div className="relative group/places">
+                        <div className="flex items-center gap-3 text-primary mb-2.5">
+                          <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center group-hover/places:scale-110 transition-transform duration-300">
+                            <Map size={16} strokeWidth={2.5} />
+                          </div>
+                          <span className="text-[11px] font-black uppercase tracking-widest leading-none">Iconic Places</span>
+                        </div>
+                        <div className="pl-4 ml-4 border-l-2 border-primary/20">
+                          <p className="text-road-dark/70 font-bold text-xs lg:text-[14px] leading-relaxed">
+                            {dest.places}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Travel Theme Badges - Replacing redundant Destination Value */}
+                      <div className="relative group/theme">
+                        <div className="flex items-center gap-3 text-sky-blue mb-2.5">
+                          <div className="w-8 h-8 rounded-xl bg-sky-blue/15 flex items-center justify-center group-hover/theme:scale-110 transition-transform duration-300">
+                            <span className="material-symbols-outlined text-[18px]">verified</span>
+                          </div>
+                          <span className="text-[11px] font-black uppercase tracking-widest leading-none">Travel Theme</span>
+                        </div>
+                        <div className="pl-4 ml-4 border-l-2 border-sky-blue/20 flex flex-wrap gap-2">
+                          {dest.type.split('/').map((tag, idx) => (
+                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] uppercase tracking-[0.1em] border border-white/50 shadow-sm">
+                              {tag.trim()}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
 
                     <a
                       href="#contact"
-                      className="w-full h-9 rounded-xl bg-road-dark backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
+                      className="group/btn relative w-full h-10 rounded-2xl bg-road-dark text-white font-black text-[10px] uppercase tracking-[0.2em] overflow-hidden flex items-center justify-center gap-3 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20"
                     >
-                      <span>Book Now</span>
-                      <span className="material-symbols-outlined text-xs group-hover/btn:translate-x-1 transition-transform">directions_car</span>
+                      <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
+                      <span className="relative z-10 flex items-center gap-3">
+                        Book Your Trip
+                        <span className="material-symbols-outlined text-base group-hover/btn:translate-x-1.5 transition-transform duration-300">trending_flat</span>
+                      </span>
                     </a>
                   </div>
                 </motion.div>
