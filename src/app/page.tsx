@@ -911,23 +911,23 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Name</label>
-                    <div className="relative group">
+                    <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">person</span>
-                      <input suppressHydrationWarning type="text" placeholder="John Doe" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input suppressHydrationWarning type="text" placeholder="John Doe" className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">WhatsApp Number</label>
-                    <div className="relative group">
+                    <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">chat</span>
-                      <input suppressHydrationWarning type="text" placeholder="+1..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input suppressHydrationWarning type="text" placeholder="+1..." className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Email</label>
-                    <div className="relative group">
+                    <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">mail</span>
-                      <input suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                 </div>
@@ -936,23 +936,23 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Pickup Location</label>
-                    <div className="relative group">
+                    <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">location_on</span>
-                      <input suppressHydrationWarning type="text" placeholder="From..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input suppressHydrationWarning type="text" placeholder="From..." className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Drop Location</label>
-                    <div className="relative group">
+                    <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">near_me</span>
-                      <input suppressHydrationWarning type="text" placeholder="To..." className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input suppressHydrationWarning type="text" placeholder="To..." className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Date / Time</label>
-                    <div className="relative group">
+                    <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">today</span>
-                      <input suppressHydrationWarning type="datetime-local" className="w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm [color-scheme:dark]" />
+                      <input suppressHydrationWarning type="datetime-local" className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm [color-scheme:dark]" />
                     </div>
                   </div>
                 </div>
