@@ -646,7 +646,7 @@ export default function Home() {
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
                     <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
-                    <p className="text-primary text-[9px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
+                    <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
                   </div>
                   <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
                     <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
@@ -662,7 +662,7 @@ export default function Home() {
 
                 <div className="flex justify-between items-start mb-4 relative z-10">
                   <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
+                    <div className="flex items-center gap-2 px-3 py-1.5   bg-white/20 backdrop-blur-lg rounded-full border border-white/30 shadow-sm">
                       <span className="material-symbols-outlined text-sm text-orange-500">person</span>
                       <span className="text-orange-500 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
                     </div>
@@ -739,7 +739,7 @@ export default function Home() {
                         </h3>
                         <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
                           <span className="material-symbols-outlined text-[10px] text-orange-500">distance</span>
-                          <span className="text-[10px] font-black text-orange-500 uppercase tracking-wider">{dest.distance}</span>
+                          <span className="text-[10px] font-black text-orange-500 uppercase tracking-wider ">{dest.distance}</span>
                         </div>
                       </div>
 
