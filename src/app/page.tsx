@@ -637,8 +637,9 @@ export default function Home() {
 
                 <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
-                    src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771253529/fit-lx-32-white_bxh03s.png"
-                    className="w-full md:scale-110 lg:scale-150 h-full object-contain transition-all duration-700 group-hover:scale-150 group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
+
+                    src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771257731/download_-_Edited_zwzuxb.png"
+                    className="w-full md:scale-110 lg:scale-150 h-full object-contain transition-all duration-700 group-hover:scale-150  drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)] md:drop-shadow-none group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Shuttle"
                   />
                 </div>
@@ -672,8 +673,8 @@ export default function Home() {
 
                 <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
-                    src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771257731/download_-_Edited_zwzuxb.png"
-                    className="w-fill h-full  scale-110 lg:scale-150 object-contain    group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
+                    src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771253529/fit-lx-32-white_bxh03s.png"
+                    className="w-fill h-full  scale-110 lg:scale-150 object-contain    drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)] md:drop-shadow-none group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Fit"
                   />
                 </div>
