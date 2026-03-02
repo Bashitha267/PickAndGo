@@ -522,7 +522,7 @@ export default function Home() {
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
               {[
                 { icon: "flight_takeoff", badge: "Premium Service", title: "Airport Transfers", desc: "Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1772250518/WhatsApp_Image_2026-02-26_at_23.00.20_bb6ygg.jpg" },
                 { icon: "hotel", badge: "Convenient Pickups", title: "Hotel Pickups", desc: "Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.", img: "/images/hotel_pickups.png" },
@@ -795,7 +795,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden border-t border-black/5">
+        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
@@ -821,14 +821,14 @@ export default function Home() {
                   ].map((feature, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
+                      className="flex items-center gap-4 p-4 lg:p-9 rounded-3xl bg-sky-blue/8 backdrop-blur-xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
                     >
-                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
+                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 border border-white/30`}>
                         <span className={`material-symbols-outlined text-xl lg:text-4xl ${feature.iconColor}`}>{feature.icon}</span>
                       </div>
                       <div className="text-left">
-                        <h4 className="text-sm lg:text-2xl font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-[12px] leading-relaxed">{feature.desc}</p>
+                        <h4 className="text-sm lg:text-[20px] font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
+                        <p className="text-road-dark/70 font-bold text-[12px] lg:text-[13px] leading-relaxed">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -860,7 +860,7 @@ export default function Home() {
                     <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold  text-[12px] md:text-md leading-relaxed mb-2 text-justify">
+                    <p className="text-road-dark/70 font-bold  text-[12px] lg:text-[14px] md:text-md leading-relaxed mb-2 lg:mb-6 mt-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
