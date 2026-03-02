@@ -529,13 +529,8 @@ export default function Home() {
                 { icon: "distance", badge: "Island Wide", title: "Long Distance", desc: "Comfortable city-to-city transfers or custom tours with experienced professional drivers.", img: "/images/long_distance.png" },
                 { icon: "calendar_month", badge: "Tour Experts", title: "Tours & Plans", desc: "Customized multi-day transport plans and travel arrangements for your tour experience.", img: "/images/tours_and_plans.png" },
               ].map((svc, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
-                  whileHover={{ y: -6 }}
                   className="rounded-3xl overflow-hidden flex flex-row group relative border border-white/70 hover:border-primary/50 transition-all duration-500 shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_20px_50px_rgba(46,125,50,0.18)]"
                   style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)" }}
                 >
@@ -574,7 +569,7 @@ export default function Home() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -625,12 +620,7 @@ export default function Home() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Vehicle 1: Honda Shuttle */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55 }}
-                whileHover={{ y: -8 }}
+              <div
                 className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
@@ -662,15 +652,10 @@ export default function Home() {
                     <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Vehicle 2: Honda Fit */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.55, delay: 0.15 }}
-                whileHover={{ y: -8 }}
+              <div
                 className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
@@ -702,7 +687,7 @@ export default function Home() {
                     <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -731,12 +716,8 @@ export default function Home() {
             {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
             <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
               {destinations.map((dest, i) => (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.1 }}
-                  transition={{ delay: i * 0.1, duration: 0.55, ease: "easeOut" }}
                   className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
                 >
                   <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
@@ -807,7 +788,7 @@ export default function Home() {
                       </span>
                     </a>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -821,17 +802,14 @@ export default function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               {/* Left Column: Features */}
               <div className="space-y-8 lg:space-y-12">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
+                <div
+                  className="space-y-8 lg:space-y-12"
                 >
                   {/* Consistent section title design */}
                   <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
                   <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
-                </motion.div>
+                </div>
 
                 <div className="space-y-4">
                   {[
@@ -839,12 +817,8 @@ export default function Home() {
                     { icon: "airport_shuttle", title: "Modern Fleet", desc: "Wide range of well-maintained, air-conditioned vehicles to suit your group size.", bg: "bg-secondary/20", iconColor: "text-secondary" },
                     { icon: "support_agent", title: "24/7 Support", desc: "Round-the-clock customer assistance for real-time tracking and help.", bg: "bg-sky-blue/20", iconColor: "text-sky-blue" }
                   ].map((feature, i) => (
-                    <motion.div
+                    <div
                       key={i}
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      viewport={{ once: true, amount: 0.3 }}
-                      transition={{ delay: i * 0.15, duration: 0.6, ease: "easeOut" }}
                       className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
                     >
                       <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
@@ -854,18 +828,14 @@ export default function Home() {
                         <h4 className="text-sm lg:text-2xl font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
                         <p className="text-road-dark/70 font-bold text-[11px] lg:text-lg leading-relaxed">{feature.desc}</p>
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </div>
 
               {/* Right Column: Fleet Manager */}
               <div className="relative">
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                <div
                   className="flex flex-col items-center gap-5"
                 >
                   {/* Portrait photo — narrow and tall */}
@@ -900,7 +870,7 @@ export default function Home() {
                       ))}
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </div>
@@ -933,10 +903,7 @@ export default function Home() {
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+            <div
               className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-12 relative overflow-hidden w-full shadow-2xl"
             >
               <form className="space-y-6 md:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
@@ -1038,7 +1005,7 @@ export default function Home() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
