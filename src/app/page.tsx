@@ -379,7 +379,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-24">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-[12vh] lg:pt-[14vh]">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <motion.div
@@ -389,7 +389,7 @@ export default function Home() {
                 className="w-full text-center space-y-8 md:space-y-10"
               >
                 <div className="space-y-4 md:space-y-6">
-                  <h1 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                  <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                     Pick and Drop <br />
                     <span className="text-secondary italic">Shuttle Service</span>
                   </h1>
@@ -409,7 +409,7 @@ export default function Home() {
 
 
                       { text: "Convenience", icon: "thumb_up" },
-                      { text: "On-time delivery", icon: "schedule" },
+                      // { text: "On-time delivery", icon: "schedule" },
 
                     ].map((value, i) => (
                       <motion.div
@@ -443,7 +443,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.2, duration: 0.8 }}
-              className="w-full max-w-4xl pb-40 md:pb-56 mx-auto"
+              className="w-full max-w-4xl pb-16 md:pb-[10vh] lg:pb-[12vh] mx-auto"
             >
               <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10">
                 <div className="flex items-center gap-4 md:gap-6">
