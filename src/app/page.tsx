@@ -89,7 +89,7 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-fill"
           alt="Destination View"
         />
       </AnimatePresence>
@@ -828,7 +828,7 @@ export default function Home() {
                       </div>
                       <div className="text-left">
                         <h4 className="text-sm lg:text-2xl font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-lg leading-relaxed">{feature.desc}</p>
+                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-[12px] leading-relaxed">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -860,7 +860,7 @@ export default function Home() {
                     <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold  text-[10px] md:text-md leading-relaxed mb-2 text-justify">
+                    <p className="text-road-dark/70 font-bold  text-[12px] md:text-md leading-relaxed mb-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
