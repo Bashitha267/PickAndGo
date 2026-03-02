@@ -627,8 +627,8 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-4 relative z-10">
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
-                      <span className="material-symbols-outlined text-sm text-primary">person</span>
-                      <span className="text-road-dark/80 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
+                      <span className="material-symbols-outlined text-sm text-orange-500">person</span>
+                      <span className="text-orange-500 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
                     </div>
 
                   </div>
@@ -663,8 +663,8 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-4 relative z-10">
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
-                      <span className="material-symbols-outlined text-sm text-primary">person</span>
-                      <span className="text-road-dark/80 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
+                      <span className="material-symbols-outlined text-sm text-orange-500">person</span>
+                      <span className="text-orange-500 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
                     </div>
 
                   </div>
@@ -738,8 +738,8 @@ export default function Home() {
                           {dest.name}
                         </h3>
                         <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
-                          <span className="material-symbols-outlined text-[10px] text-primary">distance</span>
-                          <span className="text-[10px] font-black text-primary uppercase tracking-wider">{dest.distance}</span>
+                          <span className="material-symbols-outlined text-[10px] text-orange-500">distance</span>
+                          <span className="text-[10px] font-black text-orange-500 uppercase tracking-wider">{dest.distance}</span>
                         </div>
                       </div>
 
