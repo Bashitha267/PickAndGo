@@ -753,18 +753,18 @@ export default function Home() {
                       <span className="text-white font-black text-[9px] uppercase tracking-[0.2em]">{dest.distance}</span>
                       <span className="material-symbols-outlined text-orange-500 text-sm">near_me</span>
                     </div>
-                    <div className="absolute top-3 left-3 z-30 bg-white/45 backdrop-blur-md border border-white/40 px-2.5 py-1 rounded-lg">
-                      <span className="text-black font-black text-[8px] uppercase tracking-widest">{dest.type}</span>
-                    </div>
+
                   </div>
 
-                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
+                  <div className="flex flex-col gap-3 flex-1 p-4 relative z-10 bg-white/10 backdrop-blur-xl">
                     <h3 className="text-base lg:text-lg font-black italic uppercase tracking-tighter text-road-dark mb-1 group-hover:text-primary transition-colors leading-none">
                       {dest.name}
                     </h3>
-                    <p className="text-road-dark/50 text-[9px] font-bold leading-snug line-clamp-2 mb-3 flex-1">
-                      {dest.places}
+                    <p className="text-black font-black text-[12px] uppercase tracking-widest">
+                      Places to Visit: <br></br><span className="text-orange-500 text-[11px]">{dest.places}</span>
                     </p>
+                    <p className="text-black font-black text-[12px] uppercase tracking-widest">Destination Values:<br></br><span className="font-black text-[8px] uppercase tracking-widest text-accent-blue text-[11px]">{dest.type}</span></p>
+
                     <a
                       href="#contact"
                       className="w-full h-9 rounded-xl bg-road-dark backdrop-blur-sm text-white font-black text-[8px] uppercase tracking-widest hover:bg-primary hover:shadow-xl hover:shadow-primary/30 transition-all duration-300 flex items-center justify-center gap-2 group/btn border border-white/10"
@@ -817,7 +817,7 @@ export default function Home() {
                       </div>
                       <div className="text-left">
                         <h4 className="text-sm lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-xs leading-relaxed">{feature.desc}</p>
+                        <p className="text-road-dark/70 font-bold text-[11px] lg:text-sm leading-relaxed">{feature.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -848,17 +848,17 @@ export default function Home() {
 
                   {/* Description — always below the photo */}
                   <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left">
-                    <p className="text-primary font-black text-[11px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
-                    <h3 className="text-2xl lg:text-3xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
+                    <p className="text-primary font-black text-[12px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
+                    <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold text-xs leading-relaxed mb-2 text-justify">
+                    <p className="text-road-dark/70 font-bold text-sm leading-relaxed mb-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {["Leadership", "Safety", "Trip Management"].map((tag) => (
-                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[8px] uppercase tracking-widest" >
+                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[10px] uppercase tracking-widest" >
                           {tag}
                         </span>
                       ))}
