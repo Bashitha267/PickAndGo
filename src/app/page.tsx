@@ -858,13 +858,13 @@ export default function Home() {
                     <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold text-md leading-relaxed mb-2 text-justify">
+                    <p className="text-road-dark/70 font-bold  text-[10px] md:text-md leading-relaxed mb-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 mt-1">
                       {["Leadership", "Safety", "Trip Management"].map((tag) => (
-                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[12px] uppercase tracking-widest" >
+                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[10px] md:text-md lg:text-[12px] uppercase tracking-widest" >
                           {tag}
                         </span>
                       ))}
@@ -932,8 +932,8 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Pickup & Drop & Date */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Pickup & Drop & Date & Time */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Pickup Location</label>
                     <div className="relative group w-full">
@@ -949,10 +949,17 @@ export default function Home() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Date / Time</label>
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Date</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">today</span>
-                      <input suppressHydrationWarning type="datetime-local" className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm [color-scheme:dark]" />
+                      <input suppressHydrationWarning type="date" className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Time</label>
+                    <div className="relative group w-full">
+                      <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base">schedule</span>
+                      <input suppressHydrationWarning type="time" className="w-full max-w-full h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
                     </div>
                   </div>
                 </div>
