@@ -254,7 +254,7 @@ export default function Home() {
   const navLinks = ["home", "services", "testimonials", "fleet", "destinations", "why-us", "contact"];
 
   return (
-    <div className="bg-white text-road-dark h-screen overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins scroll-smooth">
+    <div className="bg-road-dark text-road-dark h-screen overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins scroll-smooth">
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
