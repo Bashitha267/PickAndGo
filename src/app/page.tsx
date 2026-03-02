@@ -142,7 +142,7 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] pt-10 pb-14 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] pt-10 pb-10 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
@@ -531,18 +531,17 @@ export default function Home() {
               ].map((svc, i) => (
                 <div
                   key={i}
-                  className="rounded-3xl overflow-hidden flex flex-row group relative border border-white/70 hover:border-primary/50 transition-all duration-500 shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_20px_50px_rgba(46,125,50,0.18)]"
+                  className="rounded-3xl overflow-hidden flex flex-row group relative border  border-primary/50  md:border-white transition-all duration-500  hover:scale-[1.05] hover:border-primary/50 drop-shadow-lg shadow-primary/20"
                   style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)" }}
                 >
                   {/* Top shine edge */}
-                  <div className="absolute top-0 inset-x-0 h-px bg-linear-to-r from-transparent via-white/90 to-transparent z-20 pointer-events-none" />
-                  {/* Hover glow spot */}
-                  <div className="absolute -left-8 top-1/2 -translate-y-1/2 w-20 h-20 bg-primary/15 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+
+
 
                   {/* Image panel */}
                   <div className="w-[38%] shrink-0 overflow-hidden relative">
                     <div
-                      className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700 min-h-[160px]"
+                      className="w-full h-full bg-cover bg-center transition-transform duration-700 min-h-[160px]"
                       style={{ backgroundImage: `url('${svc.img}')` }}
                     />
                     <div className="absolute inset-0 bg-linear-to-r from-primary/25 to-primary/5 mix-blend-multiply" />
@@ -556,8 +555,8 @@ export default function Home() {
                   >
                     <div>
                       <div className="flex items-center gap-2 text-accent-blue mb-2">
-                        <span className="material-symbols-outlined text-base">{svc.icon}</span>
-                        <span className="text-[9px] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
+                        <span className="material-symbols-outlined text-[10px]">{svc.icon}</span>
+                        <span className="text-[10px] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
                       </div>
                       <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
                       <p className="text-road-dark/60 text-[10px] lg:text-[14px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
@@ -576,7 +575,7 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-auto md:h-screen flex flex-col items-center justify-start md:justify-center pt-10 pb-20 md:pt-0 md:pb-0 snap-start scroll-mt-0 relative overflow-hidden">
+        <section id="testimonials" className="h-auto md:h-screen flex flex-col items-center justify-start md:justify-center pt-10 pb-6 md:pt-0 md:pb-0 snap-start scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
