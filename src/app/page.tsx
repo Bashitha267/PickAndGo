@@ -251,7 +251,7 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const navLinks = ["home", "services", "fleet", "destinations", "why-us", "contact"];
+  const navLinks = ["home", "services", "testimonials", "fleet", "destinations", "why-us", "contact"];
 
   return (
     <div className="bg-white text-road-dark h-screen overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins scroll-smooth">
@@ -754,7 +754,7 @@ export default function Home() {
                   <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
                   {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
-                  <div className="relative w-full h-72 sm:h-80 md:h-80 md:aspect-3/4 overflow-hidden">
+                  <div className="relative w-full h-72 sm:h-80 md:h-72 md:aspect-3/4 overflow-hidden">
                     <DestinationGallery images={dest.images} />
 
 
@@ -800,7 +800,7 @@ export default function Home() {
                         </div>
                         <div className="pl-4 ml-4 border-l-2 border-sky-blue/20 flex flex-wrap gap-2">
                           {dest.type.split('/').map((tag, idx) => (
-                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] uppercase tracking-[0.1em] border border-white/50 shadow-sm">
+                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] uppercase tracking-widest border border-white/50 shadow-sm">
                               {tag.trim()}
                             </span>
                           ))}
@@ -839,7 +839,7 @@ export default function Home() {
                   viewport={{ once: true }}
                 >
                   {/* Consistent section title design */}
-                  <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">The Pick &amp; Drop Edge</p>
+                  <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
                   <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </motion.div>
@@ -859,11 +859,11 @@ export default function Home() {
                       className="flex items-center gap-4 p-4 lg:p-6 rounded-3xl bg-sky-blue/8 backdrop-blur-3xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-all duration-500"
                     >
                       <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 border border-white/30`}>
-                        <span className={`material-symbols-outlined text-xl lg:text-3xl ${feature.iconColor}`}>{feature.icon}</span>
+                        <span className={`material-symbols-outlined text-xl lg:text-4xl ${feature.iconColor}`}>{feature.icon}</span>
                       </div>
                       <div className="text-left">
-                        <h4 className="text-sm lg:text-lg font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[11px] lg:text-sm leading-relaxed">{feature.desc}</p>
+                        <h4 className="text-sm lg:text-2xl font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
+                        <p className="text-road-dark/70 font-bold text-[11px] lg:text-lg leading-relaxed">{feature.desc}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -879,7 +879,7 @@ export default function Home() {
                   className="flex flex-col items-center gap-5"
                 >
                   {/* Portrait photo — narrow and tall */}
-                  <div className="relative w-full max-w-[280px] mx-auto">
+                  <div className="relative w-full max-w-[280px] mx-auto lg:mt-6">
                     <div className="absolute -inset-3 bg-accent-gold/10 rounded-[3rem] blur-2xl rotate-2"></div>
                     <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
                       <img
@@ -893,18 +893,18 @@ export default function Home() {
                   </div>
 
                   {/* Description — always below the photo */}
-                  <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left">
-                    <p className="text-primary font-black text-[12px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
+                  <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left ">
+                    <p className="text-primary font-black text-[14px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
                     <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold text-sm leading-relaxed mb-2 text-justify">
+                    <p className="text-road-dark/70 font-bold text-md leading-relaxed mb-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {["Leadership", "Safety", "Trip Management"].map((tag) => (
-                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[10px] uppercase tracking-widest" >
+                        < span key={tag} className="px-3 py-1 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-[12px] uppercase tracking-widest" >
                           {tag}
                         </span>
                       ))}
