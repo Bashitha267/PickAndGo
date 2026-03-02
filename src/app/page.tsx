@@ -826,7 +826,7 @@ export default function Home() {
                       </div>
                       <div className="text-left">
                         <h4 className="text-sm lg:text-2xl font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[11px] lg:text-lg leading-relaxed">{feature.desc}</p>
+                        <p className="text-road-dark/70 font-bold text-[10px] lg:text-lg leading-relaxed">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
