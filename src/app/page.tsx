@@ -576,10 +576,10 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="flex flex-col snap-start scroll-mt-0 relative overflow-hidden py-24 lg:py-32">
+        <section id="testimonials" className="h-screen flex flex-col items-center justify-center snap-start scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
-            className="absolute inset-0 z-0 bg-cover bg-center bg-fixed"
+            className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078183/WhatsApp_Image_2026-02-23_at_20.51.43_mvard9.jpg')` }}
           ></div>
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
