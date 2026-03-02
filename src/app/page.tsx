@@ -441,20 +441,20 @@ export default function Home() {
             </div>
 
             {/* Bottom Aligned Payment Bar */}
-            <div className="w-full max-w-4xl pb-16 md:pb-[10vh] lg:pb-[12vh] mx-auto">
-              <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10">
+            <div className="w-full md:max-w-4xl pb-20 md:pb-[10vh] lg:pb-[12vh] mx-auto">
+              <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10 mb-10 md:mb-2">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
                   <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
                   <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12 gap-y-6 md:gap-y-8 px-6">
+                <div className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12 gap-y-6 md:gap-y-8 px-4 ">
                   {/* Visa */}
                   <div className="group/icon cursor-help transition-all duration-300   rounded-lg hover:scale-110">
                     <img
                       src="/visa.png"
-                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity  "
+                      className="h-8 md:h-12 2xl:h-16 w-16 lg:w-auto opacity-100 transition-opacity  "
                       alt="Visa"
                     />
                   </div>
