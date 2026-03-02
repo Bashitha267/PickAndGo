@@ -598,7 +598,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-blue py-20 relative overflow-hidden">
+        <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
