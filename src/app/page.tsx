@@ -142,12 +142,12 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-[2.5rem] py-8 px-6 sm:p-10 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-[0_30px_60px_rgba(0,0,0,0.5)] group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] py-5 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[300px] md:min-h-[280px]">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[220px] md:min-h-[280px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -510,7 +510,7 @@ export default function Home() {
         </section>
 
         {/* Service Category Cards */}
-        < section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 py-20 relative z-20 overflow-hidden" >
+        < section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden" >
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
 
@@ -576,7 +576,7 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-screen flex flex-col items-center justify-center snap-start scroll-mt-0 relative overflow-hidden">
+        <section id="testimonials" className="h-auto md:h-screen flex flex-col items-center justify-start md:justify-center pt-10 pb-20 md:pt-0 md:pb-0 snap-start scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
@@ -584,8 +584,8 @@ export default function Home() {
           ></div>
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-8">
-            <div className="mb-6 lg:mb-8 border-b border-white/10 pb-5">
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-0 md:mb-8">
+            <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
               <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-lg">
                 Client <span className="text-primary">Testimonials</span>
@@ -593,12 +593,12 @@ export default function Home() {
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-[0_0_15px_rgba(253,185,19,0.5)]"></div>
             </div>
 
-            <div className="mt-1 md:mt-12">
+            <div className="mt-2 md:mt-12">
               <TestimonialsSlider />
             </div>
           </div>
         </section>
-        <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden">
+        <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
@@ -700,7 +700,9 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden">
+        <section id="destinations" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
@@ -794,8 +796,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow py-20 relative overflow-hidden border-t border-black/5">
-          <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden border-t border-black/5">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
 
@@ -878,7 +880,7 @@ export default function Home() {
         </section >
 
         {/* Payment Form Section */}
-        <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 py-20 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 pt-10 pb-14 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
