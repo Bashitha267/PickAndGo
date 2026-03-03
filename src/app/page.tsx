@@ -350,11 +350,11 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-[12vh] lg:pt-[14vh]">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-16 md:pt-[12vh] lg:pt-[14vh]">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
-              <div className="w-full text-center space-y-8 md:space-y-10">
-                <div className="space-y-4 md:space-y-6">
+              <div className="w-full text-center space-y-6 md:space-y-10">
+                <div className="space-y-3 md:space-y-6">
                   <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                     Pick and Drop <br />
                     <span className="text-secondary italic">Shuttle Service</span>
@@ -365,7 +365,7 @@ export default function Home() {
                 </div>
 
                 {/* Our Values Section */}
-                <div className="space-y-6 md:space-y-8">
+                <div className="space-y-3 md:space-y-8">
 
                   <div className="flex items-center gap-4 md:gap-6 justify-center">
                     <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
@@ -375,21 +375,17 @@ export default function Home() {
 
 
 
-                  <div className="flex flex-wrap justify-center gap-2.5 md:gap-4">
+                  <div className="flex flex-wrap justify-center gap-2 md:gap-4">
                     {[
                       { text: "Spacious", icon: "directions_car" },
                       { text: "Reliability", icon: "verified" },
                       { text: "Clean", icon: "cleaning_services" },
                       { text: "Ontime", icon: "schedule" },
-
-
                       { text: "Convenience", icon: "thumb_up" },
-                      // { text: "On-time delivery", icon: "schedule" },
-
                     ].map((value, i) => (
                       <div
                         key={i}
-                        className="flex items-center justify-center gap-2 px-5 py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg w-[160px] md:w-[210px]"
+                        className="flex items-center justify-center gap-2 px-4 py-2.5 md:px-5 md:py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg w-[140px] sm:w-[160px] md:w-[210px]"
                       >
                         <span className="material-symbols-outlined text-secondary text-lg md:text-xl drop-shadow-[0_0_8px_rgba(253,185,19,0.4)]">{value.icon}</span>
                         <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
@@ -398,7 +394,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="pt-4 flex flex-col items-center mb-8">
+                <div className="pt-1 flex flex-col items-center mb-2 md:mb-8">
                   <a href="#contact" className="group relative w-full sm:w-auto">
                     <div className="absolute inset-0 bg-primary blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
                     <button className="relative w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 bg-primary text-white font-black text-lg md:text-lg rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
@@ -411,8 +407,8 @@ export default function Home() {
             </div>
 
             {/* Bottom Aligned Payment Bar */}
-            <div className="w-full md:max-w-4xl pb-20 md:pb-[10vh] lg:pb-[12vh] mx-auto">
-              <div className="relative flex flex-col items-center gap-6 py-6 border-t border-white/10 mb-10 md:mb-2">
+            <div className="w-full md:max-w-4xl pb-14 md:pb-[10vh] lg:pb-[12vh] mx-auto">
+              <div className="relative flex flex-col items-center gap-4 py-4 md:gap-6 md:py-6 border-t border-white/10 mb-4 md:mb-2">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
                   <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
@@ -501,8 +497,7 @@ export default function Home() {
               ].map((svc, i) => (
                 <div
                   key={i}
-                  className="rounded-3xl overflow-hidden flex flex-row group relative border  border-primary/50  md:border-white transition-all duration-500  hover:scale-[1.02] hover:border-primary/50 drop-shadow-lg shadow-primary/20"
-                  style={{ background: "rgba(255,255,255,0.25)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
+                  className="rounded-3xl overflow-hidden flex flex-row group relative border border-primary/50 md:border-white transition-all duration-500 hover:scale-[1.02] hover:border-primary/50 drop-shadow-lg shadow-primary/20 bg-white/20 backdrop-blur-md"
                 >
                   {/* Top shine edge */}
 
@@ -520,8 +515,7 @@ export default function Home() {
 
                   {/* Content panel — frosted glass */}
                   <div
-                    className="p-4 flex-1 flex flex-col justify-between italic border-l border-white/50 relative z-10"
-                    style={{ background: "rgba(255,255,255,0.15)", backdropFilter: "blur(16px)", WebkitBackdropFilter: "blur(16px)" }}
+                    className="p-4 flex-1 flex flex-col justify-between italic border-l border-white/50 relative z-10 bg-white/10"
                   >
                     <div>
                       <div className="flex items-center gap-2 text-accent-blue mb-2">
