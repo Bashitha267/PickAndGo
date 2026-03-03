@@ -238,7 +238,7 @@ export default function Home() {
   const navLinks = ["home", "services", "testimonials", "fleet", "destinations", "why-us", "contact"];
 
   return (
-    <div className="bg-road-dark text-road-dark h-screen overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins scroll-smooth">
+    <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins">
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -333,7 +333,7 @@ export default function Home() {
 
       <main>
         {/* New Immersive Slider Section */}
-        <section id="home" className="relative h-screen w-full flex items-center justify-center px-0 overflow-hidden snap-start snap-always scroll-mt-0">
+        <section id="home" className="relative h-dvh w-full flex items-center justify-center px-0 overflow-hidden snap-start snap-always scroll-mt-0">
           {/* Desktop Background Image */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
@@ -480,7 +480,7 @@ export default function Home() {
         </section>
 
         {/* Service Category Cards */}
-        < section id="services" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden" >
+        < section id="services" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden" >
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
 
@@ -545,7 +545,7 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-auto md:h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
+        <section id="testimonials" className="h-auto md:h-dvh flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
@@ -567,7 +567,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="fleet" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
+        <section id="fleet" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
@@ -671,7 +671,7 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 md:pb-20 pb-14 relative overflow-hidden">
+        <section id="destinations" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 md:pb-20 pb-14 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
@@ -767,7 +767,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="why-us" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
+        <section id="why-us" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
@@ -851,7 +851,7 @@ export default function Home() {
         </section >
 
         {/* Payment Form Section */}
-        <section id="contact" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18  pb-14 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18  pb-14 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
