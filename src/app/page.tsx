@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+
 import { Map } from "lucide-react";
 
 // --- Hero Carousel Data ---
@@ -66,7 +66,7 @@ const destinations = [
 
 // --- Hero Images ---
 const heroDesktop = "https://res.cloudinary.com/dnfbik3if/image/upload/v1772122284/89ef5768ada38b95bdd077e38b74af0f_xeankj.jpg";
-const heroMobile = "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078920/WhatsApp_Image_2026-02-23_at_20.51.47_aec4xd.jpg";
+const heroMobile = "https://res.cloudinary.com/dnfbik3if/image/upload/v1772544414/89ef5768ada38b95bdd077e38b74af0f_xeankj_qwp3w2.jpg";
 
 // --- Mini Component for Destination Image Animation ---
 const DestinationGallery = ({ images }: { images: string[] }) => {
@@ -81,18 +81,11 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden">
-      <AnimatePresence>
-        <motion.img
-          key={index}
-          src={images[index]}
-          initial={{ opacity: 0, scale: 1.1 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          transition={{ duration: 1, ease: "easeInOut" }}
-          className="absolute inset-0 object-full  w-full h-full "
-          alt="Destination View"
-        />
-      </AnimatePresence>
+      <img
+        src={images[index]}
+        className="absolute inset-0 object-full w-full h-full transition-opacity duration-1000"
+        alt="Destination View"
+      />
       {/* Small Indicator Dots */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
         {images.map((_, i) => (
@@ -142,42 +135,33 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] pt-12 pb-14 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/30 backdrop-blur-2xl shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/40">
+    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] pt-12 pb-14 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/40 backdrop-blur-lg shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/45">
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
 
       <div className="lg:mt-10 relative z-10 flex flex-col items-center justify-center text-center min-h-[220px] md:min-h-[280px]">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: 40 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -40 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="flex flex-col items-center w-full justify-between h-full py-4 pb-8 md:pb-4"
-          >
-            <div className="relative mb-5 md:mb-6">
-              <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-60"></div>
-              <img
-                src={testimonialsData[index].image}
-                alt={testimonialsData[index].name}
-                className="w-24 h-24 md:w-auto md:h-28 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
-              />
-              <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
-                <span className="material-symbols-outlined text-[14px] md:text-base">format_quote</span>
-              </div>
+        <div className="flex flex-col items-center w-full justify-between h-full py-4 pb-8 md:pb-4">
+          <div className="relative mb-5 md:mb-6">
+            <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-60"></div>
+            <img
+              src={testimonialsData[index].image}
+              alt={testimonialsData[index].name}
+              className="w-24 h-24 md:w-auto md:h-28 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
+            />
+            <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
+              <span className="material-symbols-outlined text-[14px] md:text-base">format_quote</span>
             </div>
+          </div>
 
-            <p className="text-white/90 text-[13px] sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
-              "{testimonialsData[index].text}"
-            </p>
+          <p className="text-white/90 text-[13px] sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
+            "{testimonialsData[index].text}"
+          </p>
 
-            <h4 className="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-widest drop-shadow-lg">
-              {testimonialsData[index].name}
-            </h4>
-          </motion.div>
-        </AnimatePresence>
+          <h4 className="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-widest drop-shadow-lg">
+            {testimonialsData[index].name}
+          </h4>
+        </div>
       </div>
 
       {/* Navigation Controls */}
@@ -299,71 +283,57 @@ export default function Home() {
       </header>
 
       {/* Mobile Slide-Down Menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <>
-            <motion.div
-              key="overlay"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
-            />
-            <motion.div
-              key="drawer"
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl flex flex-col md:hidden overflow-y-auto"
-            >
-              {/* Drawer header */}
-              <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
-                <img src="/logo.png" alt="Pick & Drop Logo" className="h-12 w-auto object-contain" />
-                <button onClick={() => setMenuOpen(false)} className="p-2 rounded-lg hover:bg-gray-100 transition-all">
-                  <span className="material-symbols-outlined text-road-dark">close</span>
-                </button>
-              </div>
-              {/* Nav links */}
-              <nav className="flex flex-col gap-1 px-4 py-6 flex-1">
-                {navLinks.map((item, i) => (
-                  <motion.a
-                    key={item}
-                    href={`#${item}`}
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.06 }}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center gap-3 px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${activeSection === item
-                      ? "bg-primary/10 text-primary"
-                      : "text-road-dark hover:bg-gray-100"
-                      }`}
-                  >
-                    <span className={`w-1.5 h-1.5 rounded-full ${activeSection === item ? "bg-primary" : "bg-black/20"}`} />
-                    {item.replace("-", " ")}
-                  </motion.a>
-                ))}
-              </nav>
-              {/* CTA */}
-              <div className="px-6 pb-8">
+      {menuOpen && (
+        <>
+          <div
+            onClick={() => setMenuOpen(false)}
+            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+          />
+          <div
+            className="fixed top-0 right-0 z-50 h-full w-72 bg-white shadow-2xl flex flex-col md:hidden overflow-y-auto"
+          >
+            {/* Drawer header */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
+              <img src="/logo.png" alt="Pick & Drop Logo" className="h-12 w-auto object-contain" />
+              <button onClick={() => setMenuOpen(false)} className="p-2 rounded-lg hover:bg-gray-100 transition-all">
+                <span className="material-symbols-outlined text-road-dark">close</span>
+              </button>
+            </div>
+            {/* Nav links */}
+            <nav className="flex flex-col gap-1 px-4 py-6 flex-1">
+              {navLinks.map((item, i) => (
                 <a
-                  href="#contact"
+                  key={item}
+                  href={`#${item}`}
                   onClick={() => setMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all"
+                  className={`flex items-center gap-3 px-4 py-3.5 rounded-xl font-black text-sm uppercase tracking-widest transition-all ${activeSection === item
+                    ? "bg-primary/10 text-primary"
+                    : "text-road-dark hover:bg-gray-100"
+                    }`}
                 >
-                  <span className="material-symbols-outlined text-base">directions_car</span>
-                  Book Now
+                  <span className={`w-1.5 h-1.5 rounded-full ${activeSection === item ? "bg-primary" : "bg-black/20"}`} />
+                  {item.replace("-", " ")}
                 </a>
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+              ))}
+            </nav>
+            {/* CTA */}
+            <div className="px-6 pb-8">
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-center gap-2 w-full h-14 bg-primary text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-lg shadow-primary/30 hover:bg-primary/90 transition-all"
+              >
+                <span className="material-symbols-outlined text-base">directions_car</span>
+                Book Now
+              </a>
+            </div>
+          </div>
+        </>
+      )}
 
       <main>
         {/* New Immersive Slider Section */}
-        <section id="home" className="relative h-screen w-full flex items-center justify-center px-0 overflow-hidden snap-start scroll-mt-0">
+        <section id="home" className="relative h-screen w-full flex items-center justify-center px-0 overflow-hidden snap-start snap-always scroll-mt-0">
           {/* Desktop Background Image */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
@@ -380,13 +350,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-[12vh] lg:pt-[14vh]"
-          >
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-[12vh] lg:pt-[14vh]">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-8 md:space-y-10">
@@ -395,7 +359,7 @@ export default function Home() {
                     Pick and Drop <br />
                     <span className="text-secondary italic">Shuttle Service</span>
                   </h1>
-                  <span className="inline-block px-8 py-2.5 bg-black/75 backdrop-blur-xl rounded-full text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
                     Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
                   </span>
                 </div>
@@ -439,7 +403,7 @@ export default function Home() {
                     <div className="absolute inset-0 bg-primary blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
                     <button className="relative w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 bg-primary text-white font-black text-lg md:text-lg rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
                       BOOK NOW
-                      <span className="material-symbols-outlined animate-bounce">south</span>
+                      <span className="material-symbols-outlined">south</span>
                     </button>
                   </a>
                 </div>
@@ -512,21 +476,15 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Service Category Cards */}
-        < section id="services" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden" >
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
+        < section id="services" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden" >
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-7xl mx-auto w-full"
-          >
+          <div className="max-w-7xl mx-auto w-full">
             <div className="text-left mb-8">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What We Offer</p>
@@ -543,8 +501,8 @@ export default function Home() {
               ].map((svc, i) => (
                 <div
                   key={i}
-                  className="rounded-3xl overflow-hidden flex flex-row group relative border  border-primary/50  md:border-white transition-all duration-500  hover:scale-[1.05] hover:border-primary/50 drop-shadow-lg shadow-primary/20"
-                  style={{ background: "rgba(255,255,255,0.22)", backdropFilter: "blur(28px)", WebkitBackdropFilter: "blur(28px)" }}
+                  className="rounded-3xl overflow-hidden flex flex-row group relative border  border-primary/50  md:border-white transition-all duration-500  hover:scale-[1.02] hover:border-primary/50 drop-shadow-lg shadow-primary/20"
+                  style={{ background: "rgba(255,255,255,0.25)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)" }}
                 >
                   {/* Top shine edge */}
 
@@ -583,11 +541,11 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-auto md:h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start scroll-mt-0 relative overflow-hidden">
+        <section id="testimonials" className="h-auto md:h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
@@ -595,13 +553,7 @@ export default function Home() {
           ></div>
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-0 md:mb-8"
-          >
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-0 md:mb-8">
             <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
               <h2 className="text-2xl  sm:text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-lg">
@@ -613,20 +565,14 @@ export default function Home() {
             <div className="mt-4 md:mt-12">
               <TestimonialsSlider />
             </div>
-          </motion.div>
+          </div>
         </section>
-        <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
+        <section id="fleet" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-7xl mx-auto px-6 w-full relative z-10"
-          >
+          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
             <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8 lg:mt-10">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
@@ -697,7 +643,7 @@ export default function Home() {
 
                 <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
                   <img
-                    src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771253529/fit-lx-32-white_bxh03s.png"
+                    src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772544135/fit-lx-32-white_bxh03s_yasemu.png"
                     className="w-fill h-full  scale-110 lg:scale-150 object-contain    drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)] md:drop-shadow-none group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Fit"
                   />
@@ -715,7 +661,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
 
@@ -725,19 +671,13 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 md:pb-20 pb-14 relative overflow-hidden">
+        <section id="destinations" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 md:pb-20 pb-14 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-5"
-          >
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-5">
             {/* Consistent section title design */}
             <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
@@ -763,7 +703,7 @@ export default function Home() {
 
                   </div>
 
-                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/40 backdrop-blur-3xl border-t border-white/50 group-hover:bg-white/50 transition-colors duration-500">
+                  <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/45 backdrop-blur-lg border-t border-white/50 group-hover:bg-white/55 transition-colors duration-500">
                     <div className="mb-2">
                       <div className="flex justify-between items-start mb-1.5">
                         <h3 className="text-2xl lg:text-3xl font-black italic uppercase tracking-tighter text-road-dark group-hover:text-primary transition-colors leading-none">
@@ -825,20 +765,14 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </section>
-        <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
+        <section id="why-us" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-          <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
-          <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
+          <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-7xl mx-auto px-6 relative z-10 w-full"
-          >
+          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               {/* Left Column: Features */}
               <div className="space-y-8 lg:space-y-12">
@@ -859,9 +793,9 @@ export default function Home() {
                   ].map((feature, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-4 p-4 lg:p-9 rounded-3xl bg-sky-blue/8 backdrop-blur-xl border border-sky-blue/20 hover:bg-sky-blue/15 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
+                      className="flex items-center gap-4 p-4 lg:p-9 rounded-3xl bg-sky-blue/12 backdrop-blur-md border border-sky-blue/20 hover:bg-sky-blue/18 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
                     >
-                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-xl rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 border border-white/30`}>
+                      <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-md rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 border border-white/30`}>
                         <span className={`material-symbols-outlined text-xl lg:text-4xl ${feature.iconColor}`}>{feature.icon}</span>
                       </div>
                       <div className="text-left">
@@ -913,11 +847,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section >
 
         {/* Payment Form Section */}
-        <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 pt-10 lg:pt-18  pb-14 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-screen flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18  pb-14 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
@@ -934,13 +868,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/45 backdrop-blur-[6px]"></div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center"
-          >
+          <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center">
             <div className="text-center mt-2 mb-6 lg:mb-10 w-full">
               {/* Consistent section title design */}
 
@@ -1059,7 +987,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
       </main >

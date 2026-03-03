@@ -47,55 +47,56 @@ body {
 
 /* --- Stylish & Visible Effects --- */
 
-.stylish-glow-text {
-  text-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
-  letter-spacing: -0.02em;
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 1000px;
 }
 
 .glass-nav {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
 }
 
 .hero-glass {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.4);
 }
 
 .bg-pattern-green {
   background-color: var(--color-theme-green-bg);
-  background-image: radial-gradient(circle at 2px 2px, rgba(69, 136, 50, 0.08) 1.5px, transparent 0);
+  background-image: radial-gradient(circle at 2px 2px, rgba(69, 136, 50, 0.06) 1.5px, transparent 0);
   background-size: 32px 32px;
 }
 
 .bg-pattern-green-light {
   background-color: #f7fff8;
-  background-image: radial-gradient(circle at 2px 2px, rgba(69, 136, 50, 0.04) 1px, transparent 0);
+  background-image: radial-gradient(circle at 2px 2px, rgba(69, 136, 50, 0.03) 1px, transparent 0);
   background-size: 64 px 64px;
 }
 
 .bg-pattern-yellow {
   background-color: var(--color-theme-yellow-bg);
-  background-image: radial-gradient(circle at 2px 2px, rgba(253, 185, 19, 0.08) 1.5px, transparent 0);
+  background-image: radial-gradient(circle at 2px 2px, rgba(253, 185, 19, 0.06) 1.5px, transparent 0);
   background-size: 32px 32px;
 }
 
 .bg-pattern-blue {
   background-color: var(--color-theme-blue-bg);
-  background-image: radial-gradient(circle at 2px 2px, rgba(0, 99, 157, 0.08) 1.5px, transparent 0);
+  background-image: radial-gradient(circle at 2px 2px, rgba(0, 99, 157, 0.06) 1.5px, transparent 0);
   background-size: 32px 32px;
 }
 
@@ -104,40 +105,14 @@ body {
   position: relative;
 }
 
-/* Multi-colour contact section background */
-.bg-contact-vivid {
-  background: linear-gradient(135deg,
-      #0a0f1e 0%,
-      #0d2640 18%,
-      #1b5e20 38%,
-      #4a1a6b 58%,
-      #7b1a1a 78%,
-      #0a0f1e 100%);
-  background-size: 300% 300%;
-  animation: contactGradientShift 12s ease infinite;
-}
-
-@keyframes contactGradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
 /* Visible glass form card */
 .glass-form {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
+
 
 /* Visible input fields */
 .glass-input {
@@ -200,36 +175,4 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 
 .hero-overlay {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.2) 100%);
-}
-
-@keyframes float {
-  0% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-12px);
-  }
-
-  100% {
-    transform: translateY(0px);
-  }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes ken-burns {
-  0% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1.25);
-  }
-}
-
-.animate-ken-burns {
-  animation: ken-burns 20s ease-in-out infinite alternate;
 }
