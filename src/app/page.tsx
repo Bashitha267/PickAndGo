@@ -350,7 +350,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-16 md:pt-[12vh] lg:pt-[14vh]">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-16 md:pt-[12vh] lg:pt-[14vh] mb-14">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-6 md:space-y-10">
@@ -408,7 +408,7 @@ export default function Home() {
 
             {/* Bottom Aligned Payment Bar */}
             <div className="w-full md:max-w-4xl pb-14 md:pb-[10vh] lg:pb-[12vh] mx-auto">
-              <div className="relative flex flex-col items-center gap-4 py-4 md:gap-6 md:py-6 border-t border-white/10 mb-4 md:mb-2">
+              <div className="relative flex flex-col items-center gap-4 py-4 md:gap-6 md:py-6 border-t border-white/10 mb-4 md:mb-8">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
                   <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
