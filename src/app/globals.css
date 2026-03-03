@@ -32,11 +32,17 @@
   color-scheme: light;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: #ffffff;
   color: #181311;
   font-family: var(--font-poppins);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* --- Stylish & Visible Effects --- */

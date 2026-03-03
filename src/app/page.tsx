@@ -15,7 +15,7 @@ const destinations = [
     places: "Unawatuna, Jungle Beach, Galle Fort",
     markerPos: { x: "48%", y: "88%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731678/Galle_lpl2lm.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522580/Screenshot_2026-03-03_125147_d2gjzk.png",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078184/WhatsApp_Image_2026-02-23_at_20.51.57_abvvi5.jpg",
 
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg",
@@ -30,7 +30,7 @@ const destinations = [
     places: "Sigiriya Rock, Pidurangala, Minneriya",
     markerPos: { x: "55%", y: "45%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731686/Sigiriya_zoen7c.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522581/sig_jypnmn.png",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078183/WhatsApp_Image_2026-02-23_at_20.51.43_mvard9.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078902/WhatsApp_Image_2026-02-23_at_20.52.02_daiqcj.jpg"
     ],
@@ -43,7 +43,7 @@ const destinations = [
     places: "Nine Arch Bridge, Little Adam's Peak",
     markerPos: { x: "65%", y: "68%" },
     images: [
-      "https://res.cloudinary.com/dxoa3ashm/image/upload/v1772120024/Screenshot_2026-02-26_210247_kiqedv.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522584/ella_y36x9h.png",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg"
     ],
@@ -56,7 +56,7 @@ const destinations = [
     places: "Lotus Tower, Galle Face, Port City",
     markerPos: { x: "42%", y: "62%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1771731663/Colombo_sqqeku.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522601/col_mnwxaf.png",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_1_addldw.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_f3jbeg.jpg"
     ],
@@ -89,7 +89,7 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
           transition={{ duration: 1, ease: "easeInOut" }}
-          className="absolute inset-0 w-full h-full object-fill"
+          className="absolute inset-0 object-full  w-full h-full "
           alt="Destination View"
         />
       </AnimatePresence>
@@ -147,7 +147,7 @@ const TestimonialsSlider = () => {
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
 
-      <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-[220px] md:min-h-[280px]">
+      <div className="lg:mt-10 relative z-10 flex flex-col items-center justify-center text-center min-h-[220px] md:min-h-[280px]">
         <AnimatePresence mode="wait">
           <motion.div
             key={index}
@@ -380,7 +380,13 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-[12vh] lg:pt-[14vh]">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-32 md:pt-[12vh] lg:pt-[14vh]"
+          >
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-8 md:space-y-10">
@@ -506,7 +512,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Service Category Cards */}
@@ -514,7 +520,13 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64 animate-pulse"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64 animate-pulse"></div>
 
-          <div className="max-w-7xl mx-auto w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-7xl mx-auto w-full"
+          >
             <div className="text-left mb-8">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What We Offer</p>
@@ -561,17 +573,17 @@ export default function Home() {
                       <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
                       <p className="text-road-dark/60 text-[10px] lg:text-[14px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
-                    <div className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2">
+                    <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2 transition-all hover:opacity-80">
                       <span className="text-orange-500 font-black uppercase tracking-widest text-[11px]">Select Now</span>
                       <div className="bg-white/50 backdrop-blur-md border border-white/70 group-hover/btn:bg-orange-500 p-2 rounded-xl transition-all shadow-sm group-hover/btn:shadow-primary/30">
                         <span className="material-symbols-outlined text-xs text-orange-500 group-hover/btn:text-white transition-colors">arrow_forward</span>
                       </div>
-                    </div>
+                    </a>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section >
 
         {/* Testimonials Section */}
@@ -583,7 +595,13 @@ export default function Home() {
           ></div>
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-0 md:mb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-0 md:mb-8"
+          >
             <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
               <h2 className="text-2xl  sm:text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-lg">
@@ -595,15 +613,21 @@ export default function Home() {
             <div className="mt-4 md:mt-12">
               <TestimonialsSlider />
             </div>
-          </div>
+          </motion.div>
         </section>
         <section id="fleet" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
 
-          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
-            <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-7xl mx-auto px-6 w-full relative z-10"
+          >
+            <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8 lg:mt-10">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
@@ -620,7 +644,7 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Vehicle 1: Honda Shuttle */}
               <div
-                className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
+                className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all duration-500 hover:scale-[1.05] hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
 
@@ -648,15 +672,16 @@ export default function Home() {
                     <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
                     <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
                   </div>
-                  <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
+                  <a href="#contact" className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl group-hover:bg-primary transition-all">
+                    <span className="text-primary group-hover:text-white text-[10px] font-black uppercase tracking-widest">Book Now</span>
                     <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
-                  </div>
+                  </a>
                 </div>
               </div>
 
               {/* Vehicle 2: Honda Fit */}
               <div
-                className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
+                className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all duration-500 hover:scale-[1.05] hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
               >
                 <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
 
@@ -683,13 +708,14 @@ export default function Home() {
                     <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
                     <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
                   </div>
-                  <div className="bg-primary/10 p-2 rounded-xl group-hover:bg-primary transition-all">
+                  <a href="#contact" className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl group-hover:bg-primary transition-all">
+                    <span className="text-primary group-hover:text-white text-[10px] font-black uppercase tracking-widest">Book Now</span>
                     <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
 
@@ -705,7 +731,13 @@ export default function Home() {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-5">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-5"
+          >
             {/* Consistent section title design */}
             <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
@@ -720,7 +752,7 @@ export default function Home() {
               {destinations.map((dest, i) => (
                 <div
                   key={i}
-                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 flex flex-col"
+                  className="rounded-[2rem] overflow-hidden border border-white/60 hover:border-secondary/50 group relative bg-white/25 backdrop-blur-3xl shadow-[0_8px_40px_rgba(0,0,0,0.10)] hover:shadow-[0_16px_50px_rgba(253,185,19,0.15)] transition-all duration-500 hover:scale-[1.05] flex flex-col"
                 >
                   <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
@@ -793,14 +825,20 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
         <section id="why-us" className="min-h-screen flex items-center snap-start scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px] animate-float" style={{ animationDelay: '2s' }}></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-7xl mx-auto px-6 relative z-10 w-full"
+          >
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               {/* Left Column: Features */}
               <div className="space-y-8 lg:space-y-12">
@@ -875,11 +913,11 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section >
 
         {/* Payment Form Section */}
-        <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 pt-10 pb-14 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-screen flex items-center snap-start scroll-mt-0 pt-10 lg:pt-18  pb-14 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
@@ -896,7 +934,13 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/45 backdrop-blur-[6px]"></div>
           </div>
 
-          <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center"
+          >
             <div className="text-center mt-2 mb-6 lg:mb-10 w-full">
               {/* Consistent section title design */}
 
@@ -1015,7 +1059,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
       </main >
