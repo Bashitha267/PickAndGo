@@ -970,7 +970,7 @@ export default function Home() {
               </form>
 
               {/* Direct Contact Options */}
-              <div className="mt-12 pt-8 border-t border-white/10 relative z-10 w-full">
+              <div className="mt-4 pt-8 border-t border-white/10 relative z-10 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <a href="#" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
