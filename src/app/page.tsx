@@ -295,14 +295,14 @@ export default function Home() {
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth font-poppins">
       <Toaster position="top-right" richColors duration={3000} />
       {/* Top Navigation Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 lg:h-[10vh] flex items-center">
-        <div className="mx-6 md:mx-20 flex items-center justify-between w-full">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-8 lg:px-24 h-20 lg:h-[10vh] flex items-center transition-all duration-300">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
             <div className="relative group cursor-pointer z-20">
               <img
                 src="/logo.png"
                 alt="Pick & Drop Logo"
-                className="absolute top-1/2 -translate-y-1/2 left-0 h-16 lg:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] max-w-none"
+                className="absolute top-1/2 -translate-y-1/2 left-0 h-20 lg:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] max-w-none"
               />
               <div className="h-10 lg:h-12 w-28 lg:w-40" />
             </div>
@@ -321,14 +321,14 @@ export default function Home() {
             ))}
           </nav>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6">
             <a href="#contact" className="hidden sm:flex min-w-[120px] lg:min-w-[10vw] cursor-pointer items-center justify-center rounded-xl h-10 lg:h-[5vh] px-6 bg-orange-500 text-white text-[10px] lg:text-[1.8vh] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-orange-700 transition-all">
               <span>Book Now</span>
             </a>
             <button
               suppressHydrationWarning
               onClick={() => setMenuOpen((o) => !o)}
-              className="md:hidden text-road-dark flex items-center justify-center p-2 rounded-lg border border-black/10 hover:bg-gray-100 transition-all"
+              className="md:hidden text-road-dark flex items-center justify-center p-3 rounded-xl border border-black/10 hover:bg-gray-100 transition-all"
               aria-label="Toggle menu"
             >
               <span className="material-symbols-outlined">{menuOpen ? "close" : "menu"}</span>
@@ -349,7 +349,7 @@ export default function Home() {
           >
             {/* Drawer header */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-black/5">
-              <img src="/logo.png" alt="Pick & Drop Logo" className="h-12 w-auto object-contain" />
+
               <button onClick={() => setMenuOpen(false)} className="p-2 rounded-lg hover:bg-gray-100 transition-all">
                 <span className="material-symbols-outlined text-road-dark">close</span>
               </button>
@@ -578,7 +578,7 @@ export default function Home() {
                         <span className="text-[10px] lg:text-[1.5vh] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
                       </div>
                       <h3 className="text-base lg:text-[3vh] font-black mb-1.5 text-road-dark italic uppercase leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
-                      <p className="text-road-dark/60 text-[10px] lg:text-[2vh] leading-relaxed mb-3 font-bold">{svc.desc}</p>
+                      <p className="text-road-dark/60 text-[10px] lg:text-[1.7vh] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
                     <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2 transition-all hover:opacity-80">
                       <span className="text-orange-500 font-black uppercase tracking-widest text-[11px] lg:text-[1.8vh]">Select Now</span>
