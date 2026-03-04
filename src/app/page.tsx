@@ -828,7 +828,7 @@ export default function Home() {
                 >
                   {/* Consistent section title design */}
                   <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
-                  <h2 className="text-3xl lg:text-6xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <h2 className="text-3xl lg:text-5xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </div>
 
