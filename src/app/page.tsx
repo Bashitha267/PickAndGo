@@ -538,7 +538,7 @@ export default function Home() {
           <div className="md:mx-20 w-full">
             <div className="text-left mb-8">
               {/* Consistent section title design */}
-              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">What We Offer</p>
+              <p className="mt-2 lg:mt-14 text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">What We Offer</p>
               <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">Our Core <span className="text-primary mx-3">Services</span></h2>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
@@ -720,7 +720,7 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 lg:pt-24 md:pb-20 pb-14 relative overflow-hidden">
+        <section id="destinations" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 lg:pt-34 md:pb-20 pb-14 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
@@ -737,7 +737,7 @@ export default function Home() {
             </div>
 
             {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
-            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 2xl:mx-[10vh] mt-2">
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 2xl:mx-[10vh] mt-2 lg:mt-6">
               {destinations.map((dest, i) => (
                 <div
                   key={i}
@@ -755,12 +755,12 @@ export default function Home() {
                   <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/45 backdrop-blur-lg border-t border-white/50 group-hover:bg-white/55 transition-colors duration-500">
                     <div className="mb-2">
                       <div className="flex justify-between items-start mb-1.5">
-                        <h3 className="text-2xl lg:text-[3.5vh] font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
+                        <h3 className="text-2xl lg:text-[2.5vh] font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
                           {dest.name}
                         </h3>
                         <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
-                          <span className="material-symbols-outlined text-[10px] lg:text-[1.8vh] text-orange-500">distance</span>
-                          <span className="text-[10px] lg:text-[1.8vh] font-black text-orange-500 uppercase tracking-wider ">{dest.distance}</span>
+                          <span className="material-symbols-outlined text-[10px] lg:text-[1.4vh] text-orange-500">distance</span>
+                          <span className="text-[10px] lg:text-[1.5vh] font-black text-orange-500 uppercase tracking-wider ">{dest.distance}</span>
                         </div>
                       </div>
 
@@ -773,10 +773,10 @@ export default function Home() {
                           <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center group-hover/places:scale-110 transition-transform duration-300">
                             <Map size={16} strokeWidth={2.5} />
                           </div>
-                          <span className="text-[11px] lg:text-[1.8vh] font-black uppercase tracking-widest leading-none">Iconic Places</span>
+                          <span className="text-[11px] lg:text-[1.5vh] font-black uppercase tracking-widest leading-none">Iconic Places</span>
                         </div>
                         <div className="pl-4 ml-4 border-l-2 border-primary/20">
-                          <p className="text-road-dark/70 font-bold text-xs lg:text-[2vh] leading-relaxed">
+                          <p className="text-road-dark/70 font-bold text-xs lg:text-[1.8vh] leading-relaxed">
                             {dest.places}
                           </p>
                         </div>
@@ -788,11 +788,11 @@ export default function Home() {
                           <div className="w-8 h-8 rounded-xl bg-sky-blue/15 flex items-center justify-center group-hover/theme:scale-110 transition-transform duration-300">
                             <span className="material-symbols-outlined text-[18px]">verified</span>
                           </div>
-                          <span className="text-[11px] lg:text-[1.8vh] font-black uppercase tracking-widest leading-none">Travel Theme</span>
+                          <span className="text-[11px] lg:text-[1.5vh] font-black uppercase tracking-widest leading-none">Travel Theme</span>
                         </div>
                         <div className="pl-4 ml-4 border-l-2 border-sky-blue/20 flex flex-wrap gap-2">
                           {dest.type.split('/').map((tag, idx) => (
-                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] lg:text-[1.6vh] uppercase tracking-widest border border-white/50 shadow-sm">
+                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] lg:text-[1.5vh] uppercase tracking-widest border border-white/50 shadow-sm">
                               {tag.trim()}
                             </span>
                           ))}
