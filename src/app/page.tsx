@@ -958,28 +958,28 @@ export default function Home() {
                 {/* Pickup & Drop & Date & Time */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Pickup Location</label>
+                    <label className="text-[10px] font-black lg:text-[1.8vh] text-white/80 uppercase tracking-widest ml-2">Pickup Location</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">location_on</span>
                       <input name="pickup" required suppressHydrationWarning type="text" placeholder="From..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Drop Location</label>
+                    <label className="text-[10px] font-black lg:text-[1.8vh] text-white/80 uppercase tracking-widest ml-2">Drop Location</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">near_me</span>
                       <input name="drop" required suppressHydrationWarning type="text" placeholder="To..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Date</label>
+                    <label className="text-[10px] font-black lg:text-[1.8vh]  text-white/80 uppercase tracking-widest ml-2">Arrival Date</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">today</span>
                       <input name="date" required suppressHydrationWarning type="date" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Time</label>
+                    <label className="text-[10px] font-black lg:text-[1.8vh] text-white/80 uppercase tracking-widest ml-2">Arrival Time</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">schedule</span>
                       <input name="time" required suppressHydrationWarning type="time" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
