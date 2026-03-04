@@ -410,11 +410,11 @@ export default function Home() {
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-6 md:space-y-10">
                 <div className="space-y-3 md:space-y-6">
-                  <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black italic uppercase   drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                  <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-[7.5vh] 2xl:text-[9vh] font-black italic uppercase   drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                     Pick  and  Drop <br />
                     <span className="text-secondary italic ">Shuttle Service</span>
                   </h1>
-                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[13px] uppercase  border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[13px] lg:text-[1.6vh] uppercase  border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
                     Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
                   </span>
                 </div>
@@ -424,7 +424,7 @@ export default function Home() {
 
                   <div className="flex items-center gap-4 md:gap-6 justify-center">
                     <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
-                    <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">Our Core Values</span>
+                    <span className="text-white text-[9px] md:text-[10px] lg:text-[1.4vh] font-black uppercase tracking-[0.5em]">Our Core Values</span>
                     <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
                   </div>
 
@@ -443,7 +443,7 @@ export default function Home() {
                         className="flex items-center justify-center gap-2 px-4 py-2.5 md:px-5 md:py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg w-[140px] sm:w-[160px] md:w-[210px]"
                       >
                         <span className="material-symbols-outlined text-secondary text-lg md:text-xl drop-shadow-[0_0_8px_rgba(253,185,19,0.4)]">{value.icon}</span>
-                        <span className="text-white text-[12px] md:text-[13px] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
+                        <span className="text-white text-[12px] md:text-[13px] lg:text-[1.7vh] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
                       </div>
                     ))}
                   </div>
@@ -452,7 +452,7 @@ export default function Home() {
                 <div className="pt-1 flex flex-col items-center mb-2 md:mb-8">
                   <a href="#contact" className="group relative w-full sm:w-auto">
                     <div className="absolute inset-0 bg-primary blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
-                    <button className="relative w-full sm:w-auto h-14 md:h-16 px-10 md:px-12 bg-primary text-white font-black text-lg md:text-lg rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
+                    <button className="relative w-full sm:w-auto h-14 md:h-16 lg:h-[8.5vh] px-10 md:px-12 bg-primary text-white font-black text-lg md:text-lg lg:text-[2.2vh] rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
                       BOOK NOW
                       <span className="material-symbols-outlined">south</span>
                     </button>
@@ -466,7 +466,7 @@ export default function Home() {
               <div className="relative flex flex-col items-center gap-4 py-4 md:gap-6 md:py-6 border-t border-white/10 mb-4 md:mb-8">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
-                  <span className="text-white text-[9px] md:text-[10px] font-black uppercase tracking-[0.5em]">We Accept</span>
+                  <span className="text-white text-[9px] md:text-[10px] lg:text-[1.4vh] font-black uppercase tracking-[0.5em]">We Accept</span>
                   <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
                 </div>
 
