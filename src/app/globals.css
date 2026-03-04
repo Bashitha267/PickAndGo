@@ -47,9 +47,12 @@ body {
 
 /* --- Stylish & Visible Effects --- */
 
+/* Snap scroll container smooth behavior */
+.snap-container {
+  scroll-behavior: smooth;
+}
+
 section {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 1000px;
   will-change: transform;
   transform: translateZ(0);
 }
