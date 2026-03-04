@@ -295,8 +295,8 @@ export default function Home() {
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth font-poppins">
       <Toaster position="top-right" richColors duration={3000} />
       {/* Top Navigation Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
-        <div className="mx-6 md:mx-20 flex items-center justify-between">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 lg:h-[10vh] flex items-center">
+        <div className="mx-6 md:mx-20 flex items-center justify-between w-full">
           <div className="flex items-center">
             <div className="relative group cursor-pointer z-20">
               <img
@@ -312,7 +312,7 @@ export default function Home() {
             {navLinks.map((item) => (
               <a
                 key={item}
-                className={`text-xs font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-orange-500" : "text-road-dark hover:text-orange-500"}`}
+                className={`text-xs lg:text-[1.8vh] font-black transition-all duration-300 uppercase tracking-widest relative group ${activeSection === item ? "text-orange-500" : "text-road-dark hover:text-orange-500"}`}
                 href={`#${item}`}
               >
                 {item.replace("-", " ")}
@@ -322,7 +322,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-4">
-            <a href="#contact" className="hidden sm:flex min-w-[120px] cursor-pointer items-center justify-center rounded-xl h-10 px-6 bg-orange-500 text-white text-[10px] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-orange-700 transition-all">
+            <a href="#contact" className="hidden sm:flex min-w-[120px] lg:min-w-[10vw] cursor-pointer items-center justify-center rounded-xl h-10 lg:h-[5vh] px-6 bg-orange-500 text-white text-[10px] lg:text-[1.8vh] font-black uppercase tracking-widest shadow-lg shadow-primary/20 hover:bg-orange-700 transition-all">
               <span>Book Now</span>
             </a>
             <button
@@ -538,8 +538,8 @@ export default function Home() {
           <div className="md:mx-20 w-full">
             <div className="text-left mb-8">
               {/* Consistent section title design */}
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What We Offer</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase leading-none">Our Core <span className="text-primary mx-3">Services</span></h2>
+              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">What We Offer</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">Our Core <span className="text-primary mx-3">Services</span></h2>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
 
@@ -574,14 +574,14 @@ export default function Home() {
                   >
                     <div>
                       <div className="flex items-center gap-2 text-accent-blue mb-2">
-                        <span className="material-symbols-outlined text-[10px]">{svc.icon}</span>
-                        <span className="text-[10px] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
+                        <span className="material-symbols-outlined text-[10px] lg:text-[1.5vh]">{svc.icon}</span>
+                        <span className="text-[10px] lg:text-[1.5vh] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
                       </div>
-                      <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
-                      <p className="text-road-dark/60 text-[10px] lg:text-[14px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
+                      <h3 className="text-base lg:text-[3vh] font-black mb-1.5 text-road-dark italic uppercase leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
+                      <p className="text-road-dark/60 text-[10px] lg:text-[2vh] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
                     <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2 transition-all hover:opacity-80">
-                      <span className="text-orange-500 font-black uppercase tracking-widest text-[11px]">Select Now</span>
+                      <span className="text-orange-500 font-black uppercase tracking-widest text-[11px] lg:text-[1.8vh]">Select Now</span>
                       <div className="bg-white/50 backdrop-blur-md border border-white/70 group-hover/btn:bg-orange-500 p-2 rounded-xl transition-all shadow-sm group-hover/btn:shadow-primary/30">
                         <span className="material-symbols-outlined text-xs text-orange-500 group-hover/btn:text-white transition-colors">arrow_forward</span>
                       </div>
@@ -604,8 +604,8 @@ export default function Home() {
 
           <div className="px-6 md:px-20 relative z-10 w-full mb-0 md:mb-8">
             <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
-              <h2 className="text-2xl  sm:text-3xl lg:text-5xl font-black text-white italic uppercase leading-none drop-shadow-lg">
+              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
+              <h2 className="text-2xl  sm:text-3xl lg:text-[6vh] font-black text-white italic uppercase leading-none drop-shadow-lg">
                 Client <span className="text-primary">Testimonials</span>
               </h2>
               <div className="w-16 h-1 mb-2 bg-primary rounded-full mt-4 shadow-[0_0_15px_rgba(253,185,19,0.5)]"></div>
@@ -624,10 +624,10 @@ export default function Home() {
           <div className="md:mx-20 px-6 md:px-0 w-full relative z-10">
             <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8 lg:mt-10">
               {/* Consistent section title design */}
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
+              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase leading-none">
+                  <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">
                     Our Premium <span className="text-primary">Selection</span>
                   </h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
@@ -646,8 +646,8 @@ export default function Home() {
                 <div className="flex justify-between items-start mb-4 relative z-10">
                   <div className="flex flex-wrap gap-2">
                     <div className="flex items-center gap-2 px-3 py-1.5 bg-white/20 backdrop-blur-md rounded-full border border-white/30 shadow-sm">
-                      <span className="material-symbols-outlined text-sm text-orange-500">person</span>
-                      <span className="text-orange-500 font-black text-[15px] uppercase tracking-wider">3 Passengers</span>
+                      <span className="material-symbols-outlined text-sm lg:text-[2vh] text-orange-500">person</span>
+                      <span className="text-orange-500 font-black text-[15px] lg:text-[1.8vh] uppercase tracking-wider">3 Passengers</span>
                     </div>
 
                   </div>
@@ -664,12 +664,12 @@ export default function Home() {
 
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
-                    <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
+                    <h3 className="text-xl lg:text-[4vh] font-black text-road-dark uppercase italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
+                    <p className="text-primary text-[11px] lg:text-[1.8vh] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
                   </div>
                   <a href="#contact" className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl group-hover:bg-primary transition-all">
-                    <span className="text-primary group-hover:text-white text-[10px] font-black uppercase tracking-widest">Book Now</span>
-                    <span className="material-symbols-outlined text-sm text-primary group-hover:text-white">near_me</span>
+                    <span className="text-primary group-hover:text-white text-[10px] lg:text-[1.8vh] font-black uppercase tracking-widest">Book Now</span>
+                    <span className="material-symbols-outlined text-sm lg:text-[2vh] text-primary group-hover:text-white">near_me</span>
                   </a>
                 </div>
               </div>
@@ -700,8 +700,8 @@ export default function Home() {
 
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
-                    <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
+                    <h3 className="text-xl lg:text-[4vh] font-black text-road-dark uppercase italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
+                    <p className="text-primary text-[11px] lg:text-[1.8vh] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
                   </div>
                   <a href="#contact" className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl group-hover:bg-primary transition-all">
                     <span className="text-primary group-hover:text-white text-[10px] font-black uppercase tracking-widest">Book Now</span>
@@ -729,8 +729,8 @@ export default function Home() {
           <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full mt-5 lg:mt-20">
             {/* Consistent section title design */}
             <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase leading-none">
+              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
+              <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">
                 Popular <span className="text-primary">Destinations</span>
               </h2>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-1 shadow-lg shadow-primary/20"></div>
@@ -755,12 +755,12 @@ export default function Home() {
                   <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/45 backdrop-blur-lg border-t border-white/50 group-hover:bg-white/55 transition-colors duration-500">
                     <div className="mb-2">
                       <div className="flex justify-between items-start mb-1.5">
-                        <h3 className="text-2xl lg:text-3xl font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
+                        <h3 className="text-2xl lg:text-[3.5vh] font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
                           {dest.name}
                         </h3>
                         <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
-                          <span className="material-symbols-outlined text-[10px] text-orange-500">distance</span>
-                          <span className="text-[10px] font-black text-orange-500 uppercase tracking-wider ">{dest.distance}</span>
+                          <span className="material-symbols-outlined text-[10px] lg:text-[1.8vh] text-orange-500">distance</span>
+                          <span className="text-[10px] lg:text-[1.8vh] font-black text-orange-500 uppercase tracking-wider ">{dest.distance}</span>
                         </div>
                       </div>
 
@@ -773,10 +773,10 @@ export default function Home() {
                           <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center group-hover/places:scale-110 transition-transform duration-300">
                             <Map size={16} strokeWidth={2.5} />
                           </div>
-                          <span className="text-[11px] font-black uppercase tracking-widest leading-none">Iconic Places</span>
+                          <span className="text-[11px] lg:text-[1.8vh] font-black uppercase tracking-widest leading-none">Iconic Places</span>
                         </div>
                         <div className="pl-4 ml-4 border-l-2 border-primary/20">
-                          <p className="text-road-dark/70 font-bold text-xs lg:text-[14px] leading-relaxed">
+                          <p className="text-road-dark/70 font-bold text-xs lg:text-[2vh] leading-relaxed">
                             {dest.places}
                           </p>
                         </div>
@@ -788,11 +788,11 @@ export default function Home() {
                           <div className="w-8 h-8 rounded-xl bg-sky-blue/15 flex items-center justify-center group-hover/theme:scale-110 transition-transform duration-300">
                             <span className="material-symbols-outlined text-[18px]">verified</span>
                           </div>
-                          <span className="text-[11px] font-black uppercase tracking-widest leading-none">Travel Theme</span>
+                          <span className="text-[11px] lg:text-[1.8vh] font-black uppercase tracking-widest leading-none">Travel Theme</span>
                         </div>
                         <div className="pl-4 ml-4 border-l-2 border-sky-blue/20 flex flex-wrap gap-2">
                           {dest.type.split('/').map((tag, idx) => (
-                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] uppercase tracking-widest border border-white/50 shadow-sm">
+                            <span key={idx} className="px-2.5 py-1 bg-white/60 backdrop-blur-md rounded-lg text-road-dark/70 font-black text-[9px] lg:text-[1.6vh] uppercase tracking-widest border border-white/50 shadow-sm">
                               {tag.trim()}
                             </span>
                           ))}
@@ -802,12 +802,12 @@ export default function Home() {
 
                     <a
                       href="#contact"
-                      className="group/btn relative w-full h-10 rounded-2xl bg-road-dark text-white font-black text-[10px] uppercase tracking-[0.2em] overflow-hidden flex items-center justify-center gap-3 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20"
+                      className="group/btn relative w-full h-10 lg:h-[5vh] rounded-2xl bg-road-dark text-white font-black text-[10px] lg:text-[1.8vh] uppercase tracking-[0.2em] overflow-hidden flex items-center justify-center gap-3 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20"
                     >
                       <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
                       <span className="relative z-10 flex items-center gap-3">
                         Book Your Trip
-                        <span className="material-symbols-outlined text-base group-hover/btn:translate-x-1.5 transition-transform duration-300">trending_flat</span>
+                        <span className="material-symbols-outlined text-base lg:text-[2.5vh] group-hover/btn:translate-x-1.5 transition-transform duration-300">trending_flat</span>
                       </span>
                     </a>
                   </div>
@@ -829,8 +829,8 @@ export default function Home() {
                   className="space-y-8 lg:space-y-12"
                 >
                   {/* Consistent section title design */}
-                  <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
-                  <h2 className="text-3xl lg:text-5xl font-black text-road-dark mb-4 italic uppercase leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
+                  <h2 className="text-3xl lg:text-[6vh] font-black text-road-dark mb-4 italic uppercase leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </div>
 
@@ -848,8 +848,8 @@ export default function Home() {
                         <span className={`material-symbols-outlined text-xl lg:text-4xl ${feature.iconColor}`}>{feature.icon}</span>
                       </div>
                       <div className="text-left">
-                        <h4 className="text-sm lg:text-[20px] font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
-                        <p className="text-road-dark/70 font-bold text-[12px] lg:text-[13px] leading-relaxed">{feature.desc}</p>
+                        <h4 className="text-sm lg:text-[2.8vh] font-black text-road-dark italic mb-1 uppercase tracking-tight">{feature.title}</h4>
+                        <p className="text-road-dark/70 font-bold text-[12px] lg:text-[2vh] leading-relaxed">{feature.desc}</p>
                       </div>
                     </div>
                   ))}
@@ -877,11 +877,11 @@ export default function Home() {
 
                   {/* Description — always below the photo */}
                   <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left ">
-                    <p className="text-primary font-black text-[14px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
-                    <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase leading-none mb-3">
+                    <p className="text-primary font-black text-[14px] lg:text-[2vh] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
+                    <h3 className="text-2xl lg:text-[5vh] font-black text-road-dark italic uppercase leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold  text-[12px] lg:text-[14px] md:text-md leading-relaxed mb-2 lg:mb-6 mt-2 text-justify">
+                    <p className="text-road-dark/70 font-bold  text-[12px] lg:text-[2.2vh] md:text-md leading-relaxed mb-2 lg:mb-6 mt-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
@@ -921,8 +921,8 @@ export default function Home() {
             <div className="text-center mt-2 mb-6 lg:mb-3 w-full">
               {/* Consistent section title design */}
 
-              <h2 className=" mt-4 text-3xl lg:text-5xl font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
-              <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
+              <h2 className=" mt-4 text-3xl lg:text-[6vh] font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
+              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
@@ -933,24 +933,24 @@ export default function Home() {
                 {/* Name & WhatsApp & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Name</label>
+                    <label className="text-[10px] lg:text-[1.8vh] font-black text-white/80 uppercase tracking-widest ml-2">Name</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">person</span>
-                      <input name="name" required suppressHydrationWarning type="text" placeholder="John Doe" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="name" required suppressHydrationWarning type="text" placeholder="John Doe" className="w-full block h-14 lg:h-[6vh] glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm lg:text-[1.8vh]" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">WhatsApp Number</label>
+                    <label className="text-[10px] lg:text-[1.8vh] font-black text-white/80 uppercase tracking-widest ml-2">WhatsApp Number</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">chat</span>
-                      <input name="whatsapp" required suppressHydrationWarning type="text" placeholder="+1..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="whatsapp" required suppressHydrationWarning type="text" placeholder="+1..." className="w-full block h-14 lg:h-[6vh] glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm lg:text-[1.8vh]" />
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Email</label>
+                    <label className="text-[10px] lg:text-[1.8vh] font-black text-white/80 uppercase tracking-widest ml-2">Email</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">mail</span>
-                      <input name="email" required suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="email" required suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full block h-14 lg:h-[6vh] glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm lg:text-[1.8vh]" />
                     </div>
                   </div>
                 </div>
@@ -989,21 +989,21 @@ export default function Home() {
 
                 <div className="flex flex-col md:flex-row gap-8 items-end">
                   <div className="flex-1 w-full space-y-4">
-                    <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2 block">Communication Preference</label>
+                    <label className="text-[10px] lg:text-[1.8vh] font-black text-white/80 uppercase tracking-widest ml-2 block">Communication Preference</label>
                     <div className="flex gap-6 lg:gap-10">
                       <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" value="WhatsApp" defaultChecked className="peer sr-only" />
                         <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
                           <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
                         </div>
-                        <span className="font-bold text-white/60 text-xs uppercase tracking-widest group-hover:text-secondary transition-colors">WhatsApp</span>
+                        <span className="font-bold text-white/60 text-xs lg:text-[1.8vh] uppercase tracking-widest group-hover:text-secondary transition-colors">WhatsApp</span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" value="Email" className="peer sr-only" />
                         <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
                           <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
                         </div>
-                        <span className="font-bold text-white/60 text-xs uppercase tracking-widest group-hover:text-secondary transition-colors">Email</span>
+                        <span className="font-bold text-white/60 text-xs lg:text-[1.8vh] uppercase tracking-widest group-hover:text-secondary transition-colors">Email</span>
                       </label>
                     </div>
                   </div>
@@ -1012,7 +1012,7 @@ export default function Home() {
                     <button
                       disabled={isSubmitting}
                       suppressHydrationWarning
-                      className="w-full md:w-auto h-16 px-12 bg-primary hover:bg-primary/90 text-white font-black text-sm rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="w-full md:w-auto h-16 lg:h-[8vh] px-12 bg-primary hover:bg-primary/90 text-white font-black text-sm lg:text-[2.2vh] rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span>{isSubmitting ? "SENDING..." : "SEND REQUEST"}</span>
                       <span className="material-symbols-outlined">send</span>
@@ -1050,17 +1050,17 @@ export default function Home() {
         <div className="md:mx-20 flex flex-col md:flex-row justify-between items-start gap-10">
           <div className="space-y-4 max-w-sm">
             <div className="flex items-center group cursor-pointer">
-              <img src="/logo.png" alt="Pick & Drop Logo" className="h-20 w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
+              <img src="/logo.png" alt="Pick & Drop Logo" className="h-20 lg:h-[12vh] w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
             </div>
-            <p className="text-white/40 text-[11px] font-bold leading-relaxed uppercase tracking-wider">
+            <p className="text-white/40 text-[11px] lg:text-[1.8vh] font-bold leading-relaxed uppercase tracking-wider">
               Premium island-wide shuttle and travel service in Sri Lanka. Punctual, Reliable, and Professional.
             </p>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-10 md:gap-16">
             <div className="space-y-4">
-              <h4 className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Navigate</h4>
-              <div className="flex flex-col gap-2.5 text-[10px] font-bold uppercase tracking-widest text-white/40">
+              <h4 className="text-white text-[10px] lg:text-[1.8vh] font-black uppercase tracking-[0.3em]">Navigate</h4>
+              <div className="flex flex-col gap-2.5 text-[10px] lg:text-[1.8vh] font-bold uppercase tracking-widest text-white/40">
                 <a className="hover:text-primary transition-all" href="#home">Home</a>
                 <a className="hover:text-primary transition-all" href="#why-us">Why Us</a>
                 <a className="hover:text-primary transition-all" href="#services">Services</a>
@@ -1070,8 +1070,8 @@ export default function Home() {
               </div>
             </div>
             <div className="space-y-4">
-              <h4 className="text-white text-[10px] font-black uppercase tracking-[0.3em]">Legal</h4>
-              <div className="flex flex-col gap-2.5 text-[10px] font-bold uppercase tracking-widest text-white/40">
+              <h4 className="text-white text-[10px] lg:text-[1.8vh] font-black uppercase tracking-[0.3em]">Legal</h4>
+              <div className="flex flex-col gap-2.5 text-[10px] lg:text-[1.8vh] font-bold uppercase tracking-widest text-white/40">
                 <a className="hover:text-primary transition-all" href="#">Privacy</a>
                 <a className="hover:text-primary transition-all" href="#">Terms</a>
               </div>
@@ -1080,7 +1080,7 @@ export default function Home() {
         </div>
 
         <div className="md:mx-20 mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">© 2024 Pick & Drop Sri Lanka.</p>
+          <p className="text-[9px] lg:text-[1.6vh] font-black uppercase tracking-[0.3em] text-white/20">© 2024 Pick & Drop Sri Lanka.</p>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-[#25D366] hover:text-white transition-all cursor-pointer group">
               <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
