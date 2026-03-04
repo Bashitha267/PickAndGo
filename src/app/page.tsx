@@ -156,11 +156,11 @@ const TestimonialsSlider = () => {
             </div>
           </div>
 
-          <p className="text-white/90 text-[13px] h-32 md:h-fit sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
+          <p className="text-white/90 text-[13px] lg:text-[2.5vh] h-32 md:h-fit sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
             "{testimonialsData[index].text}"
           </p>
 
-          <h4 className="text-base sm:text-lg md:text-xl font-black text-white uppercase tracking-widest drop-shadow-lg">
+          <h4 className="text-base sm:text-lg md:text-xl lg:text-[3.5vh] font-black text-white uppercase tracking-widest drop-shadow-lg">
             {testimonialsData[index].name}
           </h4>
         </div>
@@ -414,8 +414,8 @@ export default function Home() {
                     Pick  and  Drop <br />
                     <span className="text-secondary italic ">Shuttle Service</span>
                   </h1>
-                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[13px] lg:text-[1.6vh] uppercase  border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
-                    Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
+                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[13px] lg:text-[1.8vh] uppercase  border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                    Hassle-free <span className="text-secondary mx-2">   Airport Transfers  </span> in Sri Lanka
                   </span>
                 </div>
 
