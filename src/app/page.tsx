@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 
-import { toast } from "sonner";
+import { toast, Toaster } from "sonner";
+
 import { Map } from "lucide-react";
 
 // --- Hero Carousel Data ---
@@ -155,7 +156,7 @@ const TestimonialsSlider = () => {
             </div>
           </div>
 
-          <p className="text-white/90 text-[13px] sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
+          <p className="text-white/90 text-[13px] h-32 md:h-fit sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
             "{testimonialsData[index].text}"
           </p>
 
@@ -292,6 +293,7 @@ export default function Home() {
 
   return (
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth font-poppins">
+      <Toaster position="top-right" richColors duration={3000} />
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
         <div className="mx-6 md:mx-20 flex items-center justify-between">
