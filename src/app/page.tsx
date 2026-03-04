@@ -242,7 +242,7 @@ export default function Home() {
 
         const resData = await response.json();
         if (resData.success) {
-          toast.success("Booking request sent via Email!");
+          toast.success("Thank you for contacting us! We'll get back to you soon.");
           (e.target as HTMLFormElement).reset();
         } else {
           toast.error("Failed to send email: " + resData.message);
@@ -410,11 +410,11 @@ export default function Home() {
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-6 md:space-y-10">
                 <div className="space-y-3 md:space-y-6">
-                  <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black italic uppercase tracking-tighter leading-[0.95] drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
-                    Pick and Drop <br />
-                    <span className="text-secondary italic">Shuttle Service</span>
+                  <h1 className="text-white text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-8xl font-black italic uppercase   drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+                    Pick  and  Drop <br />
+                    <span className="text-secondary italic ">Shuttle Service</span>
                   </h1>
-                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[11px] uppercase tracking-[0.4em] border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                  <span className="inline-block px-8 py-2.5 bg-black/80 backdrop-blur-md rounded-full text-white font-black text-[10px] md:text-[13px] uppercase  border border-primary/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
                     Hassle-free <span className="text-secondary">Airport Transfers</span> in Sri Lanka
                   </span>
                 </div>
@@ -443,7 +443,7 @@ export default function Home() {
                         className="flex items-center justify-center gap-2 px-4 py-2.5 md:px-5 md:py-3 bg-black/40 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-black/60 hover:border-primary/50 transition-all cursor-default shadow-lg w-[140px] sm:w-[160px] md:w-[210px]"
                       >
                         <span className="material-symbols-outlined text-secondary text-lg md:text-xl drop-shadow-[0_0_8px_rgba(253,185,19,0.4)]">{value.icon}</span>
-                        <span className="text-white text-[10px] md:text-[11px] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
+                        <span className="text-white text-[12px] md:text-[13px] font-black uppercase tracking-widest leading-none drop-shadow-md">{value.text}</span>
                       </div>
                     ))}
                   </div>
@@ -539,7 +539,7 @@ export default function Home() {
             <div className="text-left mb-8">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What We Offer</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">Our Core <span className="text-primary">Services</span></h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase leading-none">Our Core <span className="text-primary mx-3">Services</span></h2>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
 
@@ -577,7 +577,7 @@ export default function Home() {
                         <span className="material-symbols-outlined text-[10px]">{svc.icon}</span>
                         <span className="text-[10px] text-accent-blue font-black uppercase tracking-[0.2em]">{svc.badge}</span>
                       </div>
-                      <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase tracking-tighter leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
+                      <h3 className="text-base lg:text-xl font-black mb-1.5 text-road-dark italic uppercase leading-tight group-hover:text-primary transition-colors">{svc.title}</h3>
                       <p className="text-road-dark/60 text-[10px] lg:text-[14px] leading-relaxed mb-3 font-bold">{svc.desc}</p>
                     </div>
                     <a href="#contact" className="flex items-center justify-between w-full group/btn cursor-pointer mt-auto border-t border-white/40 pt-2 transition-all hover:opacity-80">
@@ -605,7 +605,7 @@ export default function Home() {
           <div className="px-6 md:px-20 relative z-10 w-full mb-0 md:mb-8">
             <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
-              <h2 className="text-2xl  sm:text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-lg">
+              <h2 className="text-2xl  sm:text-3xl lg:text-5xl font-black text-white italic uppercase leading-none drop-shadow-lg">
                 Client <span className="text-primary">Testimonials</span>
               </h2>
               <div className="w-16 h-1 mb-2 bg-primary rounded-full mt-4 shadow-[0_0_15px_rgba(253,185,19,0.5)]"></div>
@@ -627,7 +627,7 @@ export default function Home() {
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
                 <div>
-                  <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+                  <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase leading-none">
                     Our Premium <span className="text-primary">Selection</span>
                   </h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
@@ -664,7 +664,7 @@ export default function Home() {
 
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
+                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase italic leading-none group-hover:text-primary transition-colors">Honda Shuttle</h3>
                     <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Comfort Station Wagon</p>
                   </div>
                   <a href="#contact" className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl group-hover:bg-primary transition-all">
@@ -700,7 +700,7 @@ export default function Home() {
 
                 <div className="flex justify-between items-end italic relative z-10">
                   <div>
-                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase tracking-tighter italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
+                    <h3 className="text-xl lg:text-4xl font-black text-road-dark uppercase italic leading-none group-hover:text-primary transition-colors">Honda Fit</h3>
                     <p className="text-primary text-[11px] font-black uppercase tracking-[0.2em] mt-1">Smart Hybrid Hatchback</p>
                   </div>
                   <a href="#contact" className="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-xl group-hover:bg-primary transition-all">
@@ -730,7 +730,7 @@ export default function Home() {
             {/* Consistent section title design */}
             <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
-              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase tracking-tighter leading-none">
+              <h2 className="text-2xl sm:text-3xl lg:text-5xl font-black text-road-dark italic uppercase leading-none">
                 Popular <span className="text-primary">Destinations</span>
               </h2>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-1 shadow-lg shadow-primary/20"></div>
@@ -755,7 +755,7 @@ export default function Home() {
                   <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/45 backdrop-blur-lg border-t border-white/50 group-hover:bg-white/55 transition-colors duration-500">
                     <div className="mb-2">
                       <div className="flex justify-between items-start mb-1.5">
-                        <h3 className="text-2xl lg:text-3xl font-black italic uppercase tracking-tighter text-road-dark group-hover:text-primary transition-colors leading-none">
+                        <h3 className="text-2xl lg:text-3xl font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
                           {dest.name}
                         </h3>
                         <div className="flex items-center gap-1.5 px-3 py-1 bg-primary/10 rounded-full border border-primary/20 shadow-sm">
@@ -830,7 +830,7 @@ export default function Home() {
                 >
                   {/* Consistent section title design */}
                   <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
-                  <h2 className="text-3xl lg:text-5xl font-black text-road-dark mb-4 italic uppercase tracking-tighter leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
+                  <h2 className="text-3xl lg:text-5xl font-black text-road-dark mb-4 italic uppercase leading-none">Why <span className="text-primary">Choose</span> Us?</h2>
                   <div className="w-16 h-1.5 bg-primary rounded-full shadow-lg shadow-primary/20"></div>
                 </div>
 
@@ -878,7 +878,7 @@ export default function Home() {
                   {/* Description — always below the photo */}
                   <div className="w-full max-w-sm lg:max-w-none mx-auto px-1 text-center lg:text-left ">
                     <p className="text-primary font-black text-[14px] uppercase tracking-[0.35em] mb-1">Fleet Manager</p>
-                    <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase tracking-tighter leading-none mb-3">
+                    <h3 className="text-2xl lg:text-4xl font-black text-road-dark italic uppercase leading-none mb-3">
                       Shehan Perera
                     </h3>
                     <p className="text-road-dark/70 font-bold  text-[12px] lg:text-[14px] md:text-md leading-relaxed mb-2 lg:mb-6 mt-2 text-justify">
@@ -921,7 +921,7 @@ export default function Home() {
             <div className="text-center mt-2 mb-6 lg:mb-3 w-full">
               {/* Consistent section title design */}
 
-              <h2 className=" mt-4 text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none mb-1">Book <span className="text-primary">Now</span></h2>
+              <h2 className=" mt-4 text-3xl lg:text-5xl font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
