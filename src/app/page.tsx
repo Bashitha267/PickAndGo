@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 
+import { toast } from "sonner";
 import { Map } from "lucide-react";
 
 // --- Hero Carousel Data ---
@@ -200,6 +201,58 @@ const TestimonialsSlider = () => {
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    const commMethod = data.comm_method;
+
+    if (commMethod === "WhatsApp") {
+      // WhatsApp Logic
+      const message = `*New Booking Request*%0A%0A` +
+        `*Name:* ${data.name}%0A` +
+        `*WhatsApp:* ${data.whatsapp}%0A` +
+        `*Email:* ${data.email}%0A` +
+        `*Pickup:* ${data.pickup}%0A` +
+        `*Drop:* ${data.drop}%0A` +
+        `*Date:* ${data.date}%0A` +
+        `*Time:* ${data.time}`;
+
+      // Using the primary WhatsApp number provided by user
+      const whatsappUrl = `https://wa.me/94772757097?text=${message}`;
+      window.open(whatsappUrl, "_blank");
+      toast.success("Redirecting to WhatsApp...");
+      setIsSubmitting(false);
+    } else {
+      // Email Logic (Web3Forms)
+      formData.append("access_key", "9233f8a5-fa40-4d91-b477-0b805eacc997");
+      formData.append("subject", `New Booking from ${data.name}`);
+      formData.append("from_name", "Pick & Drop Booking");
+
+      try {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData
+        });
+
+        const resData = await response.json();
+        if (resData.success) {
+          toast.success("Booking request sent via Email!");
+          (e.target as HTMLFormElement).reset();
+        } else {
+          toast.error("Failed to send email: " + resData.message);
+        }
+      } catch (err) {
+        toast.error("Something went wrong. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
+    }
+  };
 
   useEffect(() => {
     const observerOptions = {
@@ -874,28 +927,28 @@ export default function Home() {
             <div
               className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-12 relative overflow-hidden w-full shadow-2xl"
             >
-              <form className="space-y-6 md:space-y-8 relative z-10" onSubmit={(e) => e.preventDefault()}>
+              <form className="space-y-6 md:space-y-8 relative z-10" onSubmit={handleFormSubmit}>
                 {/* Name & WhatsApp & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Name</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">person</span>
-                      <input suppressHydrationWarning type="text" placeholder="John Doe" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="name" required suppressHydrationWarning type="text" placeholder="John Doe" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">WhatsApp Number</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">chat</span>
-                      <input suppressHydrationWarning type="text" placeholder="+1..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="whatsapp" required suppressHydrationWarning type="text" placeholder="+1..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Email</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">mail</span>
-                      <input suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="email" required suppressHydrationWarning type="email" placeholder="john@email.com" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                 </div>
@@ -906,28 +959,28 @@ export default function Home() {
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Pickup Location</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">location_on</span>
-                      <input suppressHydrationWarning type="text" placeholder="From..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="pickup" required suppressHydrationWarning type="text" placeholder="From..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Drop Location</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">near_me</span>
-                      <input suppressHydrationWarning type="text" placeholder="To..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
+                      <input name="drop" required suppressHydrationWarning type="text" placeholder="To..." className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Date</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">today</span>
-                      <input suppressHydrationWarning type="date" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
+                      <input name="date" required suppressHydrationWarning type="date" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
                     </div>
                   </div>
                   <div className="space-y-2">
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2">Arrival Time</label>
                     <div className="relative group w-full">
                       <span className="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-white/40 text-base pointer-events-none">schedule</span>
-                      <input suppressHydrationWarning type="time" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
+                      <input name="time" required suppressHydrationWarning type="time" className="w-full block h-14 glass-input rounded-2xl pl-12 pr-4 outline-none font-bold text-sm scheme-dark" />
                     </div>
                   </div>
                 </div>
@@ -937,14 +990,14 @@ export default function Home() {
                     <label className="text-[10px] font-black text-white/80 uppercase tracking-widest ml-2 block">Communication Preference</label>
                     <div className="flex gap-6 lg:gap-10">
                       <label className="flex items-center gap-3 cursor-pointer group">
-                        <input type="radio" name="comm_method" className="peer sr-only" />
+                        <input type="radio" name="comm_method" value="WhatsApp" defaultChecked className="peer sr-only" />
                         <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
                           <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
                         </div>
                         <span className="font-bold text-white/60 text-xs uppercase tracking-widest group-hover:text-secondary transition-colors">WhatsApp</span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer group">
-                        <input type="radio" name="comm_method" className="peer sr-only" />
+                        <input type="radio" name="comm_method" value="Email" className="peer sr-only" />
                         <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
                           <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
                         </div>
@@ -953,20 +1006,23 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <button
-                    suppressHydrationWarning
-                    className="w-full md:w-auto h-16 px-12 bg-primary hover:bg-primary/90 text-white font-black text-sm rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest"
-                  >
-                    <span>SEND REQUEST</span>
-                    <span className="material-symbols-outlined">send</span>
-                  </button>
+                  <div className="flex flex-col w-full md:w-auto items-center gap-4">
+                    <button
+                      disabled={isSubmitting}
+                      suppressHydrationWarning
+                      className="w-full md:w-auto h-16 px-12 bg-primary hover:bg-primary/90 text-white font-black text-sm rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <span>{isSubmitting ? "SENDING..." : "SEND REQUEST"}</span>
+                      <span className="material-symbols-outlined">send</span>
+                    </button>
+                  </div>
                 </div>
               </form>
 
               {/* Direct Contact Options */}
               <div className="mt-4 pt-8 border-t border-white/10 relative z-10 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <a href="#" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
+                  <a href="https://wa.me/94772757097" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                     </svg>
