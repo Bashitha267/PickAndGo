@@ -16,7 +16,7 @@ const destinations = [
     places: "Unawatuna, Jungle Beach, Galle Fort",
     markerPos: { x: "48%", y: "88%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522580/Screenshot_2026-03-03_125147_d2gjzk.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631708/Untitled_design_10_uyncjn.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078184/WhatsApp_Image_2026-02-23_at_20.51.57_abvvi5.jpg",
 
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254923/galle-fort_nscdgm.jpg",
@@ -31,7 +31,7 @@ const destinations = [
     places: "Sigiriya Rock, Pidurangala, Minneriya",
     markerPos: { x: "55%", y: "45%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522581/sig_jypnmn.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631543/Untitled_design_8_svdadl.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078183/WhatsApp_Image_2026-02-23_at_20.51.43_mvard9.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078902/WhatsApp_Image_2026-02-23_at_20.52.02_daiqcj.jpg"
     ],
@@ -44,7 +44,7 @@ const destinations = [
     places: "Nine Arch Bridge, Little Adam's Peak",
     markerPos: { x: "65%", y: "68%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522584/ella_y36x9h.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631640/Untitled_design_9_ic0goo.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg"
     ],
@@ -57,7 +57,7 @@ const destinations = [
     places: "Lotus Tower, Galle Face, Port City",
     markerPos: { x: "42%", y: "62%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772522601/col_mnwxaf.png",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631373/Untitled_design_6_bujgvr.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_1_addldw.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_f3jbeg.jpg"
     ],
@@ -84,7 +84,7 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
     <div className="absolute inset-0 w-full h-full overflow-hidden">
       <img
         src={images[index]}
-        className="absolute inset-0 object-full w-full h-full transition-opacity duration-1000"
+        className="absolute inset-0 object-cover w-full h-full transition-opacity duration-1000"
         alt="Destination View"
       />
       {/* Small Indicator Dots */}
@@ -294,7 +294,7 @@ export default function Home() {
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory font-poppins">
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-6 lg:px-20 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+        <div className="mx-6 md:mx-20 flex items-center justify-between">
           <div className="flex items-center">
             <div className="relative group cursor-pointer z-20">
               <img
@@ -403,7 +403,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-20 md:pt-[12vh] lg:pt-[14vh]">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-20 md:pt-[12vh] lg:pt-[14vh] 2xl:pt-[11vh]">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-6 md:space-y-10">
@@ -460,7 +460,7 @@ export default function Home() {
             </div>
 
             {/* Bottom Aligned Payment Bar */}
-            <div className="w-full md:max-w-4xl pb-14 md:pb-[10vh] lg:pb-[12vh] mx-auto">
+            <div className="w-full md:max-w-4xl pb-14 md:pb-[10vh] lg:pb-[12vh] mx-auto gap-y-3 ">
               <div className="relative flex flex-col items-center gap-4 py-4 md:gap-6 md:py-6 border-t border-white/10 mb-4 md:mb-8">
                 <div className="flex items-center gap-4 md:gap-6">
                   <div className="h-px w-10 md:w-16 bg-linear-to-r from-transparent to-white/20"></div>
@@ -468,12 +468,12 @@ export default function Home() {
                   <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12 gap-y-6 md:gap-y-8 px-4 ">
+                <div className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12  md:gap-y-8 px-4 m ">
                   {/* Visa */}
                   <div className="group/icon cursor-help transition-all duration-300   rounded-lg hover:scale-110">
                     <img
                       src="/visa.png"
-                      className="h-8 md:h-12 2xl:h-16 w-16 lg:w-auto opacity-100 transition-opacity  "
+                      className="h-8 md:h-12 2xl:h-14 w-16 lg:w-auto opacity-100 transition-opacity  "
                       alt="Visa"
                     />
                   </div>
@@ -482,7 +482,7 @@ export default function Home() {
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <img
                       src="/master.png"
-                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity"
+                      className="h-8 md:h-12 2xl:h-14 w-auto opacity-100 transition-opacity"
                       alt="Mastercard"
                     />
                   </div>
@@ -491,7 +491,7 @@ export default function Home() {
                   <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
                     <img
                       src="/amex.png"
-                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity"
+                      className="h-8 md:h-12 2xl:h-14 w-auto opacity-100 transition-opacity"
                       alt="Amex"
                     />
                   </div>
@@ -515,10 +515,10 @@ export default function Home() {
                   </div> */}
 
                   {/* Cash */}
-                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
+                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110 mt-3 md:mt-0">
                     <img
                       src="/cash.png"
-                      className="h-8 md:h-12 2xl:h-16 w-auto opacity-100 transition-opacity"
+                      className="h-8 md:h-12 2xl:h-14 w-auto opacity-100 transition-opacity"
                       alt="Cash"
                     />
                   </div>
@@ -529,11 +529,11 @@ export default function Home() {
         </section>
 
         {/* Service Category Cards */}
-        < section id="services" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden" >
+        <section id="services" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-green max-w-full px-6 pt-10 pb-14 relative z-20 overflow-hidden">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
 
-          <div className="max-w-7xl mx-auto w-full">
+          <div className="md:mx-20 w-full">
             <div className="text-left mb-8">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">What We Offer</p>
@@ -592,7 +592,7 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-auto md:h-dvh flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
+        <section id="testimonials" className="h-auto md:h-dvh md:max-h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 lg:pt-12 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
@@ -600,7 +600,7 @@ export default function Home() {
           ></div>
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mb-0 md:mb-8">
+          <div className="px-6 md:px-20 relative z-10 w-full mb-0 md:mb-8">
             <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
               <h2 className="text-2xl  sm:text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none drop-shadow-lg">
@@ -609,17 +609,17 @@ export default function Home() {
               <div className="w-16 h-1 mb-2 bg-primary rounded-full mt-4 shadow-[0_0_15px_rgba(253,185,19,0.5)]"></div>
             </div>
 
-            <div className="mt-4 md:mt-12">
+            <div className="mt-4 md:mt-12 lg:mt-14">
               <TestimonialsSlider />
             </div>
           </div>
         </section>
-        <section id="fleet" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
+        <section id="fleet" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
 
-          <div className="max-w-7xl mx-auto px-6 w-full relative z-10">
+          <div className="md:mx-20 px-6 md:px-0 w-full relative z-10">
             <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8 lg:mt-10">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
@@ -718,13 +718,13 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 md:pb-20 pb-14 relative overflow-hidden">
+        <section id="destinations" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 lg:pt-24 md:pb-20 pb-14 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full mt-5">
+          <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full mt-5 lg:mt-20">
             {/* Consistent section title design */}
             <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
@@ -735,7 +735,7 @@ export default function Home() {
             </div>
 
             {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
-            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 2xl:mx-[10vh] mt-2">
               {destinations.map((dest, i) => (
                 <div
                   key={i}
@@ -744,7 +744,7 @@ export default function Home() {
                   <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
                   {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
-                  <div className="relative w-full h-72 sm:h-80 md:h-72 md:aspect-3/4 overflow-hidden">
+                  <div className="relative w-full h-72 sm:h-80 md:h-56 md:aspect-3/4 overflow-hidden">
                     <DestinationGallery images={dest.images} />
 
 
@@ -814,12 +814,12 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="why-us" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
+        <section id="why-us" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
 
-          <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               {/* Left Column: Features */}
               <div className="space-y-8 lg:space-y-12">
@@ -898,13 +898,13 @@ export default function Home() {
         </section >
 
         {/* Payment Form Section */}
-        <section id="contact" className="min-h-dvh flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18  pb-14 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18 pb-14 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
             style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078909/WhatsApp_Image_2026-02-23_at_20.52.06_cbpy9t.jpg')` }}
           >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]"></div>
           </div>
 
           {/* Contact Mobile Background */}
@@ -912,22 +912,22 @@ export default function Home() {
             className="block md:hidden absolute inset-0 z-0 bg-cover bg-no-repeat  "
             style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078913/WhatsApp_Image_2026-02-23_at_20.51.42_1_afsy36.jpg')` }}
           >
-            <div className="absolute inset-0 bg-black/45 backdrop-blur-[6px]"></div>
+            <div className="absolute inset-0 bg-black/45 backdrop-blur-[10px]"></div>
           </div>
 
-          <div className="max-w-5xl mx-auto px-4 md:px-6 relative z-10 w-full flex flex-col items-center justify-center">
-            <div className="text-center mt-2 mb-6 lg:mb-10 w-full">
+          <div className="md:mx-20 px-4 md:px-0 relative z-10 w-full flex flex-col items-center justify-center pt-4 lg:pt-10">
+            <div className="text-center mt-2 mb-6 lg:mb-3 w-full">
               {/* Consistent section title design */}
 
-              <h2 className=" mt-4 text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none mb-3">Book <span className="text-primary">Now</span></h2>
+              <h2 className=" mt-4 text-3xl lg:text-5xl font-black text-white italic uppercase tracking-tighter leading-none mb-1">Book <span className="text-primary">Now</span></h2>
               <p className="text-primary font-black text-[10px] md:text-xs uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
             <div
-              className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-12 relative overflow-hidden w-full shadow-2xl"
+              className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-8 relative overflow-hidden max-w-7xl shadow-2xl"
             >
-              <form className="space-y-6 md:space-y-8 relative z-10" onSubmit={handleFormSubmit}>
+              <form className="space-y-6 md:space-y-8 relative z-10 mx-2 lg:mx-10" onSubmit={handleFormSubmit}>
                 {/* Name & WhatsApp & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
@@ -1045,7 +1045,7 @@ export default function Home() {
       {/* Footer */}
       < footer className="bg-road-dark text-white/50 py-10 px-6 relative overflow-hidden snap-start border-t border-white/5" >
         <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent"></div>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-10">
+        <div className="md:mx-20 flex flex-col md:flex-row justify-between items-start gap-10">
           <div className="space-y-4 max-w-sm">
             <div className="flex items-center group cursor-pointer">
               <img src="/logo.png" alt="Pick & Drop Logo" className="h-20 w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
@@ -1077,7 +1077,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="max-w-7xl mx-auto mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+        <div className="md:mx-20 mt-12 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-[9px] font-black uppercase tracking-[0.3em] text-white/20">© 2024 Pick & Drop Sri Lanka.</p>
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/40 hover:bg-[#25D366] hover:text-white transition-all cursor-pointer group">
@@ -1096,3 +1096,4 @@ export default function Home() {
     </div >
   );
 }
+
