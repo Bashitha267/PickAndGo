@@ -634,7 +634,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 md:mx-20">
               {/* Vehicle 1: Honda Shuttle */}
               <div
                 className="group relative bg-sky-blue/10 backdrop-blur-3xl rounded-4xl p-6 lg:p-8 transition-all duration-500 hover:scale-[1.05] hover:border-primary/40 border border-sky-blue/20 shadow-[0_30px_60px_-15px_rgba(0,99,157,0.15)] overflow-hidden"
