@@ -403,7 +403,7 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/40"></div>
           </div>
 
-          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-16 md:pt-[12vh] lg:pt-[14vh] mb-14">
+          <div className="relative z-10 max-w-6xl mx-auto px-6 w-full h-full flex flex-col pt-20 md:pt-[12vh] lg:pt-[14vh]">
             {/* Center Content Area */}
             <div className="flex-1 flex items-center justify-center w-full">
               <div className="w-full text-center space-y-6 md:space-y-10">
