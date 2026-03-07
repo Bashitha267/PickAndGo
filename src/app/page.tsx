@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect } from "react";
 
-import { toast, Toaster } from "sonner";
+import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 import { Map } from "lucide-react";
 
@@ -59,7 +60,7 @@ const destinations = [
     markerPos: { x: "42%", y: "62%" },
     images: [
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631373/Untitled_design_6_bujgvr.jpg",
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_1_addldw.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772891288/Gold_and_White_Modern_Sri_Lanka_Tour_and_Travel_Promotion_Instagram_Post_hxnx2k.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_f3jbeg.jpg"
     ],
     mapImg: "/Colombo.png"
@@ -169,6 +170,7 @@ const TestimonialsSlider = () => {
       {/* Navigation Controls */}
       <div className="absolute top-1/2 -translate-y-1/2 left-2 md:left-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <button
+          suppressHydrationWarning
           onClick={handlePrev}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
         >
@@ -177,6 +179,7 @@ const TestimonialsSlider = () => {
       </div>
       <div className="absolute top-1/2 -translate-y-1/2 right-2 md:right-6 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <button
+          suppressHydrationWarning
           onClick={handleNext}
           className="w-10 h-10 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white hover:bg-primary hover:text-white hover:border-primary transition-all shadow-lg"
         >
@@ -189,6 +192,7 @@ const TestimonialsSlider = () => {
         {testimonialsData.map((_, i) => (
           <button
             key={i}
+            suppressHydrationWarning
             onClick={() => setIndex(i)}
             className={`h-1.5 rounded-full transition-all duration-300 ${i === index ? "w-6 bg-primary" : "w-1.5 bg-white/30 hover:bg-primary/50"
               }`}
@@ -224,15 +228,16 @@ export default function Home() {
         `*Time:* ${data.time}`;
 
       // Using the primary WhatsApp number provided by user
-      const whatsappUrl = `https://wa.me/94772757097?text=${message}`;
+      const whatsappUrl = `https://wa.me/94764443602?text=${message}`;
       window.open(whatsappUrl, "_blank");
       toast.success("Redirecting to WhatsApp...");
       setIsSubmitting(false);
     } else {
-      // Email Logic (Web3Forms)
+      // 1. Send Admin Notification (Web3Forms)
       formData.append("access_key", "9233f8a5-fa40-4d91-b477-0b805eacc997");
       formData.append("subject", `New Booking from ${data.name}`);
       formData.append("from_name", "Pick & Drop Booking");
+      formData.append("replyto", data.email as string);
 
       try {
         const response = await fetch("https://api.web3forms.com/submit", {
@@ -241,14 +246,40 @@ export default function Home() {
         });
 
         const resData = await response.json();
+
         if (resData.success) {
-          toast.success("Thank you for contacting us! We'll get back to you soon.");
+          // 2. Send Customer Thank You (EmailJS)
+          // --- EMAILJS CONFIGURATION (Update These) ---
+          const SERVICE_ID = "YOUR_SERVICE_ID"; // e.g. "service_xxxx"
+          const TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. "template_xxxx"
+          const PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // e.g. "user_xxxx"
+          const LOGO_URL = "YOUR_CLOUDINARY_LOGO_URL";
+
+          const templateParams = {
+            user_name: data.name,
+            user_email: data.email,
+            pickup: data.pickup,
+            drop: data.drop,
+            date: data.date,
+            logo_url: LOGO_URL,
+            message: "Thank you for contacting us! We received your email and we will contact you soon."
+          };
+
+          try {
+            await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
+            toast.success("Request sent! We've also sent you a confirmation email.");
+          } catch (emailError) {
+            console.error("EmailJS Error:", emailError);
+            // Even if EmailJS fails, the main submission was successful
+            toast.success("Request sent to our team!");
+          }
+
           (e.target as HTMLFormElement).reset();
         } else {
-          toast.error("Failed to send email: " + resData.message);
+          toast.error("Failed to send: " + resData.message);
         }
       } catch (err) {
-        toast.error("Something went wrong. Please try again.");
+        toast.error("Something went wrong. Please check your connection.");
       } finally {
         setIsSubmitting(false);
       }
@@ -293,7 +324,6 @@ export default function Home() {
 
   return (
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth font-poppins">
-      <Toaster position="top-right" richColors duration={3000} />
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-8 lg:px-24 h-20 lg:h-[10vh] flex items-center transition-all duration-300">
         <div className="flex items-center justify-between w-full">
@@ -729,7 +759,7 @@ export default function Home() {
           <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full mt-5 lg:mt-20">
             {/* Consistent section title design */}
             <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
-              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">Plan Your Journey</p>
+              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.6vh] uppercase tracking-[0.4em] mb-3 2xl:mb-1">Plan Your Journey</p>
               <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">
                 Popular <span className="text-primary">Destinations</span>
               </h2>
@@ -737,7 +767,7 @@ export default function Home() {
             </div>
 
             {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
-            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 2xl:mx-[10vh] mt-2 lg:mt-6">
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 2xl:mx-[10vh] mt-2 lg:mt-3">
               {destinations.map((dest, i) => (
                 <div
                   key={i}
@@ -754,7 +784,7 @@ export default function Home() {
 
                   <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/45 backdrop-blur-lg border-t border-white/50 group-hover:bg-white/55 transition-colors duration-500">
                     <div className="mb-2">
-                      <div className="flex justify-between items-start mb-1.5">
+                      <div className="flex justify-between items-center mb-1.5">
                         <h3 className="text-2xl lg:text-[2.5vh] font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
                           {dest.name}
                         </h3>
@@ -784,7 +814,7 @@ export default function Home() {
 
                       {/* Travel Theme Badges - Replacing redundant Destination Value */}
                       <div className="relative group/theme">
-                        <div className="flex items-center gap-3 text-sky-blue mb-2.5">
+                        <div className="flex items-center gap-3 text-sky-blue mb-2">
                           <div className="w-8 h-8 rounded-xl bg-sky-blue/15 flex items-center justify-center group-hover/theme:scale-110 transition-transform duration-300">
                             <span className="material-symbols-outlined text-[18px]">verified</span>
                           </div>
@@ -903,26 +933,26 @@ export default function Home() {
         <section id="contact" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18 pb-14 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
-            className="hidden md:block absolute inset-0 z-0 bg-contain bg-center"
-            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078909/WhatsApp_Image_2026-02-23_at_20.52.06_cbpy9t.jpg')` }}
+            className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772891288/Green_and_Blue_Scenic_Sri_Lanka_Travel_Instagram_Post_p5islq.jpg')` }}
           >
-            <div className="absolute inset-0 bg-black/60 backdrop-blur-[4px]"></div>
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[4px]"></div>
           </div>
 
           {/* Contact Mobile Background */}
           <div
-            className="block md:hidden absolute inset-0 z-0 bg-cover bg-no-repeat  "
-            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078913/WhatsApp_Image_2026-02-23_at_20.51.42_1_afsy36.jpg')` }}
+            className="block md:hidden absolute inset-0 z-0 bg-cover bg-center bg-no-repeat  "
+            style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772891288/Green_and_Blue_Scenic_Sri_Lanka_Travel_Instagram_Post_p5islq.jpg')` }}
           >
-            <div className="absolute inset-0 bg-black/45 backdrop-blur-[10px]"></div>
+            <div className="absolute inset-0 bg-black/70 backdrop-blur-[4px]"></div>
           </div>
 
           <div className="md:mx-20 px-4 md:px-0 relative z-10 w-full flex flex-col items-center justify-center pt-4 lg:pt-10">
             <div className="text-center mt-2 mb-6 lg:mb-3 w-full">
               {/* Consistent section title design */}
 
-              <h2 className=" mt-4 text-3xl lg:text-[6vh] font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
-              <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
+              <h2 className=" mt-4 text-4xl lg:text-[6vh] font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
+              <p className="text-primary font-black text-[12px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
@@ -993,26 +1023,26 @@ export default function Home() {
                     <div className="flex gap-6 lg:gap-10">
                       <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" value="WhatsApp" defaultChecked className="peer sr-only" />
-                        <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
-                          <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
+                        <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary peer-checked:bg-secondary transition-all flex items-center justify-center">
+                          <div className="w-2.5 h-2.5 bg-road-dark rounded-full opacity-0 peer-checked:opacity-100 transition-all"></div>
                         </div>
-                        <span className="font-bold text-white/60 text-xs lg:text-[1.8vh] uppercase tracking-widest group-hover:text-secondary transition-colors">WhatsApp</span>
+                        <span className="font-bold text-white/60 text-xs lg:text-[1.8vh] uppercase tracking-widest group-hover:text-secondary peer-checked:text-white transition-colors">WhatsApp</span>
                       </label>
                       <label className="flex items-center gap-3 cursor-pointer group">
                         <input type="radio" name="comm_method" value="Email" className="peer sr-only" />
-                        <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary transition-all flex items-center justify-center">
-                          <div className="w-3 h-3 bg-secondary rounded-full opacity-0 peer-checked:opacity-100 transition-all shadow-[0_0_10px_rgba(253,185,19,0.5)]"></div>
+                        <div className="w-6 h-6 border-2 border-white/20 rounded-full peer-checked:border-secondary peer-checked:bg-secondary transition-all flex items-center justify-center">
+                          <div className="w-2.5 h-2.5 bg-road-dark rounded-full opacity-0 peer-checked:opacity-100 transition-all"></div>
                         </div>
-                        <span className="font-bold text-white/60 text-xs lg:text-[1.8vh] uppercase tracking-widest group-hover:text-secondary transition-colors">Email</span>
+                        <span className="font-bold text-white/60 text-xs lg:text-[1.8vh] uppercase tracking-widest group-hover:text-secondary peer-checked:text-white transition-colors">Email</span>
                       </label>
                     </div>
                   </div>
 
                   <div className="flex flex-col w-full md:w-auto items-center gap-4">
                     <button
-                      disabled={isSubmitting}
                       suppressHydrationWarning
-                      className="w-full md:w-auto h-16 lg:h-[8vh] px-12 bg-primary hover:bg-primary/90 text-white font-black text-sm lg:text-[2.2vh] rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={isSubmitting}
+                      className="w-full md:w-auto h-16 lg:h-[8vh] px-12 bg-orange-500 hover:bg-orange-600 text-white font-black text-sm lg:text-[2.2vh] rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span>{isSubmitting ? "SENDING..." : "SEND REQUEST"}</span>
                       <span className="material-symbols-outlined">send</span>
@@ -1024,7 +1054,7 @@ export default function Home() {
               {/* Direct Contact Options */}
               <div className="mt-4 pt-8 border-t border-white/10 relative z-10 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <a href="https://wa.me/94772757097" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
+                  <a href="https://wa.me/94764443602" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                     </svg>
