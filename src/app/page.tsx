@@ -46,7 +46,7 @@ const destinations = [
     places: "Nine Arch Bridge, Little Adam's Peak",
     markerPos: { x: "65%", y: "68%" },
     images: [
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631640/Untitled_design_9_ic0goo.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772954397/Untitled_design_13_ne6ag1.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1771254759/yalulife_ella_1_opnbtk.jpg",
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078925/WhatsApp_Image_2026-02-23_at_20.51.49_cavrzs.jpg"
     ],
@@ -60,9 +60,8 @@ const destinations = [
     markerPos: { x: "42%", y: "62%" },
     images: [
       "https://res.cloudinary.com/dnfbik3if/image/upload/v1772631373/Untitled_design_6_bujgvr.jpg",
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772891288/Gold_and_White_Modern_Sri_Lanka_Tour_and_Travel_Promotion_Instagram_Post_hxnx2k.jpg",
-      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772078883/WhatsApp_Image_2026-02-23_at_20.51.55_f3jbeg.jpg"
-    ],
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772953479/Untitled_design_12_pfenfm.jpg",
+      "https://res.cloudinary.com/dnfbik3if/image/upload/v1772954137/38434_1_savuds.jpg"],
     mapImg: "/Colombo.png"
   }
 ];
@@ -896,7 +895,7 @@ export default function Home() {
                     <div className="absolute -inset-3 bg-accent-gold/10 rounded-[3rem] blur-2xl rotate-2"></div>
                     <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
                       <img
-                        src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772078935/Sample_2_bx2idx.png"
+                        src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772953477/Screenshot_2026-03-08_123358_wqvdus.png"
                         className="w-full h-full object-cover object-top"
                         alt="Fleet Manager Shehan Perera"
                       />
