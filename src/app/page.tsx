@@ -137,30 +137,30 @@ const TestimonialsSlider = () => {
   const handlePrev = () => setIndex((prev) => (prev - 1 + testimonialsData.length) % testimonialsData.length);
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] pt-12 pb-14 px-4 sm:p-8 md:p-12 border border-white/20 bg-black/40 backdrop-blur-lg shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/45">
+    <div className="relative w-full max-w-3xl mx-auto overflow-hidden rounded-4xl md:rounded-[2.5rem] px-4 sm:px-8 md:px-12 border border-white/20 bg-black/40 backdrop-blur-lg shadow-2xl group transition-all duration-500 hover:border-white/30 hover:bg-black/45" style={{ height: "380px" }}>
       {/* Decorative glow */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-[90px] -mr-32 -mt-32"></div>
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-secondary/15 rounded-full blur-[90px] -ml-32 -mb-32"></div>
 
-      <div className="lg:mt-10 relative z-10 flex flex-col items-center justify-center text-center min-h-[220px] md:min-h-[280px]">
-        <div className="flex flex-col items-center w-full justify-between h-full py-4 pb-8 md:pb-4">
-          <div className="relative mb-5 md:mb-6">
+      <div className="relative z-10 flex flex-col items-center justify-center text-center h-full">
+        <div className="flex flex-col items-center w-full justify-center h-full gap-4 pb-6">
+          <div className="relative mb-3">
             <div className="absolute -inset-1 bg-linear-to-r from-primary to-secondary rounded-full blur-md opacity-60"></div>
             <img
               src={testimonialsData[index].image}
               alt={testimonialsData[index].name}
-              className="w-24 h-24 md:w-auto md:h-28 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
+              className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-[3px] border-white shadow-2xl relative z-10"
             />
-            <div className="absolute -bottom-2 -right-2 md:-bottom-3 md:-right-3 bg-primary text-white w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
-              <span className="material-symbols-outlined text-[14px] md:text-base">format_quote</span>
+            <div className="absolute -bottom-2 -right-2 bg-primary text-white w-7 h-7 rounded-full flex items-center justify-center border-2 border-white shadow-lg z-20">
+              <span className="material-symbols-outlined text-[13px]">format_quote</span>
             </div>
           </div>
 
-          <p className="text-white/90 text-[13px] lg:text-[2.5vh] h-32 md:h-fit sm:text-sm md:text-base font-bold italic leading-relaxed max-w-2xl mb-6 md:mb-8 px-2 drop-shadow-md">
+          <p className="text-white/90 text-[13px] lg:text-[2.2vh] font-bold italic leading-relaxed max-w-2xl mb-3 px-2 drop-shadow-md">
             "{testimonialsData[index].text}"
           </p>
 
-          <h4 className="text-base sm:text-lg md:text-xl lg:text-[3.5vh] font-black text-white uppercase tracking-widest drop-shadow-lg">
+          <h4 className="text-base sm:text-lg md:text-xl lg:text-[2.8vh] font-black text-white uppercase tracking-widest drop-shadow-lg">
             {testimonialsData[index].name}
           </h4>
         </div>
@@ -565,14 +565,14 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
 
           <div className="md:mx-20 w-full">
-            <div className="text-left mb-8">
+            <div className="text-left mb-4 lg:mb-5">
               {/* Consistent section title design */}
-              <p className="mt-2 lg:mt-14 text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">What We Offer</p>
+              <p className="mt-2 lg:mt-2 text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">What We Offer</p>
               <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">Our Core <span className="text-primary mx-3">Services</span></h2>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 shadow-lg shadow-primary/20"></div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-5">
               {[
                 { icon: "flight_takeoff", badge: "Premium Service", title: "Airport Transfers", desc: "Professional transfers to and from BIA Colombo or Mattala airports. Meet and greet service included.", img: "https://res.cloudinary.com/dnfbik3if/image/upload/v1772250518/WhatsApp_Image_2026-02-26_at_23.00.20_bb6ygg.jpg" },
                 { icon: "hotel", badge: "Convenient Pickups", title: "Hotel Pickups", desc: "Reliable door-to-door shuttle service connecting you from your hotel to any corner of the island.", img: "/images/hotel_pickups.png" },
@@ -623,7 +623,7 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-auto md:h-dvh md:max-h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 lg:pt-12 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
+        <section id="testimonials" className="h-auto md:h-dvh md:max-h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
           {/* Background Image and Overlay */}
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
@@ -631,7 +631,7 @@ export default function Home() {
           ></div>
           <div className="absolute inset-0 bg-black/75 backdrop-blur-sm z-0"></div>
 
-          <div className="px-6 md:px-20 relative z-10 w-full mb-0 md:mb-8">
+          <div className="px-6 md:px-20 relative z-10 w-full mb-0 md:mb-8 mt-2">
             <div className="mb-2 md:mb-8 border-b border-white/10 pb-5">
               <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3 drop-shadow-md">What They Say</p>
               <h2 className="text-2xl  sm:text-3xl lg:text-[6vh] font-black text-white italic uppercase leading-none drop-shadow-lg">
@@ -640,7 +640,7 @@ export default function Home() {
               <div className="w-16 h-1 mb-2 bg-primary rounded-full mt-4 shadow-[0_0_15px_rgba(253,185,19,0.5)]"></div>
             </div>
 
-            <div className="mt-4 md:mt-12 lg:mt-14">
+            <div className="mt-4 md:mt-8 lg:mt-12">
               <TestimonialsSlider />
             </div>
           </div>
@@ -651,7 +651,7 @@ export default function Home() {
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[140px] -ml-64 -mb-64"></div>
 
           <div className="md:mx-20 px-6 md:px-0 w-full relative z-10">
-            <div className="mb-8 lg:mb-12 border-b border-primary/20 pb-6 lg:pb-8 lg:mt-10">
+            <div className="mb-4 lg:mb-8 border-b border-primary/20 pb-4 lg:pb-6 lg:mt-2">
               {/* Consistent section title design */}
               <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3">Our Vehicles</p>
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3">
@@ -682,7 +682,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
+                <div className="relative h-32 lg:h-[18vh] mb-4 flex items-center justify-center">
                   <img
 
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1771257731/download_-_Edited_zwzuxb.png"
@@ -719,7 +719,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="relative h-32 lg:h-44 mb-4 flex items-center justify-center">
+                <div className="relative h-32 lg:h-[18vh] mb-4 flex items-center justify-center">
                   <img
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772544135/fit-lx-32-white_bxh03s_yasemu.png"
                     className="w-fill h-full  scale-110 lg:scale-150 object-contain    drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)] md:drop-shadow-none group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
@@ -749,15 +749,15 @@ export default function Home() {
 
 
         {/* Popular Destinations Section */}
-        <section id="destinations" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-20 lg:pt-34 md:pb-20 pb-14 relative overflow-hidden">
+        <section id="destinations" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 md:pt-[8vh] lg:pt-[8vh] md:pb-[6vh] lg:pb-[6vh] pb-14 relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[150px] -mr-96 -mt-96"></div>
           <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] -ml-96 -mb-96"></div>
 
-          <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full mt-5 lg:mt-20">
+          <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full mt-5 lg:mt-[2vh]">
             {/* Consistent section title design */}
-            <div className="mb-6 lg:mb-0 border-b border-road-dark/10 pb-5">
+            <div className="mb-3 lg:mb-[1vh] border-b border-road-dark/10 pb-3 lg:pb-[1vh]">
               <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.6vh] uppercase tracking-[0.4em] mb-3 2xl:mb-1">Plan Your Journey</p>
               <h2 className="text-2xl sm:text-3xl lg:text-[6vh] font-black text-road-dark italic uppercase leading-none">
                 Popular <span className="text-primary">Destinations</span>
@@ -766,7 +766,7 @@ export default function Home() {
             </div>
 
             {/* Mobile: vertical flex-col. Desktop: 4-col grid */}
-            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 2xl:mx-[10vh] mt-2 lg:mt-3">
+            <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 2xl:mx-[10vh] mt-2 lg:mt-2">
               {destinations.map((dest, i) => (
                 <div
                   key={i}
@@ -775,15 +775,15 @@ export default function Home() {
                   <div className="absolute -right-10 -top-10 w-40 h-72 md:h-40 bg-secondary/10 rounded-full blur-2xl group-hover:bg-secondary/20 transition-colors duration-700 z-0" />
 
                   {/* Mobile: fixed tall height. Desktop: portrait aspect ratio */}
-                  <div className="relative w-full h-72 sm:h-80 md:h-56 md:aspect-3/4 overflow-hidden">
+                  <div className="relative w-full h-72 sm:h-80 md:h-44 lg:h-[26vh] overflow-hidden">
                     <DestinationGallery images={dest.images} />
 
 
                   </div>
 
                   <div className="flex flex-col flex-1 p-4 relative z-10 bg-white/45 backdrop-blur-lg border-t border-white/50 group-hover:bg-white/55 transition-colors duration-500">
-                    <div className="mb-2">
-                      <div className="flex justify-between items-center mb-1.5">
+                    <div className="mb-1">
+                      <div className="flex justify-between items-center mb-1">
                         <h3 className="text-2xl lg:text-[2.5vh] font-black italic uppercase text-road-dark group-hover:text-primary transition-colors leading-none">
                           {dest.name}
                         </h3>
@@ -795,10 +795,10 @@ export default function Home() {
 
                     </div>
 
-                    <div className="flex-1 space-y-6 mb-8">
+                    <div className="flex-1 space-y-2 lg:space-y-2 mb-3 lg:mb-3">
                       {/* Iconic Places Section */}
                       <div className="relative group/places">
-                        <div className="flex items-center gap-3 text-primary mb-2.5">
+                        <div className="flex items-center gap-3 text-primary mb-1.5">
                           <div className="w-8 h-8 rounded-xl bg-primary/15 flex items-center justify-center group-hover/places:scale-110 transition-transform duration-300">
                             <Map size={16} strokeWidth={2.5} />
                           </div>
@@ -813,7 +813,7 @@ export default function Home() {
 
                       {/* Travel Theme Badges - Replacing redundant Destination Value */}
                       <div className="relative group/theme">
-                        <div className="flex items-center gap-3 text-sky-blue mb-2">
+                        <div className="flex items-center gap-3 text-sky-blue mb-1">
                           <div className="w-8 h-8 rounded-xl bg-sky-blue/15 flex items-center justify-center group-hover/theme:scale-110 transition-transform duration-300">
                             <span className="material-symbols-outlined text-[18px]">verified</span>
                           </div>
@@ -831,7 +831,7 @@ export default function Home() {
 
                     <a
                       href="#contact"
-                      className="group/btn relative w-full h-10 lg:h-[5vh] rounded-2xl bg-road-dark text-white font-black text-[10px] lg:text-[1.8vh] uppercase tracking-[0.2em] overflow-hidden flex items-center justify-center gap-3 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20"
+                      className="group/btn relative w-full h-10 mt-4 lg:h-[5vh] rounded-2xl bg-road-dark text-white font-black text-[10px] lg:text-[1.8vh] uppercase tracking-[0.2em] overflow-hidden flex items-center justify-center gap-3 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20"
                     >
                       <div className="absolute inset-0 bg-primary translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-out z-0"></div>
                       <span className="relative z-10 flex items-center gap-3">
@@ -845,7 +845,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-        <section id="why-us" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-20 lg:pb-10 pb-14 relative overflow-hidden border-t border-black/5">
+        <section id="why-us" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 lg:pt-[6vh] lg:pb-[4vh] pb-14 relative overflow-hidden border-t border-black/5">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
           <div className="absolute top-1/4 right-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
           <div className="absolute bottom-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-[80px]"></div>
@@ -853,9 +853,9 @@ export default function Home() {
           <div className="md:mx-20 px-6 md:px-0 relative z-10 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 items-center">
               {/* Left Column: Features */}
-              <div className="space-y-8 lg:space-y-12">
+              <div className="space-y-4 lg:space-y-6">
                 <div
-                  className="space-y-8 lg:space-y-12"
+                  className="space-y-3 lg:space-y-4"
                 >
                   {/* Consistent section title design */}
                   <p className="text-primary font-black text-[10px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] mb-3 mt-4">The Pick &amp; Drop Edge</p>
@@ -871,7 +871,7 @@ export default function Home() {
                   ].map((feature, i) => (
                     <div
                       key={i}
-                      className="flex items-center gap-4 p-4 lg:p-9 rounded-3xl bg-sky-blue/12 backdrop-blur-md border border-sky-blue/20 hover:bg-sky-blue/18 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
+                      className="flex items-center gap-4 p-4 lg:p-5 rounded-3xl bg-sky-blue/12 backdrop-blur-md border border-sky-blue/20 hover:bg-sky-blue/18 hover:border-primary/40 group shadow-[0_20px_50px_-12px_rgba(0,99,157,0.12)] transition-colors duration-500"
                     >
                       <div className={`shrink-0 w-12 lg:w-16 h-12 lg:h-16 ${feature.bg} backdrop-blur-md rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 border border-white/30`}>
                         <span className={`material-symbols-outlined text-xl lg:text-4xl ${feature.iconColor}`}>{feature.icon}</span>
@@ -891,9 +891,9 @@ export default function Home() {
                   className="flex flex-col items-center gap-5"
                 >
                   {/* Portrait photo — narrow and tall */}
-                  <div className="relative w-full max-w-[280px] mx-auto lg:mt-6">
+                  <div className="relative w-full max-w-[280px] mx-auto lg:mt-2">
                     <div className="absolute -inset-3 bg-accent-gold/10 rounded-[3rem] blur-2xl rotate-2"></div>
-                    <div className="relative h-[380px] lg:h-[340px] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
+                    <div className="relative h-[280px] lg:h-[30vh] w-full rounded-4xl overflow-hidden border-[5px] border-white shadow-2xl ">
                       <img
                         src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772953477/Screenshot_2026-03-08_123358_wqvdus.png"
                         className="w-full h-full object-cover object-top"
@@ -910,7 +910,7 @@ export default function Home() {
                     <h3 className="text-2xl lg:text-[5vh] font-black text-road-dark italic uppercase leading-none mb-3">
                       Shehan Perera
                     </h3>
-                    <p className="text-road-dark/70 font-bold  text-[12px] lg:text-[2.2vh] md:text-md leading-relaxed mb-2 lg:mb-6 mt-2 text-justify">
+                    <p className="text-road-dark/70 font-bold  text-[12px] lg:text-[2.2vh] md:text-md leading-relaxed mb-2 lg:mb-3 mt-2 text-justify">
                       His strong leadership, strategic planning, and commitment to safety ensure efficient transportation solutions and exceptional customer satisfaction.
                       An accomplished Fleet Manager with11 years of extensive experience in the tourism sector. Specializes in travel support, long trip management, vehicle maintenance, and service excellence.
                     </p>
@@ -929,7 +929,7 @@ export default function Home() {
         </section >
 
         {/* Payment Form Section */}
-        <section id="contact" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-18 pb-14 bg-road-dark relative overflow-hidden">
+        <section id="contact" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 pt-10 lg:pt-[6vh] pb-14 lg:pb-0 bg-road-dark relative overflow-hidden">
           {/* Contact Desktop Background */}
           <div
             className="hidden md:block absolute inset-0 z-0 bg-cover bg-center"
@@ -946,19 +946,19 @@ export default function Home() {
             <div className="absolute inset-0 bg-black/70 backdrop-blur-[4px]"></div>
           </div>
 
-          <div className="md:mx-20 px-4 md:px-0 relative z-10 w-full flex flex-col items-center justify-center pt-4 lg:pt-10">
-            <div className="text-center mt-2 mb-6 lg:mb-3 w-full">
+          <div className="md:mx-20 px-4 md:px-0 relative z-10 w-full flex flex-col items-center justify-center pt-2 lg:pt-4">
+            <div className="text-center mt-1 mb-3 lg:mb-2 w-full">
               {/* Consistent section title design */}
 
-              <h2 className=" mt-4 text-4xl lg:text-[6vh] font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
+              <h2 className=" mt-2 lg:mt-0 text-4xl lg:text-[6vh] font-black text-white italic uppercase leading-none mb-1">Book <span className="text-primary">Now</span></h2>
               <p className="text-primary font-black text-[12px] md:text-xs lg:text-[1.8vh] uppercase tracking-[0.4em] ">Island-wide Premium Transit Service</p>
               <div className="w-16 h-1.5 bg-primary rounded-full mt-4 mx-auto shadow-lg shadow-primary/20"></div>
             </div>
 
             <div
-              className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-6 lg:p-8 relative overflow-hidden max-w-7xl shadow-2xl"
+              className="glass-form rounded-[2.5rem] md:rounded-[4rem] p-5 lg:p-6 relative overflow-hidden max-w-7xl shadow-2xl"
             >
-              <form className="space-y-6 md:space-y-8 relative z-10 mx-2 lg:mx-10" onSubmit={handleFormSubmit}>
+              <form className="space-y-4 md:space-y-5 relative z-10 mx-2 lg:mx-10" onSubmit={handleFormSubmit}>
                 {/* Name & WhatsApp & Email */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-2">
@@ -1051,7 +1051,7 @@ export default function Home() {
               </form>
 
               {/* Direct Contact Options */}
-              <div className="mt-4 pt-8 border-t border-white/10 relative z-10 w-full">
+              <div className="mt-2 pt-4 border-t border-white/10 relative z-10 w-full">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <a href="https://wa.me/94764443602" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-3 h-14 bg-[#25D366]/90 backdrop-blur-md text-white rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-[1.02] transition-all shadow-xl shadow-[#25D366]/20 border border-white/10">
                     <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
