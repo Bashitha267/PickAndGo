@@ -128,6 +128,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* End Google Tag Manager */}
+        {/* Google Analytics */}
+        <Script
+          id="ga-script"
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-7NG6RKXSPP"
+        />
+        <Script
+          id="ga-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-7NG6RKXSPP');`,
+          }}
+        />
+        {/* End Google Analytics */}
       </head>
       <body
         className={`${poppins.variable} antialiased`}
