@@ -483,7 +483,11 @@ export default function Home() {
                     <div className="absolute inset-0 bg-primary blur-3xl opacity-30 group-hover:opacity-60 transition-opacity"></div>
                     <button className="relative w-full sm:w-auto h-14 md:h-16 lg:h-[8.5vh] px-10 md:px-12 bg-primary text-white font-black text-lg md:text-lg lg:text-[2.2vh] rounded-full shadow-[0_20px_50px_rgba(46,125,50,0.3)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center gap-4 uppercase">
                       BOOK NOW
-                      <span className="material-symbols-outlined font-black" style={{ fontVariationSettings: '"FILL" 1, "wght" 800' }}>south</span>
+                      <img
+                        src="https://img.icons8.com/metro/52/FFFFFF/thick-arrow-pointing-down.png"
+                        alt="arrow"
+                        className="w-6 h-6 md:w-8 md:h-8 animate-bounce invert brightness-0"
+                      />
                     </button>
                   </a>
                 </div>
@@ -623,8 +627,9 @@ export default function Home() {
         </section >
 
         {/* Testimonials Section */}
-        <section id="testimonials" className="h-auto md:h-dvh md:max-h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
-          {/* Background Image and Overlay */}
+
+        {/* <section id="testimonials" className="h-auto md:h-dvh md:max-h-screen flex flex-col items-center justify-start md:justify-center pt-12 pb-16 md:pt-0 md:pb-0 snap-start snap-always scroll-mt-0 relative overflow-hidden">
+         
           <div
             className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
             style={{ backgroundImage: `url('https://res.cloudinary.com/dnfbik3if/image/upload/v1772078183/WhatsApp_Image_2026-02-23_at_20.51.43_mvard9.jpg')` }}
@@ -644,7 +649,7 @@ export default function Home() {
               <TestimonialsSlider />
             </div>
           </div>
-        </section>
+        </section> */}
         <section id="fleet" className="min-h-dvh md:h-dvh md:max-h-screen flex items-center snap-start snap-always scroll-mt-0 bg-pattern-yellow pt-10 pb-14 relative overflow-hidden">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,163,255,0.06)_0%,transparent_70%)]"></div>
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[140px] -mr-64 -mt-64"></div>
