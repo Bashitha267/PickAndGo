@@ -2,8 +2,19 @@
 
 import React, { useState, useEffect } from "react";
 
-import { toast } from "sonner";
-import emailjs from "@emailjs/browser";
+import { toast, Toaster } from "sonner";
+
+// small wrapper so we can log when a toast is invoked
+const showToast = (type: "success" | "error" | "default", msg: string, opts?: any) => {
+  try {
+    if (type === "success") toast.success(msg, opts);
+    else if (type === "error") toast.error(msg, opts);
+    else toast(msg, opts);
+    console.log("appear");
+  } catch (e) {
+    console.error("toast invocation error:", e);
+  }
+};
 
 import { Map } from "lucide-react";
 
@@ -230,7 +241,7 @@ export default function Home() {
       // Using the primary WhatsApp number provided by user
       const whatsappUrl = `https://wa.me/94764443602?text=${message}`;
       window.open(whatsappUrl, "_blank");
-      toast.success("Redirecting to WhatsApp...");
+      showToast("success", "Redirecting to WhatsApp...", { duration: 3000 });
       setIsSubmitting(false);
     } else {
       // 1. Send Admin Notification (Web3Forms)
@@ -248,38 +259,17 @@ export default function Home() {
         const resData = await response.json();
 
         if (resData.success) {
-          // 2. Send Customer Thank You (EmailJS)
-          // --- EMAILJS CONFIGURATION (Update These) ---
-          const SERVICE_ID = "YOUR_SERVICE_ID"; // e.g. "service_xxxx"
-          const TEMPLATE_ID = "YOUR_TEMPLATE_ID"; // e.g. "template_xxxx"
-          const PUBLIC_KEY = "YOUR_PUBLIC_KEY"; // e.g. "user_xxxx"
-          const LOGO_URL = "YOUR_CLOUDINARY_LOGO_URL";
-
-          const templateParams = {
-            user_name: data.name,
-            user_email: data.email,
-            pickup: data.pickup,
-            drop: data.drop,
-            date: data.date,
-            logo_url: LOGO_URL,
-            message: "Thank you for contacting us! We received your email and we will contact you soon."
-          };
-
-          try {
-            await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY);
-            toast.success("Request sent! We've also sent you a confirmation email.");
-          } catch (emailError) {
-            console.error("EmailJS Error:", emailError);
-            // Even if EmailJS fails, the main submission was successful
-            toast.success("Request sent to our team!");
-          }
-
+          // Use the message returned by Web3Forms when available
+          const msg = resData?.body?.message || "Request received — we will contact you shortly.";
+          showToast("success", msg, { duration: 2500 });
           (e.target as HTMLFormElement).reset();
         } else {
-          toast.error("Failed to send: " + resData.message);
+          const errMsg = resData?.body?.message || resData?.message || "Failed to send request.";
+          showToast("error", errMsg, { duration: 3000 });
         }
       } catch (err) {
-        toast.error("Something went wrong. Please check your connection.");
+        console.error("submit error:", err);
+        showToast("error", "Something went wrong. Please check your connection.", { duration: 3000 });
       } finally {
         setIsSubmitting(false);
       }
@@ -324,6 +314,7 @@ export default function Home() {
 
   return (
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth font-poppins">
+      <Toaster richColors position="top-right" style={{ zIndex: 99999 }} />
       {/* Top Navigation Bar */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-md px-8 lg:px-24 h-20 lg:h-[10vh] flex items-center transition-all duration-300">
         <div className="flex items-center justify-between w-full">
@@ -1031,6 +1022,13 @@ export default function Home() {
                     <button
                       suppressHydrationWarning
                       disabled={isSubmitting}
+                      onClick={() => {
+                        try {
+                          showToast("default", "Sending request...", { duration: 2500 });
+                        } catch (e) {
+                          console.error("toast click error:", e);
+                        }
+                      }}
                       className="w-full md:w-auto h-16 lg:h-[8vh] px-12 bg-orange-500 hover:bg-orange-600 text-white font-black text-sm lg:text-[2.2vh] rounded-2xl shadow-2xl shadow-primary/40 transition-all flex items-center justify-center gap-4 hover:scale-[1.02] active:scale-95 border border-white/10 uppercase tracking-widest disabled:opacity-50 disabled:cursor-not-allowed"
                     >
                       <span>{isSubmitting ? "SENDING..." : "SEND REQUEST"}</span>

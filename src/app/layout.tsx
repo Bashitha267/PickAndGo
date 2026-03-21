@@ -159,7 +159,7 @@ gtag('config', 'G-7NG6RKXSPP');`,
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
-        <Toaster position="top-center" richColors />
+        <Toaster position="top-center" richColors style={{ zIndex: 99999 }} />
         {children}
       </body>
     </html>
