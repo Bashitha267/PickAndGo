@@ -85,6 +85,7 @@ const DestinationGallery = ({ images }: { images: string[] }) => {
     <div className="absolute inset-0 w-full h-full overflow-hidden">
       <img
         src={images[index]}
+        loading="lazy"
         className="absolute inset-0 object-cover w-full h-full transition-opacity duration-1000"
         alt="Destination View"
       />
@@ -286,6 +287,9 @@ export default function Home() {
   };
 
   useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    if (sections.length === 0) return;
+
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -70% 0px",
@@ -301,12 +305,9 @@ export default function Home() {
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
-    const sections = document.querySelectorAll("section[id]");
     sections.forEach((section) => observer.observe(section));
 
-    return () => {
-      sections.forEach((section) => observer.unobserve(section));
-    };
+    return () => observer.disconnect();
   }, []);
 
   // Close mobile menu when body scrolls
@@ -319,7 +320,7 @@ export default function Home() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const navLinks = ["home", "services", "testimonials", "fleet", "destinations", "why-us", "contact"];
+  const navLinks = React.useMemo(() => ["home", "services", "testimonials", "fleet", "destinations", "why-us", "contact"], []);
 
   return (
     <div className="bg-road-dark text-road-dark h-dvh overflow-y-auto lg:snap-y lg:snap-mandatory scroll-smooth font-poppins">
@@ -331,9 +332,9 @@ export default function Home() {
               <img
                 src="/logo.png"
                 alt="Pick & Drop Logo"
-                className="absolute top-1/2 -translate-y-1/2 left-0 h-20 lg:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-110 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)] max-w-none"
+                className="absolute top-1/2 -translate-y-1/2 left-0 h-14 md:h-16 lg:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-105 drop-shadow-[0_10px_30px_rgba(0,0,0,0.15)]"
               />
-              <div className="h-10 lg:h-12 w-28 lg:w-40" />
+              <div className="h-9 md:h-10 lg:h-12 w-28 lg:w-40" />
             </div>
           </div>
 
@@ -503,57 +504,40 @@ export default function Home() {
                   <div className="h-px w-10 md:w-16 bg-linear-to-l from-transparent to-white/20"></div>
                 </div>
 
-                <div className="flex flex-wrap justify-center items-center gap-x-10 md:gap-x-12  md:gap-y-8 px-4 m ">
+                <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-10 md:gap-y-6 px-4">
                   {/* Visa */}
-                  <div className="group/icon cursor-help transition-all duration-300   rounded-lg hover:scale-110">
+                  <div className="group/icon cursor-help transition-all duration-300 rounded-lg hover:scale-105">
                     <img
+                      loading="lazy"
                       src="/visa.png"
-                      className="h-8 md:h-12 2xl:h-14 w-16 lg:w-auto opacity-100 transition-opacity  "
+                      className="h-6 md:h-10 lg:h-12 w-auto max-w-[120px] object-contain opacity-100 transition-all"
                       alt="Visa"
                     />
                   </div>
 
                   {/* Mastercard */}
-                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
+                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-105">
                     <img
                       src="/master.png"
-                      className="h-8 md:h-12 2xl:h-14 w-auto opacity-100 transition-opacity"
+                      className="h-6 md:h-10 lg:h-12 w-auto max-w-[120px] object-contain opacity-100 transition-all"
                       alt="Mastercard"
                     />
                   </div>
 
                   {/* Amex */}
-                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
+                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-105">
                     <img
                       src="/amex.png"
-                      className="h-8 md:h-12 2xl:h-14 w-auto opacity-100 transition-opacity"
+                      className="h-6 md:h-10 lg:h-12 w-auto max-w-[120px] object-contain opacity-100 transition-all"
                       alt="Amex"
                     />
                   </div>
 
-                  {/* Diners Club */}
-                  {/* <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
-                    <img
-                      src="/dinersclub.png"
-                      className="h-8 md:h-12 w-auto opacity-100 transition-opacity"
-                      alt="Diners Club"
-                    />
-                  </div>
-
-                  {/* Discover */}
-                  {/* <div className="group/icon cursor-help transition-all duration-300 hover:scale-110">
-                    <img
-                      src="/discover.png"
-                      className="h-8 md:h-12 w-auto opacity-100 transition-opacity"
-                      alt="Discover"
-                    />
-                  </div> */}
-
                   {/* Cash */}
-                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-110 mt-3 md:mt-0">
+                  <div className="group/icon cursor-help transition-all duration-300 hover:scale-105 mt-2 md:mt-0">
                     <img
                       src="/cash.png"
-                      className="h-8 md:h-12 2xl:h-14 w-auto opacity-100 transition-opacity"
+                      className="h-6 md:h-10 lg:h-12 w-auto max-w-[120px] object-contain opacity-100 transition-all"
                       alt="Cash"
                     />
                   </div>
@@ -726,6 +710,7 @@ export default function Home() {
 
                 <div className="relative h-32 lg:h-[18vh] mb-4 flex items-center justify-center">
                   <img
+                    loading="lazy"
                     src="https://res.cloudinary.com/dnfbik3if/image/upload/v1772544135/fit-lx-32-white_bxh03s_yasemu.png"
                     className="w-fill h-full  scale-110 lg:scale-150 object-contain    drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)] md:drop-shadow-none group-hover:drop-shadow-[0_15px_30px_rgba(0,163,255,0.3)]"
                     alt="Honda Fit"
@@ -1084,7 +1069,7 @@ export default function Home() {
         <div className="md:mx-20 flex flex-col md:flex-row justify-between items-start gap-10">
           <div className="space-y-4 max-w-sm">
             <div className="flex items-center group cursor-pointer">
-              <img src="/logo.png" alt="Pick & Drop Logo" className="h-20 lg:h-[12vh] w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
+              <img src="/logo.png" alt="Pick & Drop Logo" className="h-12 md:h-16 lg:h-[12vh] w-auto object-contain transition-all duration-300 group-hover:scale-105 brightness-110" />
             </div>
             <p className="text-white/40 text-[11px] lg:text-[1.8vh] font-bold leading-relaxed uppercase tracking-wider">
               Premium island-wide shuttle and travel service in Sri Lanka. Punctual, Reliable, and Professional.
